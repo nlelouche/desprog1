@@ -31,6 +31,9 @@ class VertexBuffer : public GraphicsStructs
 {
 public:
 
+	VertexBuffer();
+	~VertexBuffer();
+
 	bool Create(IDirect3DDevice9 * _pDevice, bool bDynamic);
 	void Bind(void);
 	void Flush(void);

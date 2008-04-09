@@ -12,6 +12,20 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
+VertexBuffer<PixelFormatClass,FVF>::VertexBuffer()
+{
+	m_uiVbSize = 450;
+}
+
+//---------------------------------------------------------------------------
+template <class PixelFormatClass, unsigned int FVF>
+VertexBuffer<PixelFormatClass,FVF>::~VertexBuffer()
+{
+
+}
+
+//---------------------------------------------------------------------------
+template <class PixelFormatClass, unsigned int FVF>
 bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * _pDevice, bool bDynamic)
 {
 	m_pDev = _pDevice;
