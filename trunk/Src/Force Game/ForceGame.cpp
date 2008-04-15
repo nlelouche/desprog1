@@ -3,28 +3,37 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Force Game
+Clase: Force Game.cpp
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
+//---------------------------------------------------------------------------
 #include "ForceGame.h"
+//---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
+	m_pShape = new Shape();
+
 	return true;
 }
 
 //---------------------------------------------------------------------------
 bool ForceGame::onLoop()
 {
+	m_pShape->Draw(*g_graficos);
+
 	return true;
 }
 
 //---------------------------------------------------------------------------
 bool ForceGame::onDeInit()
 {
+	delete m_pShape;
+	m_pShape = NULL;
+
 	return true;
 }
 

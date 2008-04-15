@@ -58,9 +58,56 @@ void VertexBuffer<PixelFormatClass,FVF>::Release()
 
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
-void VertexBuffer<PixelFormatClass,FVF>::Draw()
+void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount)
 {
+	m_primitiveType = primitiveType;
 
+	if(m_uiFlush < uiVtxCount)
+	{
+		M_uiVtxToLock = m_uiFlush;
+	}
+	else
+	{
+		m_uiVtxToLock = uiVtxCount;
+	}
+
+	if((m_uiBase + m_uiVtxToLock) > m_uiVbSize)
+	{
+		m_uiBase;
+	}
+
+	hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass),
+							   m_uiVtxToLock * sizeof(PixelFormatClass),
+							   (BYTE **) &pVertices,
+							   m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+	while(m_uiVtxToLock > 0)
+	{
+		memcpy(pVertices, &pVtxCollection[uiVtxProcNow], sizeof(PixelFormatClass)* m_uiVtxToLock);
+
+		uiVtxProcNow += m_uiVtxToLock;
+		m_pVertexBuffer->Unlock();
+		Flush();
+
+		m_uiBase += m_uiVtxToLock;
+
+		if(m_uiBase > (m_uiVbSize - 1))
+		{
+			m_uiBase = 0;
+		}
+
+		if(m_uiFlush < (uiVtxCount - uiVtxProcNow))
+		{
+			m_uiVtxToLock = uiVtxCount - uiVtxProcNow;
+		}
+		else
+		{
+			m_uiVtxToLock = m_uiFlush;
+		}
+
+		hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(VertexFormat), m_uiVtxToLock * sizeof(VertexFormat), (void **)(&pVertices), m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+	}
+
+	m_pVertexBuffer->Unlock();
 }
 
 //---------------------------------------------------------------------------

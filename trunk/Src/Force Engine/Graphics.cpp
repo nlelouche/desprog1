@@ -15,7 +15,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 Graphics::Graphics()
 {
-
+	
 }
 
 //---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Graphics::~Graphics()
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::InitDX(Window g_window)
+bool Graphics::InitDX(Window * g_window)
 {
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -61,7 +61,7 @@ bool Graphics::InitDX(Window g_window)
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
  							  D3DDEVTYPE_HAL,							
-							  g_window.m_hWnd,
+							  g_window->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
 							  &_pDevice);
@@ -70,6 +70,29 @@ bool Graphics::InitDX(Window g_window)
 	{
 		return false;
 	}
+
+	InitMat();
+
+	return true;
+}
+
+//---------------------------------------------------------------------------
+bool Graphics::InitMat()
+{
+	// Matriz de Vista
+
+	D3DXMATRIX d3dmat;
+	D3DXMatrixIdentity(&d3dmat);
+
+	D3DXVECTOR3 eyePos(0.0f, 0.0f, -5.0f);
+	D3DXVECTOR3 lookPos(0.0f, 0.0f, 0.0f);
+	D3DXVECTOR3 upVec(0.0f, 1.0f, 0.0f); 
+
+	D3DXMatrixLookAtLH(&d3dmat, &eyePos, &lookPos, &upVec);
+	_pDevice->SetTransform(D3DTS_VIEW, &d3dmat);
+
+	_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+	_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
 
 	return true;
 }
@@ -115,7 +138,7 @@ void Graphics::Present(void)
 void Graphics::Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
 {
 	m_vtxBufColor.Bind();
-	m_vtxBufColor.Draw();
+	//m_vtxBufColor.Draw    A GRABAR!!!
 }
 
 //---------------------------------------------------------------------------

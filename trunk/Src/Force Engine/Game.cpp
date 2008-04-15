@@ -3,7 +3,7 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Game
+Clase: Game.cpp
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
@@ -15,7 +15,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 Game::Game()
 {
-
+	
 }
 
 //---------------------------------------------------------------------------
@@ -27,21 +27,20 @@ Game::~Game()
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
-	// Creo la Ventana
-	Window g_window(hInstance);
+	g_window = new Window(hInstance);
+	g_graficos = new Graphics();
 
-	if(!g_window.createWindow(800, 600))
+	if(!g_window->createWindow(800, 600))
 	{
 		return false;
 	}
 
-	// Creo el Render
-	Graphics g_graficos;
-
-	if(!g_graficos.InitDX(g_window))
+	if(!g_graficos->InitDX(g_window))
 	{
 		return false;
 	}
+
+	onInit();
 
 	return true;
 }
@@ -49,12 +48,21 @@ bool Game::Init()
 //---------------------------------------------------------------------------
 bool Game::Loop()
 {
+	onLoop();
+
 	return false;
 }
 
 //---------------------------------------------------------------------------
 bool Game::deInit()
 {
+	onDeInit();
+
+	delete g_graficos;
+	g_graficos = NULL;
+
+	delete g_window;
+	g_window = NULL;
 	return true;
 }
 

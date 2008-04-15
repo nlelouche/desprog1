@@ -217,6 +217,18 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Entities"
+			>
+			<File
+				RelativePath=".\Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Shape.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\Defines.h"
 			>

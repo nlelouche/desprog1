@@ -3,7 +3,7 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Force Game
+Clase: Force Game.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
@@ -15,6 +15,7 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Game.h"
+#include "Shape.h"
 #include "Window.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
@@ -29,6 +30,10 @@ protected:
 	bool onDeInit();
 
 	friend class Graphics;
+
+private:
+
+	Shape * m_pShape;
 };
 
 #endif /*--- FORCE_GAME_H ---*/
