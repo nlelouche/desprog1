@@ -27,17 +27,16 @@ Hecho by: German Battiston AKA Melkor
 #pragma comment (lib, "d3dx9.lib")
 //---------------------------------------------------------------------------
 
-class Graphics : public GraphicsStructs
+class FORCEENGINE_API Graphics : public GraphicsStructs
 {
 public:
 
 	Graphics();
 	~Graphics();
 
-private:
-
-	bool InitDX(Window g_window);
+	bool InitDX(Window * g_window);
 	bool CheckModes();
+	bool InitMat();
 
 	void SetupScene();
 	void BeginScene(void);
@@ -47,6 +46,8 @@ private:
 	void Present(void);
 	void Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount);
 
+private:
+
 	HRESULT DrawPrimitive(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT PrimitiveCount);
 
 	HWND m_hWnd;
@@ -54,6 +55,12 @@ private:
 	IDirect3DDevice9 * _pDevice;
 
 	VertexBuffer <ColorVertex, D3DFVF_COLORVERTEX> m_vtxBufColor;
+
+	D3DMATRIX d3dmat;
+	
+	float fX;
+	float fY;
+	float fAngle;
 
 	friend class Game;
 };
