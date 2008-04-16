@@ -48,9 +48,17 @@ bool Game::Init()
 //---------------------------------------------------------------------------
 bool Game::Loop()
 {
+	g_graficos->Clear();
+	g_graficos->BeginScene();
+	g_graficos->Present();
+
+	m_Shape.Draw(*g_graficos);
+
 	onLoop();
 
-	return false;
+	g_graficos->EndScene();
+
+	return true;
 }
 
 //---------------------------------------------------------------------------

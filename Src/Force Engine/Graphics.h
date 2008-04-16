@@ -39,16 +39,14 @@ public:
 	bool InitMat();
 
 	void SetupScene();
-	void BeginScene(void);
-	void EndScene(void);
+	void BeginScene();
+	void EndScene();
 
 	void Clear();
-	void Present(void);
+	void Present();
 	void Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount);
 
 private:
-
-	HRESULT DrawPrimitive(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT PrimitiveCount);
 
 	HWND m_hWnd;
 	IDirect3D9 * m_pD3D;

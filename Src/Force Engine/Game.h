@@ -37,12 +37,11 @@ protected:
 	virtual bool onLoop() = 0;
 	virtual bool onDeInit() = 0;
 
-	friend class Graphics;
-	friend class Window;
-
 	Graphics * g_graficos;
 
 private:
+
+	Shape m_Shape;
 
 	HINSTANCE hInstance;
 
