@@ -78,21 +78,44 @@ bool Graphics::InitDX(Window * g_window)
 
 //---------------------------------------------------------------------------
 bool Graphics::InitMat()
-{
+{	
+	// Matriz de Mundo
+
+	D3DXMATRIX d3dmatMundo;
+	D3DXMatrixIdentity(&d3dmatMundo);
+	D3DXMatrixTranslation(&d3dmatMundo, 0,  0, 1.0f);
+	D3DXMatrixRotationZ(&d3dmatMundo, 0);
+
+	_pDevice->SetTransform(D3DTS_WORLD, &d3dmatMundo);
+
 	// Matriz de Vista
 
-	D3DXMATRIX d3dmat;
-	D3DXMatrixIdentity(&d3dmat);
+	D3DXMATRIX d3dmatVista;
+	D3DXMatrixIdentity(&d3dmatVista);
 
 	D3DXVECTOR3 eyePos(0.0f, 0.0f, -5.0f);
 	D3DXVECTOR3 lookPos(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR3 upVec(0.0f, 1.0f, 0.0f); 
 
-	D3DXMatrixLookAtLH(&d3dmat, &eyePos, &lookPos, &upVec);
-	_pDevice->SetTransform(D3DTS_VIEW, &d3dmat);
+	D3DXMatrixLookAtLH(&d3dmatVista, &eyePos, &lookPos, &upVec);
+	_pDevice->SetTransform(D3DTS_VIEW, &d3dmatVista);
 
+	// Matriz de Proyeccion
+
+	D3DVIEWPORT9 viewport;
+	_pDevice->GetViewport(&viewport);
+
+	float viewportWidth = static_cast <float> (viewport.Width);
+	float viewportHeight = static_cast <float> (viewport.Height);
+
+	D3DXMATRIX d3dmatProy;
+	D3DXMatrixOrthoLH(&d3dmatProy, viewportWidth, viewportHeight, -25, 25);
+	HRESULT hr = _pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
+	
 	_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 	_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+
+
 
 	return true;
 }
@@ -112,7 +135,7 @@ void Graphics::Clear()
 //---------------------------------------------------------------------------
 void Graphics::SetupScene()
 {
-
+	
 }
 
 //---------------------------------------------------------------------------
@@ -129,7 +152,7 @@ void Graphics::EndScene()
 
 //---------------------------------------------------------------------------
 
-void Graphics::Present(void)
+void Graphics::Present()
 {
 	_pDevice->Present(NULL, NULL, NULL, NULL);
 }
@@ -138,7 +161,7 @@ void Graphics::Present(void)
 void Graphics::Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
 {
 	m_vtxBufColor.Bind();
-	//m_vtxBufColor.Draw    A GRABAR!!!
+	m_vtxBufColor.Draw(vertexCollection, prim, uiVertexCount);
 }
 
 //---------------------------------------------------------------------------

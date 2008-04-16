@@ -16,6 +16,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <cassert>
 #include "Window.h"
 #include "Defines.h"
 #include "GraphicsStructs.h"

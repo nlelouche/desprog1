@@ -64,7 +64,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 
 	if(m_uiFlush < uiVtxCount)
 	{
-		M_uiVtxToLock = m_uiFlush;
+		m_uiVtxToLock = m_uiFlush;
 	}
 	else
 	{
@@ -76,16 +76,21 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 		m_uiBase;
 	}
 
-	hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass),
-							   m_uiVtxToLock * sizeof(PixelFormatClass),
-							   (BYTE **) &pVertices,
-							   m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+	void * pVertices = NULL;
+
+	HRESULT hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass),
+								m_uiVtxToLock * sizeof(PixelFormatClass),
+								(void **) (&pVertices),
+								m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+
+	unsigned int uiVtxProcNow = 0;
+
 	while(m_uiVtxToLock > 0)
 	{
 		memcpy(pVertices, &pVtxCollection[uiVtxProcNow], sizeof(PixelFormatClass)* m_uiVtxToLock);
 
 		uiVtxProcNow += m_uiVtxToLock;
-		m_pVertexBuffer->Unlock();
+		hr = m_pVertexBuffer->Unlock();
 		Flush();
 
 		m_uiBase += m_uiVtxToLock;
@@ -104,7 +109,10 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 			m_uiVtxToLock = m_uiFlush;
 		}
 
-		hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(VertexFormat), m_uiVtxToLock * sizeof(VertexFormat), (void **)(&pVertices), m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+		hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass), 
+								m_uiVtxToLock * sizeof(PixelFormatClass), 
+								(void **)(&pVertices),
+								m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
 	}
 
 	m_pVertexBuffer->Unlock();
@@ -114,13 +122,13 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Flush()
 {
-	int iPrimitiveCount;
+	int iPrimitiveCount = 0;
 
 	if(m_primitiveType == D3DPT_POINTLIST)
 	{
 		iPrimitiveCount = m_uiVtxToLock;
 	}
-	else if(m_primitiveType == D3DPT_LINESIT)
+	else if(m_primitiveType == D3DPT_LINELIST)
 	{
 		iPrimitiveCount = m_uiVtxToLock / 2;
 	}
@@ -136,12 +144,8 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 	{
 		iPrimitiveCount = m_uiVtxToLock - 2;
 	}
-	else
-	{
-		iPrimitiveCount = 0;
-	}
 
-	HRESULT hr = m_pDev->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount):
+	HRESULT hr = m_pDev->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount);
 
 	assert(hr == D3D_OK);
 }
@@ -150,9 +154,9 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Bind(void)
 {
-	m_pDev->SetVertexShader(NULL);
-	m_pDev->SetFVF(FVF);
-	m_pDev->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
+	HRESULT hr = m_pDev->SetVertexShader(NULL);
+	hr = m_pDev->SetFVF(FVF);
+	hr = m_pDev->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
 }
 
 //---------------------------------------------------------------------------
