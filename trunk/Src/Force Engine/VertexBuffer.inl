@@ -15,6 +15,7 @@ template <class PixelFormatClass, unsigned int FVF>
 VertexBuffer<PixelFormatClass,FVF>::VertexBuffer()
 {
 	m_uiVbSize = 450;
+	m_uiFlush = 150;
 }
 
 //---------------------------------------------------------------------------
@@ -73,7 +74,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 
 	if((m_uiBase + m_uiVtxToLock) > m_uiVbSize)
 	{
-		m_uiBase;
+		m_uiBase = 0;
 	}
 
 	void * pVertices = NULL;
@@ -102,17 +103,17 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection,
 
 		if(m_uiFlush < (uiVtxCount - uiVtxProcNow))
 		{
-			m_uiVtxToLock = uiVtxCount - uiVtxProcNow;
+			m_uiVtxToLock = m_uiFlush;
 		}
 		else
 		{
-			m_uiVtxToLock = m_uiFlush;
+			m_uiVtxToLock = uiVtxCount - uiVtxProcNow;
 		}
 
 		hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass), 
-								m_uiVtxToLock * sizeof(PixelFormatClass), 
-								(void **)(&pVertices),
-								m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+									m_uiVtxToLock * sizeof(PixelFormatClass), 
+									(void **)(&pVertices),
+									m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
 	}
 
 	m_pVertexBuffer->Unlock();
