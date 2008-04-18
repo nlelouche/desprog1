@@ -50,13 +50,11 @@ bool Game::Loop()
 {
 	g_graficos->Clear();
 	g_graficos->BeginScene();
-	g_graficos->Present();
-
-	m_Shape.Draw(*g_graficos);
 
 	onLoop();
 
 	g_graficos->EndScene();
+	g_graficos->Present();
 
 	return true;
 }

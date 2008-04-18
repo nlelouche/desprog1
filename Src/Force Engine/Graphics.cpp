@@ -114,8 +114,7 @@ bool Graphics::InitMat()
 	
 	_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 	_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
-
-
+	_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	return true;
 }
@@ -151,7 +150,6 @@ void Graphics::EndScene()
 }
 
 //---------------------------------------------------------------------------
-
 void Graphics::Present()
 {
 	_pDevice->Present(NULL, NULL, NULL, NULL);

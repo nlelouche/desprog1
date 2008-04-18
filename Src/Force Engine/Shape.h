@@ -3,49 +3,37 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Game.h
+Clase: Shape.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef GAME_H
-#define GAME_H
+#ifndef SHAPE_H
+#define SHAPE_H
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include "Shape.h"
-#include "Window.h"
+#include "Defines.h"
 #include "Graphics.h"
+#include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
-
+class Graphics;
 //---------------------------------------------------------------------------
-class FORCEENGINE_API Game
+class FORCEENGINE_API Shape : public GraphicsStructs
 {
 public:
 
-	Game();
-	virtual ~Game();
+	Shape();
+	~Shape();
 
-	bool Init();
-	bool Loop();
-	bool deInit();
-
-protected:
-
-	virtual bool onInit() = 0;
-	virtual bool onLoop() = 0;
-	virtual bool onDeInit() = 0;
-
-	Graphics * g_graficos;
+	void Draw(Graphics &rkGraphics);
 
 private:
 
-	HINSTANCE hInstance;
-
-	Window * g_window;
+	ColorVertex m_rkVertices[3];
 };
 
-#endif /*--- GAME_H ---*/
+#endif /*--- SHAPE_H ---*/
 
 //---------------------------------------------------------------------------

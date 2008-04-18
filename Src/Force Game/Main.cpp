@@ -25,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	bool boolQuit = false;
 	MSG kMsg;
 
-	while(!forceGame->Loop() && !boolQuit)
+	while(!(forceGame->Loop()) || !boolQuit)
 	{
 		// Capturo el mensaje de Windows
 		if (PeekMessage(&kMsg,NULL,0,0,PM_REMOVE))
