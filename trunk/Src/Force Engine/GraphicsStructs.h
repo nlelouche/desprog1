@@ -14,21 +14,46 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#define D3DFVF_COLORVERTEX (D3DFVF_XYZ |D3DFVF_DIFFUSE)
+#define D3DFVF_COLORVERTEX (D3DFVF_XYZ | D3DFVF_DIFFUSE)
+//---------------------------------------------------------------------------
 
-class GraphicsStructs
+struct ColorVertex
 {
-public:
+	float x;	//  
+	float y;	// Posicion de los Vertices
+	float z;	//
 
-	struct ColorVertex
-	{
-		float x;	//  
-		float y;	// Posicion de los Vertices
-		float z;	//
-
-		DWORD Color;	// Color del Vertice
-	};
+	DWORD Color;	// Color del Vertice
 };
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#define D3DFVF_TEXVERTEX (D3DFVF_XYZ | D3DFVF_TEX1)
+//---------------------------------------------------------------------------
+
+struct TexVertex
+{
+	float x;	//  
+	float y;	// Posicion de los Vertices
+	float z;	//
+	
+	float tu;	
+	float tv;
+};
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#include <d3dx9.h>
+
+enum MatrixMode
+{
+	WORLD = D3DTS_WORLDMATRIX(0),
+	VIEW = D3DTS_VIEW,
+	PROJECTION = D3DTS_PROJECTION
+};
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
 
 #endif  /*--- GRAPHICS_STRUCTS_H ---*/
 

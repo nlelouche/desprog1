@@ -3,25 +3,35 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Defines.h
+Clase: Sprite.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef DEFINES_H
-#define DEFINES_H
-//---------------------------------------------------------------------------
-#pragma warning(disable : 4251)
+#ifndef SPRITE_H
+#define SPRITE_H
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#ifdef FORCEENGINE_EXPORTS
-	#define FORCEENGINE_API __declspec(dllexport)
-#else
-	#define FORCEENGINE_API __declspec(dllimport)
-#endif /*--- SUPERENGINE_EXPORTS ---*/
-	
-#endif /*--- DEFINES_H ---*/
+#include <d3d9.h>
+#include <d3dx9.h>
+#include "GraphicsStructs.h"
+//---------------------------------------------------------------------------
+
+class Sprite
+{
+	Sprite();
+	~Sprite();
+
+	void Draw();
+
+private:
+
+	TexVertex m_Vertex[4];
+
+};
+
+#endif /*--- SPRITE_H ---*/
 
 //---------------------------------------------------------------------------
