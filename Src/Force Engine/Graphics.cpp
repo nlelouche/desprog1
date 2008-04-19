@@ -120,21 +120,9 @@ bool Graphics::InitMat()
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::CheckModes()
-{
-	return true;
-}
-
-//---------------------------------------------------------------------------
 void Graphics::Clear()
 {
 	_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
-}
-
-//---------------------------------------------------------------------------
-void Graphics::SetupScene()
-{
-	
 }
 
 //---------------------------------------------------------------------------
@@ -160,6 +148,96 @@ void Graphics::Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsig
 {
 	m_vtxBufColor.Bind();
 	m_vtxBufColor.Draw(vertexCollection, prim, uiVertexCount);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::loadIdentity()
+{
+	D3DXMATRIX kTempMatrix;
+
+	D3DXMatrixIdentity(&kTempMatrix);
+
+	if (m_eCurrentMatMode == VIEW) 
+	{		
+		D3DXVECTOR3 kEyePos(0,0,-1);
+		D3DXVECTOR3 kLookPos(0,0,0);
+		D3DXVECTOR3 kUpVector(0,1,0);
+		
+		D3DXMatrixLookAtLH(&kTempMatrix, &kEyePos, &kLookPos, &kUpVector);
+	}
+
+	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
+	
+	_pDevice->SetTransform(eMatMode, &kTempMatrix);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::setMatrixMode(MatrixMode eMode)
+{
+	m_eCurrentMatMode = eMode;
+}
+
+//---------------------------------------------------------------------------
+
+void Graphics::Translate(float fX, float fY, float fZ)
+{
+	D3DXMATRIX kTempMatrix;
+
+	D3DXMatrixTranslation(&kTempMatrix, fX,  fY, 1.0f);
+
+	D3DTRANSFORMSTATETYPE eMatMode = static_cast <D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
+
+	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::Scale(float fW, float fH, float fD)
+{
+	D3DXMATRIX kTempMatrix;
+
+	fD = 1.00000f;
+
+	D3DXMatrixScaling(&kTempMatrix, fW, fH, fD);
+
+	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
+
+	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::rotateZ(float fAngle)
+{
+	D3DXMATRIX kTempMatrix;
+
+	D3DXMatrixRotationZ(&kTempMatrix, fAngle);
+
+	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
+
+	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::setViewPosition(float fPosX, float fPosY)
+{
+	D3DXMATRIX kMatrix;
+	D3DXVECTOR3 kEyePos;
+	D3DXVECTOR3 kLookPos;
+	D3DXVECTOR3 kUpVector;
+
+	kEyePos.x = fPosX;	
+	kEyePos.y = fPosY;	
+	kEyePos.z = -5.0f;
+
+	kLookPos.x = fPosX;
+	kLookPos.y = fPosY;	
+	kLookPos.z = 0.0f;
+
+	kUpVector.x = 0.0f;	
+	kUpVector.y = 1.0f;	
+	kUpVector.z = 0.0f;
+
+	D3DXMatrixLookAtLH(&kMatrix, &kEyePos, &kLookPos, &kUpVector);
+	_pDevice->SetTransform(D3DTS_VIEW, &kMatrix);
 }
 
 //---------------------------------------------------------------------------

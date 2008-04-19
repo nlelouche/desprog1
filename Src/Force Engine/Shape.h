@@ -15,12 +15,13 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Defines.h"
+#include "Entity2D.h"
 #include "Graphics.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
-class FORCEENGINE_API Shape : public GraphicsStructs
+class FORCEENGINE_API Shape : public Entity2D
 {
 public:
 
@@ -32,6 +33,7 @@ public:
 private:
 
 	ColorVertex m_rkVertices[3];
+
 };
 
 #endif /*--- SHAPE_H ---*/

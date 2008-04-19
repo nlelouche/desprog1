@@ -16,7 +16,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "Window.h"
 #include "Defines.h"
 #include "VertexBuffer.h"
 #include "GraphicsStructs.h"
@@ -27,7 +26,7 @@ Hecho by: German Battiston AKA Melkor
 #pragma comment (lib, "d3dx9.lib")
 //---------------------------------------------------------------------------
 
-class FORCEENGINE_API Graphics : public GraphicsStructs
+class FORCEENGINE_API Graphics
 {
 public:
 
@@ -35,16 +34,22 @@ public:
 	~Graphics();
 
 	bool InitDX(Window * g_window);
-	bool CheckModes();
 	bool InitMat();
 
-	void SetupScene();
 	void BeginScene();
 	void EndScene();
 
 	void Clear();
 	void Present();
 	void Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount);
+
+	void loadIdentity ();
+	void setMatrixMode(MatrixMode eMode);
+	void Translate(float fX, float fY, float fZ = 0.0f);
+	void Scale(float fW, float fH, float fD = 1.0f);
+	void rotateZ(float fAngle);
+
+	void setViewPosition (float fPosX, float fPosY);
 
 private:
 
@@ -55,6 +60,8 @@ private:
 	VertexBuffer <ColorVertex, D3DFVF_COLORVERTEX> m_vtxBufColor;
 
 	D3DMATRIX d3dmat;
+
+	MatrixMode m_eCurrentMatMode;
 	
 	float fX;
 	float fY;

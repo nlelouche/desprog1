@@ -28,7 +28,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 template <class PixelFormatClass, unsigned int FVF>
-class VertexBuffer : public GraphicsStructs
+class VertexBuffer
 {
 public:
 
