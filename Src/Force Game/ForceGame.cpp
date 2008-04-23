@@ -17,6 +17,9 @@ bool ForceGame::onInit()
 {
 	m_pShape = new Shape();
 
+	m_pShape->setDim(100, 100);
+	m_pShape->setPosXY(-200, 100);
+
 	return true;
 }
 

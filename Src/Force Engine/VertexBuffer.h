@@ -38,7 +38,7 @@ public:
 	bool Create(IDirect3DDevice9 * _pDevice, bool bDynamic);
 	void Bind(void);
 	void Flush(void);
-	void Draw(PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount);
+	void Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount);
 	void Release();
 
 private:

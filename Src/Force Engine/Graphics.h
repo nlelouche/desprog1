@@ -14,7 +14,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include <d3d9.h>
 #include <d3dx9.h>
 #include "Defines.h"
 #include "VertexBuffer.h"
@@ -41,7 +40,7 @@ public:
 
 	void Clear();
 	void Present();
-	void Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount);
+	void Draw(const ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount);
 
 	void loadIdentity ();
 	void setMatrixMode(MatrixMode eMode);
