@@ -228,6 +228,10 @@
 				RelativePath=".\Game.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Game.inl"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Entities"
