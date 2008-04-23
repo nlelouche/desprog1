@@ -16,20 +16,25 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Shape.h"
 #include "Window.h"
+#include "Defines.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
-
+class Window;
+class Entity2D;
+class Graphics;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Game
 {
 public:
 
-	Game();
+	Game(HINSTANCE hInstance);
 	virtual ~Game();
 
 	bool Init();
 	bool Loop();
 	bool deInit();
+
+	void addEntity(Entity2D* pkEntity);
 
 protected:
 
@@ -37,14 +42,20 @@ protected:
 	virtual bool onLoop() = 0;
 	virtual bool onDeInit() = 0;
 
+	std::vector<Entity2D*> m_apkEntities;
+
 	Graphics * g_graficos;
 
 private:
 
-	HINSTANCE hInstance;
+	HINSTANCE m_hInstance;
 
 	Window * g_window;
 };
+
+//---------------------------------------------------------------------------
+#include "Game.inl"
+//---------------------------------------------------------------------------
 
 #endif /*--- GAME_H ---*/
 

@@ -13,7 +13,9 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-Game::Game()
+Game::Game(HINSTANCE hInstance)
+:
+m_hInstance(hInstance)
 {
 	
 }
@@ -27,7 +29,7 @@ Game::~Game()
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
-	g_window = new Window(hInstance);
+	g_window = new Window(m_hInstance);
 	g_graficos = new Graphics();
 
 	if(!g_window->createWindow(800, 600))

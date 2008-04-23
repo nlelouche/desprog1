@@ -15,7 +15,7 @@ Hecho by: German Battiston AKA Melkor
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
-	Game * forceGame = new ForceGame();
+	Game * forceGame = new ForceGame(hInstance);
 
 	if(!forceGame->Init())
 	{

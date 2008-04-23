@@ -23,6 +23,11 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 class ForceGame: public Game
 {
+public:
+
+	ForceGame(HINSTANCE hInstance);
+	~ForceGame();
+
 protected:
 
 	bool onInit();
