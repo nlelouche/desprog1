@@ -41,19 +41,19 @@ inline void Entity2D::setDim(float fW, float fH)
 }
 
 //---------------------------------------------------------------------------
-inline float Entity2D::getPosX()const
+inline float Entity2D::getPosX() const
 {
 	return m_fX;
 }
 
 //---------------------------------------------------------------------------
-inline float Entity2D::getPosY()const
+inline float Entity2D::getPosY() const
 {
 	return m_fY;
 }
 
 //---------------------------------------------------------------------------
-inline float Entity2D::getRotationZ()const
+inline float Entity2D::getRotationZ() const
 {
 	return m_fRotationZ;
 }

@@ -9,6 +9,8 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
 #ifndef SHAPE_H
 #define SHAPE_H
 //---------------------------------------------------------------------------
@@ -16,7 +18,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Defines.h"
 #include "Entity2D.h"
-#include "Graphics.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
 class Graphics;
@@ -28,12 +29,11 @@ public:
 	Shape();
 	~Shape();
 
-	void Draw(Graphics &rkGraphics);
+	void Draw(Graphics &g_graphics) const;
 
 private:
 
-	ColorVertex m_rkVertices[3];
-
+	ColorVertex m_Vertices[3];
 };
 
 #endif /*--- SHAPE_H ---*/

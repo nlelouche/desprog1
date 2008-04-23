@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Texture.inl"
+				>
+			</File>
+			<File
 				RelativePath=".\VertexBuffer.h"
 				>
 			</File>
@@ -257,10 +261,34 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath=".\Defines.h"
+		<Filter
+			Name="Defines"
 			>
-		</File>
+			<File
+				RelativePath=".\Defines.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Shapes Basicas"
+			>
+			<File
+				RelativePath=".\ForceBOX.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ForceBOX.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ForceTRIANGLE.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ForceTRIANGLE.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

@@ -144,7 +144,7 @@ void Graphics::Present()
 }
 
 //---------------------------------------------------------------------------
-void Graphics::Draw(ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
+void Graphics::Draw(const ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
 {
 	m_vtxBufColor.Bind();
 	m_vtxBufColor.Draw(vertexCollection, prim, uiVertexCount);

@@ -29,7 +29,6 @@ class Sprite
 private:
 
 	TexVertex m_Vertex[4];
-
 };
 
 #endif /*--- SPRITE_H ---*/

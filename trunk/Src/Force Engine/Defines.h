@@ -21,6 +21,13 @@ Hecho by: German Battiston AKA Melkor
 #else
 	#define FORCEENGINE_API __declspec(dllimport)
 #endif /*--- SUPERENGINE_EXPORTS ---*/
+
+// Sin Esto NO ANDA NADA
+#include <windows.h>
+#include <string>
+#include <vector>
+#include <map>
+#include <cassert>
 	
 #endif /*--- DEFINES_H ---*/
 

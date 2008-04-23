@@ -10,6 +10,7 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Entity2D.h"
+#include "Graphics.h"
 //---------------------------------------------------------------------------
 
 Entity2D::Entity2D()
@@ -24,14 +25,7 @@ m_fRotationZ(0)
 }
 
 //---------------------------------------------------------------------------
-Entity2D::~Entity2D()
-{
-
-}
-
-//---------------------------------------------------------------------------
-
-void Entity2D::Draw(Graphics &g_graficos)const
+void Entity2D::Draw(Graphics &g_graficos) const
 {
 	g_graficos.setMatrixMode(WORLD);
 	
@@ -40,6 +34,12 @@ void Entity2D::Draw(Graphics &g_graficos)const
 	g_graficos.Translate(m_fX, m_fY);
 	g_graficos.rotateZ(m_fRotationZ * 3.14159f / 180.0f);
 	g_graficos.Scale(m_fW, m_fH);
+}
+
+//---------------------------------------------------------------------------
+Entity2D::~Entity2D()
+{
+
 }
 
 //---------------------------------------------------------------------------

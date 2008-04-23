@@ -59,7 +59,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Release()
 
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
-void VertexBuffer<PixelFormatClass,FVF>::Draw(PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount)
+void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount)
 {
 	m_primitiveType = primitiveType;
 
