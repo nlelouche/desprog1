@@ -9,14 +9,23 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-
 #ifndef FORCEBOX_H
 #define FORCEBOX_H
+//---------------------------------------------------------------------------
 
-class ForceBOX
+//---------------------------------------------------------------------------
+#include "Shape.h"
+#include "Graphics.h"
+//---------------------------------------------------------------------------
+
+class FORCEENGINE_API ForceBOX : public Shape
 {
+public:
+
 	ForceBOX();
 	~ForceBOX();
+
+	void Draw(Graphics & g_graphics) const;
 };
 
 #endif /*--- FORCEBOX_H ---*/

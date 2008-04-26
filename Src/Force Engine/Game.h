@@ -42,7 +42,7 @@ protected:
 	virtual bool onLoop() = 0;
 	virtual bool onDeInit() = 0;
 
-	std::vector<Entity2D*> m_apkEntities;
+	std::vector <Entity2D*> m_apkEntities;
 
 	Graphics * g_graficos;
 

@@ -14,7 +14,9 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
+#include "Shape.h"
 #include "Defines.h"
+#include "Graphics.h"
 #include "Entity2D.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
@@ -30,11 +32,10 @@ public:
 	void Draw(Graphics &g_graphics) const;
 
 	void setColor();
-	BYTE getColor();
+	int getColor();
 
-private:
-
-	ColorVertex m_Vertices[3];
+	int m_iCantVertices;
+	ColorVertex * m_Vertices;
 };
 
 #endif /*--- SHAPE_H ---*/

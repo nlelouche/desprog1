@@ -23,11 +23,14 @@ Hecho by: German Battiston AKA Melkor
 #endif /*--- SUPERENGINE_EXPORTS ---*/
 
 // Sin Esto NO ANDA NADA
+
 #include <windows.h>
 #include <string>
 #include <vector>
 #include <map>
 #include <cassert>
+
+//---------------------------------------------------------------------------
 	
 #endif /*--- DEFINES_H ---*/
 

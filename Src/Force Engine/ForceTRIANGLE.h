@@ -9,14 +9,25 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-
 #ifndef FORCETRIANGLE_H
 #define FORCETRIANGLE_H
+//---------------------------------------------------------------------------
 
-class ForceBOX
+//---------------------------------------------------------------------------
+#include "Shape.h"
+#include "Defines.h"
+#include "Entity2D.h"
+#include "GraphicsStructs.h"
+//---------------------------------------------------------------------------
+
+class FORCEENGINE_API ForceTRIANGLE : public Shape
 {
+public:
+
 	ForceTRIANGLE();
 	~ForceTRIANGLE();
+
+	void Draw(Graphics & g_graphics) const;
 };
 
 #endif /*--- FORCETRIANGLE_H ---*/

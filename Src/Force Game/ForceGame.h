@@ -18,6 +18,9 @@ Hecho by: German Battiston AKA Melkor
 #include "Shape.h"
 #include "Window.h"
 #include "Graphics.h"
+#include "ForceBOX.h"
+#include "ForceCIRCLE.h"
+#include "ForceTRIANGLE.h"
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -38,7 +41,9 @@ protected:
 
 private:
 
-	Shape * m_pShape;
+	ForceBOX * m_pBox;
+	ForceCIRCLE * m_pCircle;
+	ForceTRIANGLE * m_pTriangle;
 };
 
 #endif /*--- FORCE_GAME_H ---*/
