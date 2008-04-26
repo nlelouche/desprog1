@@ -285,6 +285,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ForceCIRCLE.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ForceCIRCLE.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ForceTRIANGLE.cpp"
 				>
 			</File>

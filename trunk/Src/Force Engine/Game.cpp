@@ -71,6 +71,7 @@ bool Game::deInit()
 
 	delete g_window;
 	g_window = NULL;
+
 	return true;
 }
 
