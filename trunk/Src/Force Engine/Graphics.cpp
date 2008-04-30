@@ -122,7 +122,7 @@ bool Graphics::InitMat()
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
-	_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
+	_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 }
 
 //---------------------------------------------------------------------------

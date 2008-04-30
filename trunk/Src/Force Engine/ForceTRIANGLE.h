@@ -15,9 +15,10 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Shape.h"
-#include "Defines.h"
 #include "Entity2D.h"
-#include "GraphicsStructs.h"
+#include "Graphics.h"
+//---------------------------------------------------------------------------
+class Graphics;
 //---------------------------------------------------------------------------
 
 class FORCEENGINE_API ForceTRIANGLE : public Shape

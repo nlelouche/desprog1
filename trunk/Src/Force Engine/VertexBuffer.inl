@@ -145,6 +145,10 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 	{
 		iPrimitiveCount = m_uiVtxToLock - 2;
 	}
+	else if(m_primitiveType == D3DPT_TRIANGLEFAN)
+	{
+		iPrimitiveCount = m_uiVtxToLock;
+	}
 
 	HRESULT hr = m_pDev->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount);
 

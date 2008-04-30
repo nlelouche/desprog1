@@ -17,6 +17,7 @@ Hecho by: German Battiston AKA Melkor
 #include "Game.h"
 #include "Shape.h"
 #include "Window.h"
+#include "Entity2D.h"
 #include "Graphics.h"
 #include "ForceBOX.h"
 #include "ForceCIRCLE.h"

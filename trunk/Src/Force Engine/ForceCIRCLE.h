@@ -15,18 +15,23 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Shape.h"
+#include "Entity2D.h"
 #include "Graphics.h"
+//---------------------------------------------------------------------------
+class Graphics;
 //---------------------------------------------------------------------------
 
 class FORCEENGINE_API ForceCIRCLE : public Shape
 {
 public:
 
-	ForceCIRCLE();
+	ForceCIRCLE(int iNumCaras);
 	~ForceCIRCLE();
 
 	void Draw(Graphics & g_graphics) const;
-	void setCantidadVertices(int iNumCaras);
+	
+	int getNumeroCaras();
+	void setCantidadCaras(int iNumCaras);
 
 private:
 
