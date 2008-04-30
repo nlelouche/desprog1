@@ -13,24 +13,24 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-ForceCIRCLE::ForceCIRCLE()
+ForceCIRCLE::ForceCIRCLE(int iNumCaras)
 :
 Shape()
 {
-
+	setCantidadCaras(iNumCaras);
 }
 
 //---------------------------------------------------------------------------
 void ForceCIRCLE::Draw(Graphics & g_graphics) const
 {
 	Shape::Draw(g_graphics);
-	g_graphics.Draw(m_Vertices, D3DPT_TRIANGLELIST, m_iCantVertices);
+	g_graphics.Draw(m_Vertices, D3DPT_TRIANGLEFAN, m_iCantVertices);
 }
 
 //---------------------------------------------------------------------------
-void ForceCIRCLE::setCantidadVertices(int iNumCaras)
+void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 {
-	if(iNumCaras >140)
+	if(iNumCaras > 140)
 	{
 		m_iNumCaras = 140;
 	}
@@ -39,38 +39,44 @@ void ForceCIRCLE::setCantidadVertices(int iNumCaras)
 		m_iNumCaras = iNumCaras;
 	}
 
-	
-
-	/*
 	ColorVertex * pkv;
-
-	m_iCantVertices = 3;
-
-	m_Vertices = new ColorVertex[m_iCantVertices];
+	m_Vertices = new ColorVertex[m_iNumCaras + 2];
+	m_iCantVertices = m_iNumCaras + 2;
 
 	pkv = &(m_Vertices[0]);
-	pkv->x = -0.5f;
-	pkv->y = 0.5f;
+	pkv->x = 0.0f;
+	pkv->y = 0.0f;	
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,0);
+	pkv->Color = D3DCOLOR_XRGB(0, 0, 255);
 
-	pkv = &(m_Vertices[1]);
-	pkv->x = 0.5f;
-	pkv->y = -0.5f;
-	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,0);
+	for(int i = 1; i <= m_iNumCaras + 1; i++)
+	{
+		double dAngle = (360.0 / m_iNumCaras) * i;
+		double dPIsobre180 = 3.141592654f / 180.0;
+		double dSin = sin(dAngle * dPIsobre180);
+		double dCos = cos(dAngle * dPIsobre180);
 
-	pkv = &(m_Vertices[2]);
-	pkv->x = 0.5f;
-	pkv->y = 0.5f;
-	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,0);*/
+		pkv = &(m_Vertices[i]);
+		pkv->x = (float)(dSin);
+		pkv->y = (float)(dCos);
+		pkv->z = 1.0f;
+		pkv->Color = D3DCOLOR_XRGB(0, 0, 255);
+	}
+	
+	//setDim(getDimHeight(), getDimWidth());
+}
+
+//---------------------------------------------------------------------------
+int ForceCIRCLE::getNumeroCaras()
+{
+	return m_iNumCaras;
 }
 
 //---------------------------------------------------------------------------
 ForceCIRCLE::~ForceCIRCLE()
 {
-
+	delete m_Vertices;
+	m_Vertices = NULL;
 }
 
 //---------------------------------------------------------------------------

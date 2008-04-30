@@ -15,7 +15,10 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Shape.h"
+#include "Entity2D.h"
 #include "Graphics.h"
+//---------------------------------------------------------------------------
+class Graphics;
 //---------------------------------------------------------------------------
 
 class FORCEENGINE_API ForceBOX : public Shape

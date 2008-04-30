@@ -43,6 +43,9 @@ public:
 	void setPosXY(float fX, float fY);
 	void setDim(float fW, float fH);
 
+	float getDimHeight();
+	float getDimWidth();
+
 	virtual void Draw(Graphics& g_graficos) const;
 
 private:

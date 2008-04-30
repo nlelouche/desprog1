@@ -26,7 +26,6 @@ m_Vertices(NULL)
 void Shape::Draw(Graphics &g_graphics) const
 {
 	Entity2D::Draw(g_graphics);
-	//g_graphics.Draw(m_Vertices, D3DPT_TRIANGLELIST, 4);
 }
 
 //---------------------------------------------------------------------------
