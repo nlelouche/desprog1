@@ -42,7 +42,7 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 
 	// Crear la Ventana
 	m_hWnd = CreateWindow("Force Window",
-						"Force Engine v0.1",
+						"Force Engine v0.4",
 						WS_OVERLAPPEDWINDOW,
 						CW_USEDEFAULT,
 						CW_USEDEFAULT,

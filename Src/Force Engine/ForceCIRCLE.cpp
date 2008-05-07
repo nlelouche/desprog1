@@ -62,8 +62,6 @@ void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 		pkv->z = 1.0f;
 		pkv->Color = D3DCOLOR_XRGB(0, 0, 255);
 	}
-	
-	//setDim(getDimHeight(), getDimWidth());
 }
 
 //---------------------------------------------------------------------------

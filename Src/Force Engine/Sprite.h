@@ -14,21 +14,35 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include <d3d9.h>
-#include <d3dx9.h>
+#include "Defines.h"
+#include "Entity2D.h"
 #include "GraphicsStructs.h"
+#include "Texture.h"
 //---------------------------------------------------------------------------
 
-class Sprite
+class FORCEENGINE_API Sprite: public Entity2D
 {
-	Sprite();
-	~Sprite();
 
-	void Draw();
+public:
+
+	Sprite();
+	Sprite(const Sprite& rkSprite);
+	~Sprite (){}
+
+	void Draw(Graphics& g_graphics) const;
+	void Update(float fTimeBetweenFrames);
+
+	Sprite& operator=(const Sprite& rkSprite);
+
+	void setTexture(Texture * pkTexture);
+	const Texture * getTexture() const;
+
+	void setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsigned int uiWidth, unsigned int uiHeight); 
 
 private:
 
-	TexVertex m_Vertex[4];
+	TextureVertex m_Vertex[4];
+	Texture * m_pkTexture;
 };
 
 #endif /*--- SPRITE_H ---*/

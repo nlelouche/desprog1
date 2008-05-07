@@ -27,9 +27,9 @@ VertexBuffer<PixelFormatClass,FVF>::~VertexBuffer()
 
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
-bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * _pDevice, bool bDynamic)
+bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * m_pDevice, bool bDynamic)
 {
-	m_pDev = _pDevice;
+	m_pDev = m_pDevice;
 
 	HRESULT hr = m_pDev->CreateVertexBuffer(m_uiVbSize * sizeof(PixelFormatClass),
 											(bDynamic ? D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC : 0),
@@ -147,7 +147,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 	}
 	else if(m_primitiveType == D3DPT_TRIANGLEFAN)
 	{
-		iPrimitiveCount = m_uiVtxToLock;
+		iPrimitiveCount = m_uiVtxToLock - 2;
 	}
 
 	HRESULT hr = m_pDev->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount);

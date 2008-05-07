@@ -264,6 +264,10 @@
 				RelativePath=".\Sprite.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Sprite.inl"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Defines"
@@ -298,6 +302,22 @@
 			</File>
 			<File
 				RelativePath=".\ForceTRIANGLE.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Timer"
+			>
+			<File
+				RelativePath=".\Timer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Timer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Timer.inl"
 				>
 			</File>
 		</Filter>

@@ -37,7 +37,7 @@ bool ForceGame::onInit()
 	m_pBox->setDim(100,100);
 	m_pBox->setPosXY(-200,200);
 
-	m_pCircle = new ForceCIRCLE(4);
+	m_pCircle = new ForceCIRCLE(130);
 	m_pCircle->setPosXY(0,0);
 	m_pCircle->setDim(100,100);
 
