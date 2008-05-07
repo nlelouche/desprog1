@@ -14,6 +14,11 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 Graphics::Graphics()
+:
+m_pD3D(NULL),
+m_pDevice(NULL),
+m_hWnd(NULL),
+m_eCurrentMatMode(VIEW)
 {
 	
 }
@@ -21,7 +26,8 @@ Graphics::Graphics()
 //---------------------------------------------------------------------------
 Graphics::~Graphics()
 {
-
+	m_vtxBufColor.Release();
+	m_vtxBufTexture.Release();
 }
 
 //---------------------------------------------------------------------------
@@ -64,9 +70,9 @@ bool Graphics::InitDX(Window * g_window)
 							  g_window->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
-							  &_pDevice);
+							  &m_pDevice);
 
-	if(!m_vtxBufColor.Create(_pDevice, true))
+	if(!m_vtxBufColor.Create(m_pDevice, true))
 	{
 		return false;
 	}
@@ -86,7 +92,7 @@ bool Graphics::InitMat()
 	D3DXMatrixTranslation(&d3dmatMundo, 0,  0, 1.0f);
 	D3DXMatrixRotationZ(&d3dmatMundo, 0);
 
-	_pDevice->SetTransform(D3DTS_WORLD, &d3dmatMundo);
+	m_pDevice->SetTransform(D3DTS_WORLD, &d3dmatMundo);
 
 	// Matriz de Vista
 
@@ -98,23 +104,23 @@ bool Graphics::InitMat()
 	D3DXVECTOR3 upVec(0.0f, 1.0f, 0.0f); 
 
 	D3DXMatrixLookAtLH(&d3dmatVista, &eyePos, &lookPos, &upVec);
-	_pDevice->SetTransform(D3DTS_VIEW, &d3dmatVista);
+	m_pDevice->SetTransform(D3DTS_VIEW, &d3dmatVista);
 
 	// Matriz de Proyeccion
 
 	D3DVIEWPORT9 viewport;
-	_pDevice->GetViewport(&viewport);
+	m_pDevice->GetViewport(&viewport);
 
 	float viewportWidth = static_cast <float> (viewport.Width);
 	float viewportHeight = static_cast <float> (viewport.Height);
 
 	D3DXMATRIX d3dmatProy;
 	D3DXMatrixOrthoLH(&d3dmatProy, viewportWidth, viewportHeight, -25, 25);
-	HRESULT hr = _pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
+	HRESULT hr = m_pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
 	
-	_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-	_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
-	_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+	m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+	m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+	m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	return true;
 }
@@ -122,25 +128,25 @@ bool Graphics::InitMat()
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
-	_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
+	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 }
 
 //---------------------------------------------------------------------------
 void Graphics::BeginScene()
 {
-	_pDevice->BeginScene();
+	m_pDevice->BeginScene();
 }
 
 //---------------------------------------------------------------------------
 void Graphics::EndScene()
 {
-	_pDevice->EndScene();
+	m_pDevice->EndScene();
 }
 
 //---------------------------------------------------------------------------
 void Graphics::Present()
 {
-	_pDevice->Present(NULL, NULL, NULL, NULL);
+	m_pDevice->Present(NULL, NULL, NULL, NULL);
 }
 
 //---------------------------------------------------------------------------
@@ -148,6 +154,13 @@ void Graphics::Draw(const ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim,
 {
 	m_vtxBufColor.Bind();
 	m_vtxBufColor.Draw(vertexCollection, prim, uiVertexCount);
+}
+
+//---------------------------------------------------------------------------
+void Graphics::Draw(const TextureVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
+{
+	m_vtxBufTexture.Bind();
+	m_vtxBufTexture.Draw(vertexCollection, prim, uiVertexCount);
 }
 
 //---------------------------------------------------------------------------
@@ -168,7 +181,7 @@ void Graphics::loadIdentity()
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 	
-	_pDevice->SetTransform(eMatMode, &kTempMatrix);
+	m_pDevice->SetTransform(eMatMode, &kTempMatrix);
 }
 
 //---------------------------------------------------------------------------
@@ -187,7 +200,7 @@ void Graphics::Translate(float fX, float fY, float fZ)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast <D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
 
 //---------------------------------------------------------------------------
@@ -201,7 +214,7 @@ void Graphics::Scale(float fW, float fH, float fD)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
 
 //---------------------------------------------------------------------------
@@ -213,7 +226,7 @@ void Graphics::rotateZ(float fAngle)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
 
 //---------------------------------------------------------------------------
@@ -237,7 +250,64 @@ void Graphics::setViewPosition(float fPosX, float fPosY)
 	kUpVector.z = 0.0f;
 
 	D3DXMatrixLookAtLH(&kMatrix, &kEyePos, &kLookPos, &kUpVector);
-	_pDevice->SetTransform(D3DTS_VIEW, &kMatrix);
+	m_pDevice->SetTransform(D3DTS_VIEW, &kMatrix);
+}
+
+//---------------------------------------------------------------------------
+
+void Graphics::unbindTexture()
+{
+	m_pDevice->SetTexture(0, NULL);
+}
+
+//---------------------------------------------------------------------------
+
+bool Graphics::bindTexture(Texture &rkTexture)
+{
+	IDirect3DTexture9* pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
+
+	assert(pkDXTexture);
+	
+	HRESULT hr = m_pDevice->SetTexture(0, pkDXTexture);
+
+	return true;
+}
+
+//---------------------------------------------------------------------------
+
+bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
+{
+	D3DSURFACE_DESC kDescription;
+	IDirect3DTexture9* pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
+
+	if(!pkDXTexture)
+	{
+		HRESULT hr;
+		
+		hr = D3DXCreateTextureFromFileEx(m_pDevice,
+				pszFilename, 
+				0, 0, 0, 0,
+				D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
+				D3DX_FILTER_NONE, D3DX_FILTER_NONE,
+				0, //pTexInfo->texColorKey,
+				NULL,
+				NULL,
+				&pkDXTexture);
+
+		if (hr != D3D_OK)
+		{
+			return false;
+		}
+
+		m_kTextureMap[rkTexture.getFileName()] = pkDXTexture;
+	}
+
+	pkDXTexture->GetLevelDesc(0,&kDescription);
+
+	rkTexture.setWidth(kDescription.Width);
+	rkTexture.setHeight(kDescription.Height);
+
+	return true;
 }
 
 //---------------------------------------------------------------------------

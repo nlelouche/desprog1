@@ -47,6 +47,7 @@ public:
 	float getDimWidth();
 
 	virtual void Draw(Graphics& g_graficos) const;
+	virtual void Update(float fTimeBetweenFrames){}
 
 private:
 

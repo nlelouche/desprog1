@@ -31,9 +31,6 @@ public:
 
 	void Draw(Graphics &g_graphics) const;
 
-	void setColor();
-	int getColor();
-
 	int m_iCantVertices;
 	ColorVertex * m_Vertices;
 };

@@ -31,7 +31,7 @@ struct ColorVertex
 #define D3DFVF_TEXVERTEX (D3DFVF_XYZ | D3DFVF_TEX1)
 //---------------------------------------------------------------------------
 
-struct TexVertex
+struct TextureVertex
 {
 	float x;	//  
 	float y;	// Posicion de los Vertices

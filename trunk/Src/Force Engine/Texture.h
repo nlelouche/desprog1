@@ -18,16 +18,19 @@ class Graphics;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Texture
 {
+
+public:
+
 	Texture (std::string kFilename, Graphics& g_graphics);
 	~Texture();
 
-	unsigned int getWidth () const;
-	unsigned int getHeight () const;
+	unsigned int getWidth() const;
+	unsigned int getHeight() const;
 
-	void setWidth (unsigned int uiWidth);
-	void setHeight (unsigned int uiHeight);
+	void setWidth(unsigned int uiWidth);
+	void setHeight(unsigned int uiHeight);
 
-	std::string getFilename () const;
+	std::string getFileName() const;
 
 private:
 
@@ -44,3 +47,4 @@ private:
 #endif /*--- TEXTURE_H ---*/
 
 //---------------------------------------------------------------------------
+
