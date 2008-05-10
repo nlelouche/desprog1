@@ -71,3 +71,15 @@ inline float Entity2D::getDimWidth()
 }
 
 //---------------------------------------------------------------------------
+inline void Entity2D::setName(std::string kName)
+{
+	m_kName = kName;
+}
+
+//---------------------------------------------------------------------------
+inline const std::string& Entity2D::getName() const
+{
+	return m_kName;
+}
+
+//---------------------------------------------------------------------------

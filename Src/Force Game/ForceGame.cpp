@@ -18,7 +18,8 @@ ForceGame::ForceGame(HINSTANCE hInstance)
 Game(hInstance),
 m_pBox(NULL),
 m_pCircle(NULL),
-m_pTriangle(NULL)
+m_pTriangle(NULL),
+m_pSprite(new Sprite())
 {
 
 }
@@ -74,6 +75,9 @@ bool ForceGame::onDeInit()
 
 	delete m_pTriangle;
 	m_pTriangle = NULL;
+
+	delete m_pSprite;
+	m_pSprite = NULL;
 
 	return true;
 }

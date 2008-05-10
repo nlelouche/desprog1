@@ -29,6 +29,9 @@ public:
 	Entity2D();
 	virtual ~Entity2D();
 
+	void setName(std::string kName);
+	const std::string& getName() const;
+
 	// Seters y Geters de X Y Z
 
 	void setPosX(float fX);
@@ -47,7 +50,7 @@ public:
 	float getDimWidth();
 
 	virtual void Draw(Graphics& g_graficos) const;
-	virtual void Update(float fTimeBetweenFrames){}
+	virtual void Update(float fTimeBetweenFrames);
 
 private:
 
@@ -57,6 +60,8 @@ private:
 	float m_fX;
 	float m_fY;
 	float m_fRotationZ;
+
+	std::string m_kName;
 };
 
 //---------------------------------------------------------------------------

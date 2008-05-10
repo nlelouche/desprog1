@@ -2,50 +2,27 @@
 
 Force Engine v0.1
 
-Creado: 28/03/08
-Clase: Entity2D.cpp
+Creado: 09/05/08
+Clase: ForceEngine.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#include "Entity2D.h"
-#include "Graphics.h"
+#ifndef FORCE_ENGINE_H
+#define FORCE_ENGINE_H
 //---------------------------------------------------------------------------
 
-Entity2D::Entity2D()
-:
-m_fX(0), 
-m_fY(0), 
-m_fW(0),
-m_fH(0),
-m_fRotationZ(0)
-{
-
-}
-
 //---------------------------------------------------------------------------
-void Entity2D::Draw(Graphics &g_graficos) const
-{
-	g_graficos.setMatrixMode(WORLD);
-	
-	g_graficos.loadIdentity();
-
-	g_graficos.Translate(m_fX, m_fY);
-	g_graficos.rotateZ(m_fRotationZ * 3.14159f / 180.0f);
-	g_graficos.Scale(m_fW, m_fH);
-}
-
+#include "Game.h"
+#include "Shape.h"
+#include "Sprite.h"
+#include "Texture.h"
+#include "ForceBOX.h"
+#include "ForceCIRCLE.h"
+#include "ForceTRIANGLE.h"
 //---------------------------------------------------------------------------
-void Entity2D::Update(float fTimeBetweenFrames)
-{
-	/***/
-}
 
-//---------------------------------------------------------------------------
-Entity2D::~Entity2D()
-{
-
-}
+#endif /*--- FORCE_ENGINE_H ---*/
 
 //---------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Shape.inl
+Clase: Sprite.inl
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/

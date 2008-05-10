@@ -254,14 +254,12 @@ void Graphics::setViewPosition(float fPosX, float fPosY)
 }
 
 //---------------------------------------------------------------------------
-
 void Graphics::unbindTexture()
 {
 	m_pDevice->SetTexture(0, NULL);
 }
 
 //---------------------------------------------------------------------------
-
 bool Graphics::bindTexture(Texture &rkTexture)
 {
 	IDirect3DTexture9* pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
@@ -274,7 +272,6 @@ bool Graphics::bindTexture(Texture &rkTexture)
 }
 
 //---------------------------------------------------------------------------
-
 bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
 {
 	D3DSURFACE_DESC kDescription;
