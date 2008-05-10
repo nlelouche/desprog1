@@ -14,7 +14,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-Texture::Texture(std::string kFilename, Graphics &g_graphics)
+Texture::Texture(std::string kFilename)
 :
 m_uiWidth(0),
 m_uiHeight(0),

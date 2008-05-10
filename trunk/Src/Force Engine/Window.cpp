@@ -14,7 +14,12 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-Window::Window(HINSTANCE hInstance):m_hInstance(hInstance){}
+Window::Window(HINSTANCE hInstance)
+:
+m_hInstance(hInstance)
+{
+
+}
 
 Window::~Window()
 {
@@ -42,16 +47,16 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 
 	// Crear la Ventana
 	m_hWnd = CreateWindow("Force Window",
-						"Force Engine v0.4",
-						WS_OVERLAPPEDWINDOW,
-						CW_USEDEFAULT,
-						CW_USEDEFAULT,
-						uiWidth + 8,
-						uiHeight + 30,
-						NULL,
-						NULL,
-						m_hInstance, 
-						NULL);
+						  "Force Engine v0.5",
+						  WS_OVERLAPPEDWINDOW,
+						  CW_USEDEFAULT,
+						  CW_USEDEFAULT,
+						  uiWidth + 8,
+						  uiHeight + 30,
+						  NULL,
+						  NULL,
+						  m_hInstance,
+						  NULL);
 
 	if (!m_hWnd)
 	{
@@ -65,9 +70,7 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 }
 
 //---------------------------------------------------------------------------
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, 
-						 WPARAM wParam, LPARAM lParam)
-
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message) 
 	{

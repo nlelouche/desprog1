@@ -276,6 +276,10 @@
 				RelativePath=".\Defines.h"
 				>
 			</File>
+			<File
+				RelativePath=".\ForceEngine.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Shapes Basicas"
@@ -318,6 +322,26 @@
 			</File>
 			<File
 				RelativePath=".\Timer.inl"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Input / Output"
+			>
+			<File
+				RelativePath=".\Importer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Importer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\XMLParser.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\XMLParser.h"
 				>
 			</File>
 		</Filter>

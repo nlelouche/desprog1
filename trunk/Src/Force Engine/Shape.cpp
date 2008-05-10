@@ -26,6 +26,7 @@ m_Vertices(NULL)
 void Shape::Draw(Graphics &g_graphics) const
 {
 	Entity2D::Draw(g_graphics);
+	g_graphics.unbindTexture();
 }
 
 //---------------------------------------------------------------------------

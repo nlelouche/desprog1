@@ -14,10 +14,10 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
+#include "Texture.h"
 #include "Defines.h"
 #include "Entity2D.h"
 #include "GraphicsStructs.h"
-#include "Texture.h"
 //---------------------------------------------------------------------------
 
 class FORCEENGINE_API Sprite: public Entity2D
@@ -27,12 +27,14 @@ public:
 
 	Sprite();
 	Sprite(const Sprite& rkSprite);
-	~Sprite (){}
+	~Sprite(){ /***/ }
 
 	void Draw(Graphics& g_graphics) const;
 	void Update(float fTimeBetweenFrames);
 
 	Sprite& operator=(const Sprite& rkSprite);
+
+	void Clone (Sprite& rkSprite);
 
 	void setTexture(Texture * pkTexture);
 	const Texture * getTexture() const;
@@ -41,9 +43,13 @@ public:
 
 private:
 
-	TextureVertex m_Vertex[4];
 	Texture * m_pkTexture;
+	TextureVertex m_Vertex[4];
 };
+
+//---------------------------------------------------------------------------
+#include "Sprite.inl"
+//---------------------------------------------------------------------------
 
 #endif /*--- SPRITE_H ---*/
 

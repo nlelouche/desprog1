@@ -21,7 +21,7 @@ class FORCEENGINE_API Texture
 
 public:
 
-	Texture (std::string kFilename, Graphics& g_graphics);
+	Texture(std::string kFilename);
 	~Texture();
 
 	unsigned int getWidth() const;

@@ -14,6 +14,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
+#include "Timer.h"
 #include "Shape.h"
 #include "Window.h"
 #include "Defines.h"

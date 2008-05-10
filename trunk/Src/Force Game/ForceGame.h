@@ -3,7 +3,7 @@
 Force Engine v0.1
 
 Creado: 28/03/08
-Clase: Force Game.h
+Clase: ForceGame.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
@@ -14,14 +14,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include "Game.h"
-#include "Shape.h"
-#include "Window.h"
-#include "Entity2D.h"
-#include "Graphics.h"
-#include "ForceBOX.h"
-#include "ForceCIRCLE.h"
-#include "ForceTRIANGLE.h"
+#include "ForceEngine.h"
+#include "Importer.h"
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -45,6 +39,9 @@ private:
 	ForceBOX * m_pBox;
 	ForceCIRCLE * m_pCircle;
 	ForceTRIANGLE * m_pTriangle;
+
+	Sprite * m_pSprite;
+	Texture * m_pTexture;
 };
 
 #endif /*--- FORCE_GAME_H ---*/

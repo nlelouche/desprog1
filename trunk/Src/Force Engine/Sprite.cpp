@@ -72,15 +72,15 @@ Sprite& Sprite::operator=(const Sprite& rkSprite)
 }
 
 //---------------------------------------------------------------------------
-void Sprite::Draw(Graphics& rkRenderer) const
+void Sprite::Draw(Graphics& rkGraphics) const
 {
 	assert(m_pkTexture);
 
-	Entity2D::Draw(rkRenderer);
+	Entity2D::Draw(rkGraphics);
 	
-	if(rkRenderer.bindTexture(*m_pkTexture))
+	if(rkGraphics.bindTexture(*m_pkTexture))
 	{
-		rkRenderer.Draw(m_Vertex, D3DPT_TRIANGLESTRIP, 4);
+		rkGraphics.Draw(m_Vertex, D3DPT_TRIANGLESTRIP, 4);
 	}
 	else
 	{
@@ -128,6 +128,22 @@ void Sprite::setTextureArea (unsigned int uiOffsetX, unsigned int uiOffsetY, uns
 	pkV = &(m_Vertex[3]);
 	pkV->tu = fU2;	
 	pkV->tv = fV1;
+}
+
+//---------------------------------------------------------------------------
+void Sprite::Clone(Sprite& rkSprite)
+{
+	if(&rkSprite == this)
+	{
+		return;
+	}
+
+	rkSprite.m_pkTexture = m_pkTexture;
+
+	for(unsigned int i = 0; i < 4; i++)
+	{
+		rkSprite.m_Vertex[i] = m_Vertex[i];
+	}
 }
 
 //---------------------------------------------------------------------------
