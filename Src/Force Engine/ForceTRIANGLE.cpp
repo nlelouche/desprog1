@@ -25,19 +25,19 @@ ForceTRIANGLE::ForceTRIANGLE()
 	pkv->x = -0.5f;
 	pkv->y = 0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,255,0);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 
 	pkv = &(m_Vertices[1]);
 	pkv->x = 0.5f;
 	pkv->y = -0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,255,0);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 
 	pkv = &(m_Vertices[2]);
 	pkv->x = 0.5f;
 	pkv->y = 0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,255,0);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 }
 
 //---------------------------------------------------------------------------

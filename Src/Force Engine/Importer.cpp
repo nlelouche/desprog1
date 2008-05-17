@@ -176,7 +176,8 @@ bool Importer::importTexture(const char * pszFilename)
 
 	m_kpTexturesMap[pszFilename] = pkTexture;
 
-	m_pkGraphics->loadTexture(pszFilename, * pkTexture);
+	if(!m_pkGraphics->loadTexture(pszFilename, * pkTexture) )
+		return false;
 
 	return true;
 }

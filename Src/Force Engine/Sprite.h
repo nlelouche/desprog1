@@ -15,8 +15,8 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Texture.h"
-#include "Defines.h"
 #include "Entity2D.h"
+#include "Graphics.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ public:
 
 	Sprite();
 	Sprite(const Sprite& rkSprite);
-	~Sprite(){ /***/ }
+	~Sprite();
 
 	void Draw(Graphics& g_graphics) const;
 	void Update(float fTimeBetweenFrames);
@@ -39,7 +39,12 @@ public:
 	void setTexture(Texture * pkTexture);
 	const Texture * getTexture() const;
 
-	void setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsigned int uiWidth, unsigned int uiHeight); 
+	void setTextureArea(
+						unsigned int uiOffsetX, 
+						unsigned int uiOffsetY, 
+						unsigned int uiWidth, 
+						unsigned int uiHeight
+						); 
 
 private:
 

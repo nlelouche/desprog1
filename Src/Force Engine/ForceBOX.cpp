@@ -27,25 +27,25 @@ Shape()
 	pkv->x = -0.5f;
 	pkv->y = -0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,255);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 
 	pkv = &(m_Vertices[1]);
 	pkv->x = -0.5f;
 	pkv->y = 0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,255);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 
 	pkv = &(m_Vertices[2]);
 	pkv->x = 0.5f;
 	pkv->y = -0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,255);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 	
 	pkv = &(m_Vertices[3]);
 	pkv->x = 0.5f;
 	pkv->y = 0.5f;
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(255,0,255);
+	pkv->Color = D3DCOLOR_XRGB(0,0,0);
 }
 
 //---------------------------------------------------------------------------

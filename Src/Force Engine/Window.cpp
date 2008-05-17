@@ -10,7 +10,6 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Window.h"
-#include <windows.h>
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -29,7 +28,6 @@ Window::~Window()
 //---------------------------------------------------------------------------
 bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 {
-	// Registrar la Clase
 	WNDCLASS kWC;
 
 	memset(static_cast <void *> (&kWC), 0, sizeof(WNDCLASS));
@@ -45,7 +43,6 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 		return false;
 	}
 
-	// Crear la Ventana
 	m_hWnd = CreateWindow("Force Window",
 						  "Force Engine v0.5",
 						  WS_OVERLAPPEDWINDOW,

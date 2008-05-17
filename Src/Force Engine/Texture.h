@@ -13,6 +13,7 @@ Hecho by: German Battiston AKA Melkor
 #define TEXTURE_H
 //---------------------------------------------------------------------------
 #include "Defines.h"
+#include "Graphics.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
@@ -27,10 +28,10 @@ public:
 	unsigned int getWidth() const;
 	unsigned int getHeight() const;
 
+	std::string getFileName() const;
+
 	void setWidth(unsigned int uiWidth);
 	void setHeight(unsigned int uiHeight);
-
-	std::string getFileName() const;
 
 private:
 

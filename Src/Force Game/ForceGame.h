@@ -14,8 +14,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include "ForceEngine.h"
 #include "Importer.h"
+#include "ForceEngine.h"
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -32,8 +32,6 @@ protected:
 	bool onLoop();
 	bool onDeInit();
 
-	friend class Graphics;
-
 private:
 
 	ForceBOX * m_pBox;
@@ -42,6 +40,8 @@ private:
 
 	Sprite * m_pSprite;
 	Texture * m_pTexture;
+
+	friend class Graphics;
 };
 
 #endif /*--- FORCE_GAME_H ---*/
