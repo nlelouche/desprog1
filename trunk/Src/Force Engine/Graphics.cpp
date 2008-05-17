@@ -128,7 +128,7 @@ bool Graphics::InitMat()
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
-	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
+	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(45, 91, 208), 1.0f, 0);
 }
 
 //---------------------------------------------------------------------------
@@ -262,7 +262,7 @@ void Graphics::unbindTexture()
 //---------------------------------------------------------------------------
 bool Graphics::bindTexture(Texture &rkTexture)
 {
-	IDirect3DTexture9* pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
+	IDirect3DTexture9 * pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
 
 	assert(pkDXTexture);
 	
@@ -281,15 +281,17 @@ bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
 	{
 		HRESULT hr;
 		
-		hr = D3DXCreateTextureFromFileEx(m_pDevice,
-				pszFilename, 
-				0, 0, 0, 0,
-				D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
-				D3DX_FILTER_NONE, D3DX_FILTER_NONE,
-				0, //pTexInfo->texColorKey,
-				NULL,
-				NULL,
-				&pkDXTexture);
+		hr = D3DXCreateTextureFromFileEx(
+										m_pDevice,
+										pszFilename, 
+										0, 0, 0, 0,
+										D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
+										D3DX_FILTER_NONE, D3DX_FILTER_NONE,
+										0, //pTexInfo->texColorKey,
+										NULL,
+										NULL,
+										&pkDXTexture
+										);
 
 		if (hr != D3D_OK)
 		{

@@ -10,15 +10,15 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Sprite.h"
-#include "Graphics.h"
-#include "Texture.h"
 //---------------------------------------------------------------------------
 
 Sprite::Sprite ()
 :
 Entity2D()
 {
-	TextureVertex* pkV = &(m_Vertex[0]);
+	TextureVertex * pkV;
+
+	pkV = &(m_Vertex[0]);
 	pkV->x = -0.5f;	
 	pkV->y = -0.5f;	
 	pkV->z = 1.0f;
@@ -91,12 +91,7 @@ void Sprite::Draw(Graphics& rkGraphics) const
 //---------------------------------------------------------------------------
 void Sprite::Update(float fTimeBetweenFrames)
 {
-	/*Entity2D::Update(fTimeBetweenFrames);
-
-	if(m_pkCurrentAnim)
-	{
-		m_pkCurrentAnim->update(fTimeBetweenFrames);
-	}*/
+	Entity2D::Update(fTimeBetweenFrames);
 }
 
 //---------------------------------------------------------------------------
@@ -144,6 +139,12 @@ void Sprite::Clone(Sprite& rkSprite)
 	{
 		rkSprite.m_Vertex[i] = m_Vertex[i];
 	}
+}
+
+//---------------------------------------------------------------------------
+Sprite::~Sprite()
+{
+	
 }
 
 //---------------------------------------------------------------------------
