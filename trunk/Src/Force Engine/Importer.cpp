@@ -78,11 +78,11 @@ bool Importer::importSprite(XMLNode& rkNode)
 
 	m_kpSpritesMap[pszName] = pkSprite;
 
-	const char* pszTexFile = rkNode.getAttribute("TextureFile");
-	const char* pszTexPosX = rkNode.getAttribute("TexPosX");
-	const char* pszTexPosY = rkNode.getAttribute("TexPosY");
-	const char* pszWidth = rkNode.getAttribute("Width");
-	const char* pszHeight = rkNode.getAttribute("Height");
+	const char * pszTexFile = rkNode.getAttribute("TextureFile");
+	const char * pszTexPosX = rkNode.getAttribute("TexPosX");
+	const char * pszTexPosY = rkNode.getAttribute("TexPosY");
+	const char * pszWidth = rkNode.getAttribute("Width");
+	const char * pszHeight = rkNode.getAttribute("Height");
 
 	unsigned int uiTexPosX = atoi(pszTexPosX);
 	unsigned int uiTexPosY = atoi(pszTexPosY);
@@ -176,8 +176,10 @@ bool Importer::importTexture(const char * pszFilename)
 
 	m_kpTexturesMap[pszFilename] = pkTexture;
 
-	if(!m_pkGraphics->loadTexture(pszFilename, * pkTexture) )
+	if(!m_pkGraphics->loadTexture(pszFilename, pkTexture))
+	{
 		return false;
+	}
 
 	return true;
 }

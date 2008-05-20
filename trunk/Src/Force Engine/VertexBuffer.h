@@ -35,7 +35,7 @@ public:
 	VertexBuffer();
 	~VertexBuffer();
 
-	bool Create(IDirect3DDevice9 * mmmmmmmmmmmm_pDevice, bool bDynamic);
+	bool Create(IDirect3DDevice9 * m_pDevice, bool bDynamic);
 	void Bind(void);
 	void Flush(void);
 	void Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount);

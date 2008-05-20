@@ -272,14 +272,17 @@ bool Graphics::bindTexture(Texture &rkTexture)
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
+bool Graphics::loadTexture(const char * pszFilename, Texture * rkTexture)
 {
 	D3DSURFACE_DESC kDescription;
-	IDirect3DTexture9* pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
+	IDirect3DTexture9 * pkDXTexture = NULL;
+
+	pkDXTexture = m_kTextureMap[rkTexture->getFileName()];
 
 	if(!pkDXTexture)
 	{
 		HRESULT hr;
+		D3DXIMAGE_INFO kInfo;
 		
 		hr = D3DXCreateTextureFromFileEx(
 										m_pDevice,
@@ -288,7 +291,7 @@ bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
 										D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
 										D3DX_FILTER_NONE, D3DX_FILTER_NONE,
 										0, //pTexInfo->texColorKey,
-										NULL,
+										&kInfo,
 										NULL,
 										&pkDXTexture
 										);
@@ -298,13 +301,13 @@ bool Graphics::loadTexture(const char * pszFilename, Texture &rkTexture)
 			return false;
 		}
 
-		m_kTextureMap[rkTexture.getFileName()] = pkDXTexture;
+		m_kTextureMap[rkTexture->getFileName()] = pkDXTexture;
 	}
 
 	pkDXTexture->GetLevelDesc(0,&kDescription);
 
-	rkTexture.setWidth(kDescription.Width);
-	rkTexture.setHeight(kDescription.Height);
+	rkTexture->setWidth(kDescription.Width);
+	rkTexture->setHeight(kDescription.Height);
 
 	return true;
 }

@@ -58,12 +58,12 @@ public:
 
 	void unbindTexture();
 	bool bindTexture(Texture& rkTexture);
-	bool loadTexture(const char * pszFilename, Texture& rkTexture);
+	bool loadTexture(const char * pszFilename, Texture * rkTexture);
 
 protected:
 
-	std::map <std::string, IDirect3DTexture9*> m_kTextureMap;
-	typedef std::map<std::string, IDirect3DTexture9*>::iterator TextureIterator;
+	std::map <std::string, IDirect3DTexture9 *> m_kTextureMap;
+	typedef std::map<std::string, IDirect3DTexture9 *>::iterator TextureIterator;
 
 private:
 
