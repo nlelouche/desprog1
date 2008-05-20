@@ -48,7 +48,7 @@ Entity2D()
 }
 
 //---------------------------------------------------------------------------
-Sprite::Sprite (const Sprite& rkSprite)
+Sprite::Sprite(const Sprite& rkSprite)
 {
 	*this = rkSprite;
 }
@@ -78,7 +78,7 @@ void Sprite::Draw(Graphics& rkGraphics) const
 
 	Entity2D::Draw(rkGraphics);
 	
-	if(rkGraphics.bindTexture(*m_pkTexture))
+	if(rkGraphics.bindTexture(* m_pkTexture))
 	{
 		rkGraphics.Draw(m_Vertex, D3DPT_TRIANGLESTRIP, 4);
 	}

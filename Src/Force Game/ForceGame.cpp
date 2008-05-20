@@ -20,7 +20,7 @@ m_pBox(NULL),
 m_pCircle(NULL),
 m_pTexture(NULL),
 m_pTriangle(NULL),
-m_pSprite(NULL)
+m_pSprite(new Sprite())
 {
 
 }
@@ -34,15 +34,16 @@ ForceGame::~ForceGame()
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
-	m_pTexture = new Texture("../res/force.jpg");
+	m_pTexture = new Texture("../../res/mierda.png");
 
-	if(!g_graficos->loadTexture("../res/force.jpg",* m_pTexture))
+	if(!g_graficos->loadTexture("../../res/mierda.png", m_pTexture))
 	{
 		return false;
 	}
 
-	m_pSprite = new Sprite();
 	m_pSprite->setTexture(m_pTexture);
+
+	m_pSprite->setTextureArea(0,0,0,0);
 
 	m_pBox = new ForceBOX();
 	m_pBox->setDim(100,100);

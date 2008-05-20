@@ -42,9 +42,7 @@ bool Game::Init()
 		return false;
 	}
 
-	onInit();
-
-	return true;
+	return onInit();
 }
 
 //---------------------------------------------------------------------------
