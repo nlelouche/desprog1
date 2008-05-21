@@ -62,7 +62,7 @@ private:
 	LPDIRECT3DVERTEXBUFFER9 m_pVertexBuffer;
 
 	// Almaceno Temporalmente el Dispositivo que pase como parametro en Draw
-	IDirect3DDevice9 * m_pDev;
+	IDirect3DDevice9 * m_pkDevice;
 };
 
 //---------------------------------------------------------------------------

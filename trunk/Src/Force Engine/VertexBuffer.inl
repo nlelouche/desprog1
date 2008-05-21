@@ -13,9 +13,10 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 VertexBuffer<PixelFormatClass,FVF>::VertexBuffer()
+:
+m_pkDevice(NULL)
 {
-	m_uiVbSize = 450;
-	m_uiFlush = 150;
+
 }
 
 //---------------------------------------------------------------------------
@@ -29,14 +30,13 @@ VertexBuffer<PixelFormatClass,FVF>::~VertexBuffer()
 template <class PixelFormatClass, unsigned int FVF>
 bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * m_pDevice, bool bDynamic)
 {
-	m_pDev = NULL;
+	m_pkDevice = m_pDevice;
 
-	m_pDev = m_pDevice;
-
-	m_uiFlush = 150;
 	m_uiBase = 0;
+	m_uiFlush = 150;
+	m_uiVbSize = 450;
 
-	HRESULT hr = m_pDev->CreateVertexBuffer(
+	HRESULT hr = m_pDevice->CreateVertexBuffer(
 											m_uiVbSize * sizeof(PixelFormatClass),
 											(bDynamic ? D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC : 0),
 											FVF,
@@ -118,13 +118,16 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 			m_uiVtxToLock = uiVtxCount - uiVtxProcNow;
 		}
 
-		hr = m_pVertexBuffer->Lock(m_uiBase * sizeof(PixelFormatClass), 
-									m_uiVtxToLock * sizeof(PixelFormatClass), 
-									(void **)(&pVertices),
-									m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
+		hr = m_pVertexBuffer->Lock(
+								   m_uiBase * sizeof(PixelFormatClass), 
+								   m_uiVtxToLock * sizeof(PixelFormatClass), 
+								   (void **)(&pVertices),
+								   m_uiBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD
+								   );
 	}
 
 	m_pVertexBuffer->Unlock();
+	
 }
 
 //---------------------------------------------------------------------------
@@ -158,7 +161,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 		iPrimitiveCount = m_uiVtxToLock - 2;
 	}
 
-	HRESULT hr = m_pDev->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount);
+	HRESULT hr = m_pkDevice->DrawPrimitive(m_primitiveType, m_uiBase, iPrimitiveCount);
 
 	assert(hr == D3D_OK);
 }
@@ -167,10 +170,11 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Bind(void)
 {
-	HRESULT hr = m_pDev->SetVertexShader(NULL);
-
-	hr = m_pDev->SetFVF(FVF);
-	hr = m_pDev->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
+	HRESULT hr;
+	
+	hr = m_pkDevice->SetVertexShader(NULL);
+	hr = m_pkDevice->SetFVF(FVF);
+	hr = m_pkDevice->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
 }
 
 //---------------------------------------------------------------------------

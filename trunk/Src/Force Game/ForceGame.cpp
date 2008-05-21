@@ -26,24 +26,18 @@ m_pSprite(new Sprite())
 }
 
 //---------------------------------------------------------------------------
-ForceGame::~ForceGame()
-{
-
-}
-
-//---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
 	m_pTexture = new Texture("../../res/mierda.png");
 
-	if(!g_graficos->loadTexture("../../res/mierda.png", m_pTexture))
+	if(!g_graficos->loadTexture("../../res/mierda.png",m_pTexture))
 	{
 		return false;
 	}
 
 	m_pSprite->setTexture(m_pTexture);
-
-	m_pSprite->setTextureArea(0,0,0,0);
+	m_pSprite->setTextureArea(0,0,512,512);
+	m_pSprite->setPosXY(100,100);
 
 	m_pBox = new ForceBOX();
 	m_pBox->setDim(100,100);
@@ -60,7 +54,6 @@ bool ForceGame::onInit()
 	addEntity(m_pBox);
 	addEntity(m_pCircle);
 	addEntity(m_pTriangle);
-	
 	addEntity(m_pSprite);
 
 	return true;
@@ -72,7 +65,6 @@ bool ForceGame::onLoop()
 	m_pBox->Draw(*g_graficos);
 	m_pCircle->Draw(*g_graficos);
 	m_pTriangle->Draw(*g_graficos);
-
 	m_pSprite->Draw(*g_graficos);
 
 	return true;
@@ -90,13 +82,19 @@ bool ForceGame::onDeInit()
 	delete m_pTriangle;
 	m_pTriangle = NULL;
 
-	delete m_pSprite;
-	m_pSprite = NULL;
-
 	delete m_pTexture;
 	m_pTexture = NULL;
 
+	delete m_pSprite;
+	m_pSprite = NULL;
+
 	return true;
+}
+
+//---------------------------------------------------------------------------
+ForceGame::~ForceGame()
+{
+
 }
 
 //---------------------------------------------------------------------------
