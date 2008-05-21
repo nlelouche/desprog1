@@ -34,7 +34,7 @@ public:
 
 	Sprite& operator=(const Sprite& rkSprite);
 
-	void Clone (Sprite& rkSprite);
+	void Clone(Sprite& rkSprite);
 
 	void setTexture(Texture * pkTexture);
 	const Texture * getTexture() const;

@@ -70,9 +70,15 @@ bool Graphics::InitDX(Window * g_window)
 							  g_window->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
-							  &m_pDevice);
+							  &m_pDevice
+							  );
 
 	if(!m_vtxBufColor.Create(m_pDevice, true))
+	{
+		return false;
+	}
+
+	if(!m_vtxBufTexture.Create(m_pDevice, true))
 	{
 		return false;
 	}

@@ -14,37 +14,38 @@ Hecho by: German Battiston AKA Melkor
 
 Sprite::Sprite ()
 :
+m_pkTexture(NULL),
 Entity2D()
 {
-	TextureVertex * pkV;
+	TextureVertex * pkv;
 
-	pkV = &(m_Vertex[0]);
-	pkV->x = -0.5f;	
-	pkV->y = -0.5f;	
-	pkV->z = 1.0f;
-	pkV->tu = 0.0f;	
-	pkV->tv = 1.0f;
+	pkv = &(m_Vertex[0]);
+	pkv->x = -0.5f;	
+	pkv->y = -0.5f;	
+	pkv->z = 1.0f;
+	pkv->tu = 0.0f;	
+	pkv->tv = 1.0f;
 	
-	pkV = &(m_Vertex[1]);
-	pkV->x = -0.5f;
-	pkV->y = 0.5f;	
-	pkV->z = 1.0f;
-	pkV->tu = 0.0f;	
-	pkV->tv = 0.0f;
+	pkv = &(m_Vertex[1]);
+	pkv->x = -0.5f;
+	pkv->y = 0.5f;	
+	pkv->z = 1.0f;
+	pkv->tu = 0.0f;	
+	pkv->tv = 0.0f;
 
-	pkV = &(m_Vertex[2]);
-	pkV->x = 0.5f;	
-	pkV->y = -0.5f;
-	pkV->z = 1.0f;
-	pkV->tu = 1.0f;	
-	pkV->tv = 1.0f;
+	pkv = &(m_Vertex[2]);
+	pkv->x = 0.5f;	
+	pkv->y = -0.5f;
+	pkv->z = 1.0f;
+	pkv->tu = 1.0f;	
+	pkv->tv = 1.0f;
 
-	pkV = &(m_Vertex[3]);
-	pkV->x = 0.5f;	
-	pkV->y = 0.5f;	
-	pkV->z = 1.0f;
-	pkV->tu = 1.0f;	
-	pkV->tv = 0.0f;
+	pkv = &(m_Vertex[3]);
+	pkv->x = 0.5f;	
+	pkv->y = 0.5f;	
+	pkv->z = 1.0f;
+	pkv->tu = 1.0f;	
+	pkv->tv = 0.0f;
 }
 
 //---------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Sprite& Sprite::operator=(const Sprite& rkSprite)
 {
 	if(&rkSprite == this)
 	{
-		return *this;
+		return * this;
 	}
 
 	m_pkTexture = rkSprite.m_pkTexture;
@@ -95,7 +96,7 @@ void Sprite::Update(float fTimeBetweenFrames)
 }
 
 //---------------------------------------------------------------------------
-void Sprite::setTextureArea (unsigned int uiOffsetX, unsigned int uiOffsetY, unsigned int uiWidth, unsigned int uiHeight)
+void Sprite::setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsigned int uiWidth, unsigned int uiHeight)
 {
 	assert(m_pkTexture);
 
@@ -108,21 +109,23 @@ void Sprite::setTextureArea (unsigned int uiOffsetX, unsigned int uiOffsetY, uns
 	float fV1 = uiOffsetY / fTexHeight;
 	float fV2 = (uiOffsetY + uiHeight) / fTexHeight;
 	
-	TextureVertex* pkV = &(m_Vertex[0]);
-	pkV->tu = fU1;	
-	pkV->tv = fV2;
+	TextureVertex * pkv;
+
+	pkv = &(m_Vertex[0]);
+	pkv->tu = fU1;	
+	pkv->tv = fV2;
 	
-	pkV = &(m_Vertex[1]);
-	pkV->tu = fU1;
-	pkV->tv = fV1;
+	pkv = &(m_Vertex[1]);
+	pkv->tu = fU1;
+	pkv->tv = fV1;
 
-	pkV = &(m_Vertex[2]);
-	pkV->tu = fU2;	
-	pkV->tv = fV2;
+	pkv = &(m_Vertex[2]);
+	pkv->tu = fU2;	
+	pkv->tv = fV2;
 
-	pkV = &(m_Vertex[3]);
-	pkV->tu = fU2;	
-	pkV->tv = fV1;
+	pkv = &(m_Vertex[3]);
+	pkv->tu = fU2;	
+	pkv->tv = fV1;
 }
 
 //---------------------------------------------------------------------------
@@ -144,7 +147,7 @@ void Sprite::Clone(Sprite& rkSprite)
 //---------------------------------------------------------------------------
 Sprite::~Sprite()
 {
-	
+
 }
 
 //---------------------------------------------------------------------------
