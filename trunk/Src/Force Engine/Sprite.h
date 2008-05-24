@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Sprite.h
@@ -17,6 +17,7 @@ Hecho by: German Battiston AKA Melkor
 #include "Texture.h"
 #include "Entity2D.h"
 #include "Graphics.h"
+#include "Animation.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
 
@@ -36,8 +37,8 @@ public:
 
 	void Clone(Sprite& rkSprite);
 
-	void setTexture(Texture * pkTexture);
-	const Texture * getTexture() const;
+	void setTexture(Texture::Ptr pkTexture);
+	const Texture::Ptr getTexture() const;
 
 	void setTextureArea(
 						unsigned int uiOffsetX, 
@@ -46,10 +47,20 @@ public:
 						unsigned int uiHeight
 						); 
 
+	bool removeAnimationInfo(std::string kName);
+	bool setAnimation(std::string kName);
+	bool addAnimationInfo(std::string kName, AnimationInfo::Ptr pkInfo);	
+
+	AnimationInfo::Ptr getAnimationInfo(std::string kName);
+
 private:
 
-	Texture * m_pkTexture;
+	Texture::Ptr m_pkTexture;
 	TextureVertex m_Vertex[4];
+
+	Animation * m_pkCurrentAnim;
+
+	std::map <std::string, AnimationInfo::Ptr> m_kAnimationMap;
 };
 
 //---------------------------------------------------------------------------

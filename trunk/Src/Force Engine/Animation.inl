@@ -2,27 +2,29 @@
 
 Force Engine v0.5
 
-Creado: 09/05/08
-Clase: ForceEngine.h
+Creado: 28/03/08
+Clase: Animation.inl
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCE_ENGINE_H
-#define FORCE_ENGINE_H
-//---------------------------------------------------------------------------
+
+inline const AnimationInfo::Ptr Animation::getInfo() const
+{
+	return m_pkInfo;
+}
 
 //---------------------------------------------------------------------------
-#include "Game.h"
-#include "Shape.h"
-#include "Sprite.h"
-#include "Texture.h"
-#include "ForceBOX.h"
-#include "ForceCIRCLE.h"
-#include "ForceTRIANGLE.h"
-//---------------------------------------------------------------------------
+inline Animation::PlayState Animation::getState() const
+{
+	return m_eCurrentState;
+}
 
-#endif /*--- FORCE_ENGINE_H ---*/
+//---------------------------------------------------------------------------
+inline unsigned int Animation::getCurrentFrame() const
+{
+	return m_uiCurrentFrame;
+}
 
 //---------------------------------------------------------------------------

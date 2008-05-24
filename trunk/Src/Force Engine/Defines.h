@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Defines.h
@@ -24,11 +24,21 @@ Hecho by: German Battiston AKA Melkor
 
 // Sin Esto NO ANDA NADA
 
-#include <windows.h>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 #include <cassert>
+#include <windows.h>
+
+//---------------------------------------------------------------------------
+
+// Smart Pointers Boost
+
+#include <boost/shared_ptr.hpp>
+
+#define DECLARE_SMART_POINTER(classname) \
+	public:	\
+	typedef boost::shared_ptr <classname> Ptr;
 
 //---------------------------------------------------------------------------
 	

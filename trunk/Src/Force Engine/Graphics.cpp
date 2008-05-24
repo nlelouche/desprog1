@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Graphics.cpp
@@ -269,21 +269,19 @@ void Graphics::unbindTexture()
 bool Graphics::bindTexture(Texture &rkTexture)
 {
 	IDirect3DTexture9 * pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
-
 	assert(pkDXTexture);
 	
 	HRESULT hr = m_pDevice->SetTexture(0, pkDXTexture);
-
-	return true;
+	return (hr == D3D_OK);
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::loadTexture(const char * pszFilename, Texture * rkTexture)
+bool Graphics::loadTexture(const char * pszFilename, Texture & rkTexture)
 {
 	D3DSURFACE_DESC kDescription;
 	IDirect3DTexture9 * pkDXTexture = NULL;
 
-	pkDXTexture = m_kTextureMap[rkTexture->getFileName()];
+	pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
 
 	if(!pkDXTexture)
 	{
@@ -307,13 +305,13 @@ bool Graphics::loadTexture(const char * pszFilename, Texture * rkTexture)
 			return false;
 		}
 
-		m_kTextureMap[rkTexture->getFileName()] = pkDXTexture;
+		m_kTextureMap[rkTexture.getFileName()] = pkDXTexture;
 	}
 
 	pkDXTexture->GetLevelDesc(0,&kDescription);
 
-	rkTexture->setWidth(kDescription.Width);
-	rkTexture->setHeight(kDescription.Height);
+	rkTexture.setWidth(kDescription.Width);
+	rkTexture.setHeight(kDescription.Height);
 
 	return true;
 }

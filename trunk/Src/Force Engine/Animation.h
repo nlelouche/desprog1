@@ -3,49 +3,54 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: Texture.h
+Clase: Animation.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#ifndef ANIMATION_H
+#define ANIMATION_H
 //---------------------------------------------------------------------------
 #include "Defines.h"
-#include "Graphics.h"
+#include "AnimationInfo.h"
 //---------------------------------------------------------------------------
-class Graphics;
-//---------------------------------------------------------------------------
-class FORCEENGINE_API Texture
+class FORCEENGINE_API Animation
 {
-	DECLARE_SMART_POINTER(Texture);
 public:
 
-	Texture(std::string kFilename);
-	~Texture();
+	enum PlayState
+	{
+		STOP,
+		PLAY,
+		PAUSE
+	};
 
-	unsigned int getWidth() const;
-	unsigned int getHeight() const;
+	Animation(AnimationInfo::Ptr pkInfo);
+	~Animation();
 
-	std::string getFileName() const;
+	void Play();
+	void Stop();
 
-	void setWidth(unsigned int uiWidth);
-	void setHeight(unsigned int uiHeight);
+	PlayState getState() const;
+	unsigned int getCurrentFrame() const;
+	const AnimationInfo::Ptr getInfo() const;
+
+	void Update(float fTimeBetweenFrames);
 
 private:
 
-	unsigned int m_uiWidth;
-	unsigned int m_uiHeight;
+	PlayState m_eCurrentState;
+	AnimationInfo::Ptr m_pkInfo;
 
-	std::string m_kFilename;
+	float m_fCurrentFrameTime;
+	unsigned int m_uiCurrentFrame;
 };
 
 //---------------------------------------------------------------------------
-#include "Texture.inl"
+#include "Animation.inl"
 //---------------------------------------------------------------------------
 
-#endif /*--- TEXTURE_H ---*/
+#endif /*--- ANIMATION_H ---*/
 
 //---------------------------------------------------------------------------
-

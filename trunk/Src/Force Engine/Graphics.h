@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Graphics.h
@@ -57,8 +57,8 @@ public:
 	void setViewPosition (float fPosX, float fPosY);
 
 	void unbindTexture();
-	bool bindTexture(Texture& rkTexture);
-	bool loadTexture(const char * pszFilename, Texture * rkTexture);
+	bool bindTexture(Texture & rkTexture);
+	bool loadTexture(const char * pszFilename, Texture & rkTexture);
 
 protected:
 
