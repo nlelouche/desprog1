@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Game.inl
@@ -17,4 +17,5 @@ inline void Game::addEntity(Entity2D * pkEntity)
 
 	m_apkEntities.push_back(pkEntity);
 }
+
 //---------------------------------------------------------------------------

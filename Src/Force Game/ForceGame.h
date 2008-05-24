@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: ForceGame.h
@@ -14,8 +14,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include "Importer.h"
-#include "ForceEngine.h"
+#include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -39,7 +38,9 @@ private:
 	ForceTRIANGLE * m_pTriangle;
 
 	Sprite * m_pSprite;
-	Texture * m_pTexture;
+	Sprite * m_pAnimation;
+
+	Texture::Ptr m_pTexture;
 
 	friend class Graphics;
 };

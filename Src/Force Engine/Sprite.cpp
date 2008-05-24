@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Sprite.cpp
@@ -12,9 +12,9 @@ Hecho by: German Battiston AKA Melkor
 #include "Sprite.h"
 //---------------------------------------------------------------------------
 
-Sprite::Sprite ()
+Sprite::Sprite()
 :
-m_pkTexture(NULL),
+m_pkCurrentAnim(NULL),
 Entity2D()
 {
 	TextureVertex * pkv;
@@ -93,6 +93,16 @@ void Sprite::Draw(Graphics& rkGraphics) const
 void Sprite::Update(float fTimeBetweenFrames)
 {
 	Entity2D::Update(fTimeBetweenFrames);
+
+	if(m_pkCurrentAnim)
+	{
+		m_pkCurrentAnim->Update(fTimeBetweenFrames);
+
+		unsigned int uiCurrentFrame = m_pkCurrentAnim->getCurrentFrame();
+		const FrameInfo& kInfo = m_pkCurrentAnim->getInfo()->getFrameInfo(uiCurrentFrame);
+
+		setTextureArea(kInfo.uiOffsetX, kInfo.uiOffsetY, kInfo.uiWidth, kInfo.uiHeight);
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -137,11 +147,42 @@ void Sprite::Clone(Sprite& rkSprite)
 	}
 
 	rkSprite.m_pkTexture = m_pkTexture;
+	rkSprite.m_kAnimationMap = m_kAnimationMap;
 
 	for(unsigned int i = 0; i < 4; i++)
 	{
 		rkSprite.m_Vertex[i] = m_Vertex[i];
 	}
+}
+
+//---------------------------------------------------------------------------
+bool Sprite::addAnimationInfo(std::string kName, AnimationInfo::Ptr pkInfo)
+{
+	AnimationInfo::Ptr pkAnimInfo = m_kAnimationMap[kName];
+
+	if(pkAnimInfo.get())
+	{
+		return false;
+	}
+
+	m_kAnimationMap[kName] = pkInfo;
+
+	return true;
+}
+
+//---------------------------------------------------------------------------
+bool Sprite::removeAnimationInfo(std::string kName)
+{
+	AnimationInfo::Ptr pkAnimInfo = m_kAnimationMap[kName];
+
+	if(!pkAnimInfo.get())
+	{
+		return false;
+	}
+
+	m_kAnimationMap.erase(kName);
+
+	return false;
 }
 
 //---------------------------------------------------------------------------

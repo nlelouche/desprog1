@@ -1,6 +1,6 @@
 /****************************************************************************
 
-Force Engine v0.1
+Force Engine v0.5
 
 Creado: 28/03/08
 Clase: Game.h
@@ -20,8 +20,8 @@ Hecho by: German Battiston AKA Melkor
 #include "Defines.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
+class Timer;
 class Window;
-class Entity2D;
 class Graphics;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Game

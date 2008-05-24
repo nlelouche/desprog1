@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(SolutionDir)/ext/"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;FORCEENGINE_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -326,22 +327,30 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Input / Output"
+			Name="Animation"
 			>
 			<File
-				RelativePath=".\Importer.cpp"
+				RelativePath=".\Animation.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Importer.h"
+				RelativePath=".\Animation.h"
 				>
 			</File>
 			<File
-				RelativePath=".\XMLParser.cpp"
+				RelativePath=".\Animation.inl"
 				>
 			</File>
 			<File
-				RelativePath=".\XMLParser.h"
+				RelativePath=".\AnimationInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\AnimationInfo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\AnimationInfo.inl"
 				>
 			</File>
 		</Filter>
