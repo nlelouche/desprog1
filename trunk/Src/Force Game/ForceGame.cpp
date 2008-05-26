@@ -31,9 +31,9 @@ bool ForceGame::onInit()
 	m_pBox = new ForceBOX();
 	m_pCircle = new ForceCIRCLE(130);
 	m_pTriangle = new ForceTRIANGLE();
-	m_pTexture = Texture::Ptr(new Texture("../../res/forcelogo.png"));
+	m_pTexture = Texture::Ptr(new Texture("../../res/Force Logo.png"));
 
-	if(!g_graficos->loadTexture("../../res/forcelogo.png", * m_pTexture))
+	if(!g_graficos->loadTexture("../../res/Force Logo.png", * m_pTexture))
 	{
 		return false;
 	}
