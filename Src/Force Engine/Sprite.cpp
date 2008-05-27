@@ -55,24 +55,6 @@ Sprite::Sprite(const Sprite& rkSprite)
 }
 
 //---------------------------------------------------------------------------
-Sprite& Sprite::operator=(const Sprite& rkSprite)
-{
-	if(&rkSprite == this)
-	{
-		return * this;
-	}
-
-	m_pkTexture = rkSprite.m_pkTexture;
-	
-	for(unsigned int i = 0; i < 4; i++)
-	{
-		m_Vertex[i] = rkSprite.m_Vertex[i];
-	}
-
-	return * this;
-}
-
-//---------------------------------------------------------------------------
 void Sprite::Draw(Graphics& rkGraphics) const
 {
 	assert(m_pkTexture);
@@ -136,53 +118,6 @@ void Sprite::setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsi
 	pkv = &(m_Vertex[3]);
 	pkv->tu = fU2;	
 	pkv->tv = fV1;
-}
-
-//---------------------------------------------------------------------------
-void Sprite::Clone(Sprite& rkSprite)
-{
-	if(&rkSprite == this)
-	{
-		return;
-	}
-
-	rkSprite.m_pkTexture = m_pkTexture;
-	rkSprite.m_kAnimationMap = m_kAnimationMap;
-
-	for(unsigned int i = 0; i < 4; i++)
-	{
-		rkSprite.m_Vertex[i] = m_Vertex[i];
-	}
-}
-
-//---------------------------------------------------------------------------
-bool Sprite::addAnimationInfo(std::string kName, AnimationInfo::Ptr pkInfo)
-{
-	AnimationInfo::Ptr pkAnimInfo = m_kAnimationMap[kName];
-
-	if(pkAnimInfo.get())
-	{
-		return false;
-	}
-
-	m_kAnimationMap[kName] = pkInfo;
-
-	return true;
-}
-
-//---------------------------------------------------------------------------
-bool Sprite::removeAnimationInfo(std::string kName)
-{
-	AnimationInfo::Ptr pkAnimInfo = m_kAnimationMap[kName];
-
-	if(!pkAnimInfo.get())
-	{
-		return false;
-	}
-
-	m_kAnimationMap.erase(kName);
-
-	return false;
 }
 
 //---------------------------------------------------------------------------

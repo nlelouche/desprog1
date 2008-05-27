@@ -21,28 +21,9 @@ inline const Texture::Ptr Sprite::getTexture() const
 }
 
 //---------------------------------------------------------------------------
-inline AnimationInfo::Ptr Sprite::getAnimationInfo(std::string kName)
+inline void Sprite::setAnimation(Animation * pkCurrentAnim)
 {
-	return m_kAnimationMap[kName];
-}
-
-//---------------------------------------------------------------------------
-inline bool Sprite::setAnimation(std::string kName)
-{
-	delete m_pkCurrentAnim;
-
-	m_pkCurrentAnim = NULL;
-
-	AnimationInfo::Ptr pkInfo = m_kAnimationMap[kName];
-
-	if(!pkInfo.get())
-	{
-		return false;
-	}
-
-	m_pkCurrentAnim = new Animation(pkInfo);
-
-	return true;
+	m_pkCurrentAnim = pkCurrentAnim;
 }
 
 //---------------------------------------------------------------------------

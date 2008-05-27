@@ -43,15 +43,17 @@ protected:
 	virtual bool onLoop() = 0;
 	virtual bool onDeInit() = 0;
 
-	std::vector <Entity2D*> m_apkEntities;
+	Timer * m_pkTimer;
 
 	Graphics * g_graficos;
 
+	std::vector <Entity2D*> m_apkEntities;
+
 private:
 
-	HINSTANCE m_hInstance;
-
 	Window * g_window;
+
+	HINSTANCE m_hInstance;
 };
 
 //---------------------------------------------------------------------------

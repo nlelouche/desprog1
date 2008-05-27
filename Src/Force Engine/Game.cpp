@@ -15,7 +15,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 Game::Game(HINSTANCE hInstance)
 :
-m_hInstance(hInstance)
+m_hInstance(hInstance),
+m_pkTimer(NULL)
 {
 	
 }
@@ -42,12 +43,25 @@ bool Game::Init()
 		return false;
 	}
 
+	m_pkTimer = new Timer();
+
+	m_pkTimer->FirstMeasure();
+
 	return onInit();
 }
 
 //---------------------------------------------------------------------------
 bool Game::Loop()
 {
+	assert(m_pkTimer);
+
+	m_pkTimer->Measure();
+
+	for(unsigned int i = 0; i < m_apkEntities.size(); i++)
+	{
+		m_apkEntities[i]->Update(m_pkTimer->getTimeBetweenFrames());
+	}
+
 	g_graficos->Clear();
 	g_graficos->BeginScene();
 
@@ -69,6 +83,9 @@ bool Game::deInit()
 
 	delete g_window;
 	g_window = NULL;
+
+	delete m_pkTimer;
+	m_pkTimer = NULL;
 
 	return true;
 }

@@ -25,8 +25,8 @@ public:
 	Timer ();
 	~Timer ();
 
-	void firstMeasure();
-	void measure();
+	void FirstMeasure();
+	void Measure();
 
 	float getTimeBetweenFrames() const;
 	unsigned int getFPS() const;
