@@ -12,7 +12,7 @@ Hecho by: German Battiston AKA Melkor
 #include "Timer.h"
 //---------------------------------------------------------------------------
 
-Timer::Timer ()
+Timer::Timer()
 :
 m_dTimeBetweenFrames(0),
 m_dMeasureFpsSample(0),
@@ -23,13 +23,13 @@ m_uiFrameCounter(0)
 }
 
 //---------------------------------------------------------------------------
-Timer::~Timer ()
+Timer::~Timer()
 {
 	
 }
 
 //---------------------------------------------------------------------------
-void Timer::firstMeasure()
+void Timer::FirstMeasure()
 {
 	QueryPerformanceFrequency(&m_kFrequency);
 	QueryPerformanceCounter(&m_kPerfCount1);
@@ -41,11 +41,11 @@ void Timer::firstMeasure()
 }
 
 //---------------------------------------------------------------------------
-void Timer::measure()
+void Timer::Measure()
 {
 	QueryPerformanceCounter(&m_kPerfCount2);
 	
-	m_dTimeBetweenFrames = static_cast<double>
+	m_dTimeBetweenFrames = static_cast <double>
 		((m_kPerfCount2.QuadPart - m_kPerfCount1.QuadPart) *1000.0f / m_kFrequency.QuadPart);
 	
 	m_dMeasureFpsSample += m_dTimeBetweenFrames;

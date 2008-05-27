@@ -21,10 +21,11 @@ void AnimationInfo::addFrame(
 							)
 {
 	FrameInfo kInfo;
-	kInfo.uiOffsetX = uiOffsetX;
-	kInfo.uiOffsetY = uiOffsetY;
+
 	kInfo.uiWidth = uiWidth;
 	kInfo.uiHeight = uiHeight;
+	kInfo.uiOffsetX = uiOffsetX;
+	kInfo.uiOffsetY = uiOffsetY;
 
 	m_akFramesInfo.push_back(kInfo);
 

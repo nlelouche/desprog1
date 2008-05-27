@@ -28,24 +28,27 @@ struct FrameInfo
 class FORCEENGINE_API AnimationInfo
 {
 	DECLARE_SMART_POINTER(AnimationInfo);
+
 public:
 	
 	void addFrame(
-				unsigned int uiOffsetX,
-				unsigned int uiOffsetY, 
-				unsigned int uiWidth, 
-				unsigned int uiHeight
-				);
+				 unsigned int uiOffsetX,
+				 unsigned int uiOffsetY, 
+				 unsigned int uiWidth, 
+				 unsigned int uiHeight
+				 );
 
 	void setLength(float fLenght);
 	float getLength() const;
 
 	float getTimePerFrame() const;
+
 	size_t getFrameCount() const;
+
 	const FrameInfo& getFrameInfo(unsigned int uiIndex) const;
 
-	void setLoopable(bool bIsLoopable);
 	bool getLoopable() const;
+	void setLoopable(bool bIsLoopable);
 
 private:
 

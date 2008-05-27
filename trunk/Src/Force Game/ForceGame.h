@@ -33,17 +33,18 @@ protected:
 
 private:
 
-	ForceBOX * m_pBox;
-	ForceCIRCLE * m_pCircle;
-	ForceTRIANGLE * m_pTriangle;
-
 	Sprite * m_pSprite;
-	Sprite * m_pAnimation;
+	Sprite * m_pSpriteAnim;
 
 	Texture::Ptr m_pTexture;
+	
+	Animation * m_pAnimation;
+	AnimationInfo::Ptr m_pAnimationInfo;
 
 	friend class Graphics;
 };
+
+//---------------------------------------------------------------------------
 
 #endif /*--- FORCE_GAME_H ---*/
 

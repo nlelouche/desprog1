@@ -33,10 +33,6 @@ public:
 	void Draw(Graphics& g_graphics) const;
 	void Update(float fTimeBetweenFrames);
 
-	Sprite& operator=(const Sprite& rkSprite);
-
-	void Clone(Sprite& rkSprite);
-
 	void setTexture(Texture::Ptr pkTexture);
 	const Texture::Ptr getTexture() const;
 
@@ -47,20 +43,14 @@ public:
 						unsigned int uiHeight
 						); 
 
-	bool removeAnimationInfo(std::string kName);
-	bool setAnimation(std::string kName);
-	bool addAnimationInfo(std::string kName, AnimationInfo::Ptr pkInfo);	
-
-	AnimationInfo::Ptr getAnimationInfo(std::string kName);
+	void setAnimation(Animation* pkCurrentAnim);
 
 private:
 
 	Texture::Ptr m_pkTexture;
 	TextureVertex m_Vertex[4];
 
-	Animation * m_pkCurrentAnim;
-
-	std::map <std::string, AnimationInfo::Ptr> m_kAnimationMap;
+	Animation* m_pkCurrentAnim;
 };
 
 //---------------------------------------------------------------------------
