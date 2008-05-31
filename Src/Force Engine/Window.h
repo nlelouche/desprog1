@@ -14,6 +14,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
+#include "Timer.h"
 #include "Defines.h"
 #include <windows.h>
 //---------------------------------------------------------------------------
@@ -27,8 +28,11 @@ public:
 	~Window();
 
 	bool createWindow(unsigned int uiWidth, unsigned int uiHeight);
+	void SetWindowTitle(LPCSTR lpString);
 
 private:
+
+	Timer * m_pkTimer;
 
 	HWND m_hWnd;
 	HINSTANCE m_hInstance;

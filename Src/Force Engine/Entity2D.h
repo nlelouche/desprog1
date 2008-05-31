@@ -30,36 +30,52 @@ public:
 	Entity2D();
 	virtual ~Entity2D();
 
-	void setName(std::string kName);
-	const std::string& getName() const;
-
-	// Seters y Geters de X Y Z
-
-	void setPosX(float fX);
-	float getPosX() const;
-
-	void setPosY(float fY);
-	float getPosY() const;
-
-	void setRotationZ(float rotationZ);
-	float getRotationZ() const;
-
-	void setPosXY(float fX, float fY);
-	void setDim(float fW, float fH);
-
 	float getDimHeight();
 	float getDimWidth();
 
+	float getPosX() const;
+	void setPosX(float fX);
+
+	float getPosY() const;
+	void setPosY(float fY);
+
+	float getRotationZ() const;
+	void setRotationZ(float rotationZ);
+
+	void setDim(float fW, float fH);
+	void setPosXY(float fX, float fY);
+
+	float getMovingSpeed() const;
+	void setMovingSpeed(float fMovingSpeed);
+
+	float getMovingAngle() const;
+	void setMovingAngle(float fMovingAngle);
+
+	float getMovingAngleRad() const;
+	void setMovingAngleRad(float fMovingAngleRad);
+
+	void setName(std::string kName);
+	const std::string& getName() const;
+
 	virtual void Draw(Graphics& g_graficos) const;
 	virtual void Update(float fTimeBetweenFrames);
+
+public:
+
+	bool m_bMoving;
+
+	float m_fMovingSpeed;
+	float m_fMovingAngle;
+	float m_fMovingAngleRad;
 
 private:
 
 	float m_fW; 
 	float m_fH;
-	
+
 	float m_fX;
 	float m_fY;
+
 	float m_fRotationZ;
 
 	std::string m_kName;

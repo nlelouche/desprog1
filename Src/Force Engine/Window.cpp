@@ -15,14 +15,18 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 Window::Window(HINSTANCE hInstance)
 :
-m_hInstance(hInstance)
+m_hInstance(hInstance),
+m_pkTimer(NULL)
 {
+	m_pkTimer = new Timer();
 
+	m_pkTimer->FirstMeasure();
 }
 
 Window::~Window()
 {
-
+	delete m_pkTimer;
+	m_pkTimer = NULL;
 }
 
 //---------------------------------------------------------------------------
@@ -79,6 +83,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 
 	return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+//---------------------------------------------------------------------------
+void Window::SetWindowTitle(LPCSTR lpString)
+{
+	SetWindowText(m_hWnd, lpString);
 }
 
 //---------------------------------------------------------------------------

@@ -25,8 +25,8 @@ m_pSpriteAnim(new Sprite())
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
-	m_pTexture = Texture::Ptr(new Texture("../../res/Force Logo.png"));
 	m_pAnimationInfo = AnimationInfo::Ptr(new AnimationInfo());
+	m_pTexture = Texture::Ptr(new Texture("../../res/Force Logo.png"));
 
 	if(!g_graficos->loadTexture("../../res/Force Logo.png", * m_pTexture))
 	{
@@ -38,14 +38,14 @@ bool ForceGame::onInit()
 	m_pSprite->setTextureArea(0,0,256,256);
 
 	m_pSpriteAnim->setTexture(m_pTexture);
-	m_pSpriteAnim->setDim(800,600);
+	m_pSpriteAnim->setDim(256,256);
 
 	for(int i = 256; i > 0; i--)
 	{
 		m_pAnimationInfo->addFrame(0,0,i,i);
 	}
 
-	m_pAnimationInfo->setLength(5000.0f);
+	m_pAnimationInfo->setLength(3000.0f);
 	m_pAnimationInfo->setLoopable(false);
 
 	m_pAnimation = new Animation(m_pAnimationInfo);

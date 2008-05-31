@@ -67,6 +67,14 @@ bool Game::Loop()
 
 	onLoop();
 
+	//stringstream s;
+
+	//s << " | FPS: " << m_pkTimer->getFPS();
+
+	//g_window->SetWindowTitle(s.str().c_str());
+
+	m_pkTimer->Measure();
+
 	g_graficos->EndScene();
 	g_graficos->Present();
 

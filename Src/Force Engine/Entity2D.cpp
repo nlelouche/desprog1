@@ -11,6 +11,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Entity2D.h"
 //---------------------------------------------------------------------------
+#define PI 3.1415926535897932384626433832795f
+//---------------------------------------------------------------------------
 
 Entity2D::Entity2D()
 :
@@ -31,7 +33,7 @@ void Entity2D::Draw(Graphics &g_graficos) const
 	g_graficos.loadIdentity();
 
 	g_graficos.Translate(m_fX, m_fY);
-	g_graficos.rotateZ(m_fRotationZ * 3.14159f / 180.0f);
+	g_graficos.rotateZ(m_fRotationZ * PI / 180.0f);
 	g_graficos.Scale(m_fW, m_fH);
 }
 

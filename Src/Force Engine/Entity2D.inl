@@ -41,6 +41,24 @@ inline void Entity2D::setDim(float fW, float fH)
 }
 
 //---------------------------------------------------------------------------
+inline void Entity2D::setMovingSpeed(float fMovingSpeed)
+{
+	m_fMovingSpeed = fMovingSpeed;
+}
+
+//---------------------------------------------------------------------------
+inline void Entity2D::setMovingAngle(float fMovingAngle)
+{
+	m_fMovingAngle = fMovingAngle;
+}
+
+//---------------------------------------------------------------------------
+inline void Entity2D::setMovingAngleRad(float fMovingAngleRad)
+{
+	m_fMovingAngleRad = fMovingAngleRad;
+}
+
+//---------------------------------------------------------------------------
 inline float Entity2D::getPosX() const
 {
 	return m_fX;
@@ -59,6 +77,30 @@ inline float Entity2D::getRotationZ() const
 }
 
 //---------------------------------------------------------------------------
+inline float Entity2D::getMovingSpeed() const
+{
+	return m_fMovingSpeed;
+}
+
+//---------------------------------------------------------------------------
+inline float Entity2D::getMovingAngle() const
+{
+	return m_fMovingAngle;
+}
+
+//---------------------------------------------------------------------------
+inline float Entity2D::getMovingAngleRad() const
+{
+	return m_fMovingAngleRad;
+}
+
+//---------------------------------------------------------------------------
+inline void Entity2D::setName(std::string kName)
+{
+	m_kName = kName;
+}
+
+//---------------------------------------------------------------------------
 inline float Entity2D::getDimHeight()
 {
 	return m_fH;
@@ -68,12 +110,6 @@ inline float Entity2D::getDimHeight()
 inline float Entity2D::getDimWidth()
 {
 	return m_fW;
-}
-
-//---------------------------------------------------------------------------
-inline void Entity2D::setName(std::string kName)
-{
-	m_kName = kName;
 }
 
 //---------------------------------------------------------------------------
