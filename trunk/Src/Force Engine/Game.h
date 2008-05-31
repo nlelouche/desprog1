@@ -19,6 +19,7 @@ Hecho by: German Battiston AKA Melkor
 #include "Window.h"
 #include "Defines.h"
 #include "Graphics.h"
+#include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
 class Timer;
 class Window;
