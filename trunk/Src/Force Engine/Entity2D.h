@@ -18,14 +18,16 @@ Hecho by: German Battiston AKA Melkor
 #include "Defines.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
-
+#define PI 3.1415926535897932384626433832795f
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
-
 class FORCEENGINE_API Entity2D
 {
+
 public:
+
+	// Metodos
 
 	Entity2D();
 	virtual ~Entity2D();
@@ -57,10 +59,15 @@ public:
 	void setName(std::string kName);
 	const std::string& getName() const;
 
-	virtual void Draw(Graphics& g_graficos) const;
+	virtual void Draw(Graphics & m_gGraficos) const;
 	virtual void Update(float fTimeBetweenFrames);
 
+	//bool checkCollision(Entity2D * pkEntity);
+	//virtual void onCollision(Entity2D * pkEntity) = 0;
+
 public:
+
+	// Variables
 
 	bool m_bMoving;
 

@@ -50,6 +50,7 @@ inline void Entity2D::setMovingSpeed(float fMovingSpeed)
 inline void Entity2D::setMovingAngle(float fMovingAngle)
 {
 	m_fMovingAngle = fMovingAngle;
+	m_fMovingAngleRad = fMovingAngle * PI / 180.0f;
 }
 
 //---------------------------------------------------------------------------

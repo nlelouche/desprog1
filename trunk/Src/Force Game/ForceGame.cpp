@@ -16,7 +16,6 @@ Hecho by: German Battiston AKA Melkor
 ForceGame::ForceGame(HINSTANCE hInstance)
 :
 Game(hInstance),
-m_pSprite(new Sprite()),
 m_pSpriteAnim(new Sprite())
 {
 
@@ -28,14 +27,10 @@ bool ForceGame::onInit()
 	m_pAnimationInfo = AnimationInfo::Ptr(new AnimationInfo());
 	m_pTexture = Texture::Ptr(new Texture("../../res/Force Logo.png"));
 
-	if(!g_graficos->loadTexture("../../res/Force Logo.png", * m_pTexture))
+	if(!m_gGraficos->loadTexture("../../res/Force Logo.png", * m_pTexture))
 	{
 		return false;
 	}
-
-	m_pSprite->setTexture(m_pTexture);
-	m_pSprite->setDim(256,256);
-	m_pSprite->setTextureArea(0,0,256,256);
 
 	m_pSpriteAnim->setTexture(m_pTexture);
 	m_pSpriteAnim->setDim(256,256);
@@ -45,7 +40,7 @@ bool ForceGame::onInit()
 		m_pAnimationInfo->addFrame(0,0,i,i);
 	}
 
-	m_pAnimationInfo->setLength(3000.0f);
+	m_pAnimationInfo->setLength(4000.0f);
 	m_pAnimationInfo->setLoopable(false);
 
 	m_pAnimation = new Animation(m_pAnimationInfo);
@@ -54,7 +49,6 @@ bool ForceGame::onInit()
 
 	m_pAnimation->Play();
 
-	addEntity(m_pSprite);
 	addEntity(m_pSpriteAnim);
 
 	return true;
@@ -65,8 +59,7 @@ bool ForceGame::onLoop()
 {
 	m_pSpriteAnim->Update(m_pkTimer->getTimeBetweenFrames());
 
-	//m_pSprite->Draw(*g_graficos);
-	m_pSpriteAnim->Draw(*g_graficos);
+	m_pSpriteAnim->Draw(*m_gGraficos);
 
 	return true;
 }
@@ -74,9 +67,6 @@ bool ForceGame::onLoop()
 //---------------------------------------------------------------------------
 bool ForceGame::onDeInit()
 {
-	delete m_pSprite;
-	m_pSprite = NULL;
-
 	delete m_pSpriteAnim;
 	m_pSpriteAnim = NULL;
 

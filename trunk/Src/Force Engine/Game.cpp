@@ -10,8 +10,9 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Game.h"
+#include <sstream>
 //---------------------------------------------------------------------------
-
+using namespace std;
 //---------------------------------------------------------------------------
 Game::Game(HINSTANCE hInstance)
 :
@@ -30,15 +31,15 @@ Game::~Game()
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
-	g_window = new Window(m_hInstance);
-	g_graficos = new Graphics();
+	m_gGraficos = new Graphics();
+	m_wWindow = new Window(m_hInstance);
 
-	if(!g_window->createWindow(800, 600))
+	if(!m_wWindow->createWindow(800, 600))
 	{
 		return false;
 	}
 
-	if(!g_graficos->InitDX(g_window))
+	if(!m_gGraficos->InitDX(m_wWindow))
 	{
 		return false;
 	}
@@ -55,28 +56,28 @@ bool Game::Loop()
 {
 	assert(m_pkTimer);
 
-	m_pkTimer->Measure();
-
 	for(unsigned int i = 0; i < m_apkEntities.size(); i++)
 	{
 		m_apkEntities[i]->Update(m_pkTimer->getTimeBetweenFrames());
 	}
 
-	g_graficos->Clear();
-	g_graficos->BeginScene();
+	m_gGraficos->Clear();
+	m_gGraficos->BeginScene();
 
 	onLoop();
 
-	//stringstream s;
+	// Nombre del Engine y Frames Per Second
 
-	//s << " | FPS: " << m_pkTimer->getFPS();
+	stringstream s;
 
-	//g_window->SetWindowTitle(s.str().c_str());
+	s << "Force Engine v0.5 | FPS: " << m_pkTimer->getFPS();
+
+	m_wWindow->SetWindowTitle(s.str().c_str());
 
 	m_pkTimer->Measure();
 
-	g_graficos->EndScene();
-	g_graficos->Present();
+	m_gGraficos->EndScene();
+	m_gGraficos->Present();
 
 	return true;
 }
@@ -86,11 +87,11 @@ bool Game::deInit()
 {
 	onDeInit();
 
-	delete g_graficos;
-	g_graficos = NULL;
+	delete m_gGraficos;
+	m_gGraficos = NULL;
 
-	delete g_window;
-	g_window = NULL;
+	delete m_wWindow;
+	m_wWindow = NULL;
 
 	delete m_pkTimer;
 	m_pkTimer = NULL;

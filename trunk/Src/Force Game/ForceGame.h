@@ -33,7 +33,6 @@ protected:
 
 private:
 
-	Sprite * m_pSprite;
 	Sprite * m_pSpriteAnim;
 
 	Texture::Ptr m_pTexture;

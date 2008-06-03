@@ -19,14 +19,6 @@ m_hInstance(hInstance),
 m_pkTimer(NULL)
 {
 	m_pkTimer = new Timer();
-
-	m_pkTimer->FirstMeasure();
-}
-
-Window::~Window()
-{
-	delete m_pkTimer;
-	m_pkTimer = NULL;
 }
 
 //---------------------------------------------------------------------------
@@ -47,8 +39,9 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 		return false;
 	}
 
-	m_hWnd = CreateWindow("Force Window",
-						  "Force Engine v0.5",
+	m_hWnd = CreateWindow(
+						  "Force Window",
+						  "",
 						  WS_OVERLAPPEDWINDOW,
 						  CW_USEDEFAULT,
 						  CW_USEDEFAULT,
@@ -57,7 +50,8 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 						  NULL,
 						  NULL,
 						  m_hInstance,
-						  NULL);
+						  NULL
+						  );
 
 	if (!m_hWnd)
 	{
@@ -73,7 +67,7 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 //---------------------------------------------------------------------------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	switch (message) 
+	switch(message) 
 	{
 		case WM_DESTROY:
 		{
@@ -89,6 +83,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void Window::SetWindowTitle(LPCSTR lpString)
 {
 	SetWindowText(m_hWnd, lpString);
+}
+
+//---------------------------------------------------------------------------
+Window::~Window()
+{
+	delete m_pkTimer;
+	m_pkTimer = NULL;
 }
 
 //---------------------------------------------------------------------------
