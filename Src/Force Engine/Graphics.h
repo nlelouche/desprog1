@@ -37,7 +37,7 @@ public:
 	Graphics();
 	~Graphics();
 
-	bool InitDX(Window * g_window);
+	bool InitDX(Window * m_wWindow);
 	bool InitMat();
 
 	void BeginScene();

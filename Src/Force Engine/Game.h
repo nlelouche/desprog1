@@ -46,13 +46,13 @@ protected:
 
 	Timer * m_pkTimer;
 
-	Graphics * g_graficos;
+	Graphics * m_gGraficos;
 
 	std::vector <Entity2D*> m_apkEntities;
 
 private:
 
-	Window * g_window;
+	Window * m_wWindow;
 
 	HINSTANCE m_hInstance;
 };

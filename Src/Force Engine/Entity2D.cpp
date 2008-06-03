@@ -11,9 +11,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Entity2D.h"
 //---------------------------------------------------------------------------
-#define PI 3.1415926535897932384626433832795f
-//---------------------------------------------------------------------------
-
 Entity2D::Entity2D()
 :
 m_fX(0), 
@@ -26,21 +23,25 @@ m_fRotationZ(0)
 }
 
 //---------------------------------------------------------------------------
-void Entity2D::Draw(Graphics &g_graficos) const
+void Entity2D::Draw(Graphics & m_gGraficos) const
 {
-	g_graficos.setMatrixMode(WORLD);
+	m_gGraficos.setMatrixMode(WORLD);
 	
-	g_graficos.loadIdentity();
+	m_gGraficos.loadIdentity();
 
-	g_graficos.Translate(m_fX, m_fY);
-	g_graficos.rotateZ(m_fRotationZ * PI / 180.0f);
-	g_graficos.Scale(m_fW, m_fH);
+	m_gGraficos.Translate(m_fX, m_fY);
+	m_gGraficos.rotateZ(m_fRotationZ * PI / 180.0f);
+	m_gGraficos.Scale(m_fW, m_fH);
 }
 
 //---------------------------------------------------------------------------
 void Entity2D::Update(float fTimeBetweenFrames)
 {
-	/***/
+	if(m_bMoving)
+	{
+		m_fX = (fTimeBetweenFrames / 1000.0f) * m_fMovingSpeed * cos(m_fMovingAngleRad);
+		m_fY = (fTimeBetweenFrames / 1000.0f) * m_fMovingSpeed * sin(m_fMovingAngleRad);
+	}
 }
 
 //---------------------------------------------------------------------------

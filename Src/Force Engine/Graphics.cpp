@@ -31,7 +31,7 @@ Graphics::~Graphics()
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::InitDX(Window * g_window)
+bool Graphics::InitDX(Window * m_wWindow)
 {
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -67,7 +67,7 @@ bool Graphics::InitDX(Window * g_window)
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
  							  D3DDEVTYPE_HAL,							
-							  g_window->m_hWnd,
+							  m_wWindow->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
 							  &m_pDevice
@@ -122,6 +122,7 @@ bool Graphics::InitMat()
 
 	D3DXMATRIX d3dmatProy;
 	D3DXMatrixOrthoLH(&d3dmatProy, viewportWidth, viewportHeight, -25, 25);
+	
 	HRESULT hr = m_pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
 	
 	m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
@@ -272,6 +273,7 @@ bool Graphics::bindTexture(Texture &rkTexture)
 	assert(pkDXTexture);
 	
 	HRESULT hr = m_pDevice->SetTexture(0, pkDXTexture);
+
 	return (hr == D3D_OK);
 }
 
