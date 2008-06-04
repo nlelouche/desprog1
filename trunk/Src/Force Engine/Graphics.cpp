@@ -31,7 +31,7 @@ Graphics::~Graphics()
 }
 
 //---------------------------------------------------------------------------
-bool Graphics::InitDX(Window * m_wWindow)
+bool Graphics::InitDX(Window * m_pWindow)
 {
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -67,7 +67,7 @@ bool Graphics::InitDX(Window * m_wWindow)
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
  							  D3DDEVTYPE_HAL,							
-							  m_wWindow->m_hWnd,
+							  m_pWindow->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
 							  &m_pDevice

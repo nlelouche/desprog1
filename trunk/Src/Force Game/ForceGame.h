@@ -35,7 +35,7 @@ private:
 
 	Sprite * m_pSpriteAnim;
 
-	Texture::Ptr m_pTexture;
+	Texture::Ptr m_pkPacman;
 	
 	Animation * m_pAnimation;
 	AnimationInfo::Ptr m_pAnimationInfo;
