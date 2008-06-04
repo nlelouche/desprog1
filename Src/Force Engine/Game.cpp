@@ -17,7 +17,9 @@ using namespace std;
 Game::Game(HINSTANCE hInstance)
 :
 m_hInstance(hInstance),
-m_pkTimer(NULL)
+m_pkTimer(new Timer()),
+m_pGraficos(new Graphics()),
+m_pWindow(new Window(hInstance))
 {
 	
 }
@@ -31,20 +33,15 @@ Game::~Game()
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
-	m_gGraficos = new Graphics();
-	m_wWindow = new Window(m_hInstance);
-
-	if(!m_wWindow->createWindow(800, 600))
+	if(!m_pWindow->createWindow(800, 600))
 	{
 		return false;
 	}
 
-	if(!m_gGraficos->InitDX(m_wWindow))
+	if(!m_pGraficos->InitDX(m_pWindow))
 	{
 		return false;
 	}
-
-	m_pkTimer = new Timer();
 
 	m_pkTimer->FirstMeasure();
 
@@ -61,8 +58,8 @@ bool Game::Loop()
 		m_apkEntities[i]->Update(m_pkTimer->getTimeBetweenFrames());
 	}
 
-	m_gGraficos->Clear();
-	m_gGraficos->BeginScene();
+	m_pGraficos->Clear();
+	m_pGraficos->BeginScene();
 
 	onLoop();
 
@@ -72,12 +69,12 @@ bool Game::Loop()
 
 	s << "Force Engine v0.5 | FPS: " << m_pkTimer->getFPS();
 
-	m_wWindow->SetWindowTitle(s.str().c_str());
+	m_pWindow->SetWindowTitle(s.str().c_str());
 
 	m_pkTimer->Measure();
 
-	m_gGraficos->EndScene();
-	m_gGraficos->Present();
+	m_pGraficos->EndScene();
+	m_pGraficos->Present();
 
 	return true;
 }
@@ -87,11 +84,11 @@ bool Game::deInit()
 {
 	onDeInit();
 
-	delete m_gGraficos;
-	m_gGraficos = NULL;
+	delete m_pGraficos;
+	m_pGraficos = NULL;
 
-	delete m_wWindow;
-	m_wWindow = NULL;
+	delete m_pWindow;
+	m_pWindow = NULL;
 
 	delete m_pkTimer;
 	m_pkTimer = NULL;

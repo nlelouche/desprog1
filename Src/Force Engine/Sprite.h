@@ -45,6 +45,8 @@ public:
 
 	void setAnimation(Animation* pkCurrentAnim);
 
+	virtual void onCollision(Entity2D* pkEntity) { /*********/ }
+
 private:
 
 	Texture::Ptr m_pkTexture;

@@ -25,23 +25,22 @@ m_pSpriteAnim(new Sprite())
 bool ForceGame::onInit()
 {
 	m_pAnimationInfo = AnimationInfo::Ptr(new AnimationInfo());
-	m_pTexture = Texture::Ptr(new Texture("../../res/Force Logo.png"));
+	m_pkPacman = Texture::Ptr(new Texture("../../res/Pacman.bmp"));
 
-	if(!m_gGraficos->loadTexture("../../res/Force Logo.png", * m_pTexture))
+	if(!m_pGraficos->loadTexture("../../res/Pacman.bmp", * m_pkPacman))
 	{
 		return false;
 	}
 
-	m_pSpriteAnim->setTexture(m_pTexture);
-	m_pSpriteAnim->setDim(256,256);
+	m_pSpriteAnim->setTexture(m_pkPacman);
+	m_pSpriteAnim->setDim(128,128);
 
-	for(int i = 256; i > 0; i--)
-	{
-		m_pAnimationInfo->addFrame(0,0,i,i);
-	}
+	m_pAnimationInfo->addFrame(0,0,18,18);
+	m_pAnimationInfo->addFrame(18,0,18,18);
+	m_pAnimationInfo->addFrame(36,0,18,18);
 
-	m_pAnimationInfo->setLength(4000.0f);
-	m_pAnimationInfo->setLoopable(false);
+	m_pAnimationInfo->setLength(350.0f);
+	m_pAnimationInfo->setLoopable(true);
 
 	m_pAnimation = new Animation(m_pAnimationInfo);
 
@@ -58,8 +57,7 @@ bool ForceGame::onInit()
 bool ForceGame::onLoop()
 {
 	m_pSpriteAnim->Update(m_pkTimer->getTimeBetweenFrames());
-
-	m_pSpriteAnim->Draw(*m_gGraficos);
+	m_pSpriteAnim->Draw(*m_pGraficos);
 
 	return true;
 }

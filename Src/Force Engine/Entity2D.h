@@ -59,11 +59,11 @@ public:
 	void setName(std::string kName);
 	const std::string& getName() const;
 
-	virtual void Draw(Graphics & m_gGraficos) const;
+	virtual void Draw(Graphics & m_pGraficos) const;
 	virtual void Update(float fTimeBetweenFrames);
 
-	//bool checkCollision(Entity2D * pkEntity);
-	//virtual void onCollision(Entity2D * pkEntity) = 0;
+	bool checkCollision(Entity2D * pkEntity);
+	virtual void onCollision(Entity2D * pkEntity) = 0;
 
 public:
 
