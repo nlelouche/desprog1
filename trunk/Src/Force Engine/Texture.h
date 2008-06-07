@@ -22,7 +22,7 @@ class FORCEENGINE_API Texture
 	DECLARE_SMART_POINTER(Texture);
 public:
 
-	Texture(std::string kFilename);
+	Texture(std::string kFilename, unsigned long ulColor);
 	~Texture();
 
 	unsigned int getWidth() const;
@@ -33,10 +33,14 @@ public:
 	void setWidth(unsigned int uiWidth);
 	void setHeight(unsigned int uiHeight);
 
+	unsigned long getColorkey() const;
+
 private:
 
 	unsigned int m_uiWidth;
 	unsigned int m_uiHeight;
+
+	unsigned long m_ulColor;
 
 	std::string m_kFilename;
 };

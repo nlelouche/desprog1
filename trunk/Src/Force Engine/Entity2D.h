@@ -47,6 +47,12 @@ public:
 	void setDim(float fW, float fH);
 	void setPosXY(float fX, float fY);
 
+	float getPrevPosX() const;
+	float getPrevPosY() const;
+
+	bool getMoving();
+	void setMoving(bool bMoving);
+
 	float getMovingSpeed() const;
 	void setMovingSpeed(float fMovingSpeed);
 
@@ -62,8 +68,17 @@ public:
 	virtual void Draw(Graphics & m_pGraficos) const;
 	virtual void Update(float fTimeBetweenFrames);
 
-	bool checkCollision(Entity2D * pkEntity);
+	// COLISION
+
+	enum CollisionResult
+	{
+		None,
+		Vertical,
+		Horizontal
+	};
+
 	virtual void onCollision(Entity2D * pkEntity) = 0;
+	CollisionResult checkCollision(Entity2D* pkEntity) const;
 
 public:
 
@@ -71,6 +86,8 @@ public:
 
 	bool m_bMoving;
 
+	float m_fPrevX;
+	float m_fPrevY;
 	float m_fMovingSpeed;
 	float m_fMovingAngle;
 	float m_fMovingAngleRad;
@@ -86,6 +103,8 @@ private:
 	float m_fRotationZ;
 
 	std::string m_kName;
+
+	ColorVertex m_akAABBVertices[5];
 };
 
 //---------------------------------------------------------------------------

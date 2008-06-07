@@ -288,16 +288,15 @@ bool Graphics::loadTexture(const char * pszFilename, Texture & rkTexture)
 	if(!pkDXTexture)
 	{
 		HRESULT hr;
-		D3DXIMAGE_INFO kInfo;
 		
 		hr = D3DXCreateTextureFromFileEx(
 										m_pDevice,
-										pszFilename, 
+										rkTexture.getFileName().c_str(), 
 										0, 0, 0, 0,
 										D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
 										D3DX_FILTER_NONE, D3DX_FILTER_NONE,
-										0, //pTexInfo->texColorKey,
-										&kInfo,
+										rkTexture.getColorkey(),
+										NULL,
 										NULL,
 										&pkDXTexture
 										);

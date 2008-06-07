@@ -47,7 +47,7 @@ void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 	pkv->x = 0.0f;
 	pkv->y = 0.0f;	
 	pkv->z = 1.0f;
-	pkv->Color = D3DCOLOR_XRGB(0, 0, 0);
+	pkv->Color = D3DCOLOR_XRGB(255, 0, 0);
 
 	for(int i = 1; i <= m_iNumCaras + 1; i++)
 	{
@@ -60,7 +60,7 @@ void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 		pkv->x = (float)(dSin);
 		pkv->y = (float)(dCos);
 		pkv->z = 1.0f;
-		pkv->Color = D3DCOLOR_XRGB(0, 0, 0);
+		pkv->Color = D3DCOLOR_XRGB(255, 0, 0);
 	}
 }
 

@@ -58,6 +58,7 @@ public:
 
 	void unbindTexture();
 	bool bindTexture(Texture & rkTexture);
+
 	bool loadTexture(const char * pszFilename, Texture & rkTexture);
 
 protected:

@@ -33,7 +33,10 @@ protected:
 
 private:
 
-	Sprite * m_pSpriteAnim;
+	Sprite * m_pPhantom;
+	Sprite * m_pPacmanAnim;
+
+	ForceBOX * m_pShapeBox;
 
 	Texture::Ptr m_pkPacman;
 	

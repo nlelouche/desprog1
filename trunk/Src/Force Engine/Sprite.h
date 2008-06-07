@@ -37,22 +37,22 @@ public:
 	const Texture::Ptr getTexture() const;
 
 	void setTextureArea(
-						unsigned int uiOffsetX, 
-						unsigned int uiOffsetY, 
-						unsigned int uiWidth, 
+						unsigned int uiOffsetX,
+						unsigned int uiOffsetY,
+						unsigned int uiWidth,
 						unsigned int uiHeight
 						); 
 
-	void setAnimation(Animation* pkCurrentAnim);
+	void setAnimation(Animation * pkCurrentAnim);
 
-	virtual void onCollision(Entity2D* pkEntity) { /*********/ }
+	virtual void onCollision(Entity2D * pkEntity) { /****/ }
 
 private:
 
 	Texture::Ptr m_pkTexture;
 	TextureVertex m_Vertex[4];
 
-	Animation* m_pkCurrentAnim;
+	Animation * m_pkCurrentAnim;
 };
 
 //---------------------------------------------------------------------------
