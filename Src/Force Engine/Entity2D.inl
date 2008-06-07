@@ -60,6 +60,12 @@ inline void Entity2D::setMovingAngleRad(float fMovingAngleRad)
 }
 
 //---------------------------------------------------------------------------
+inline void Entity2D::setMoving(bool bMoving)
+{
+	m_bMoving = bMoving;
+}
+
+//---------------------------------------------------------------------------
 inline float Entity2D::getPosX() const
 {
 	return m_fX;
@@ -117,6 +123,24 @@ inline float Entity2D::getDimWidth()
 inline const std::string& Entity2D::getName() const
 {
 	return m_kName;
+}
+
+//---------------------------------------------------------------------------
+inline bool Entity2D::getMoving()
+{
+	return m_bMoving;
+}
+
+//---------------------------------------------------------------------------
+inline float Entity2D::getPrevPosX() const
+{
+	return m_fPrevX;
+}
+
+//---------------------------------------------------------------------------
+inline float Entity2D::getPrevPosY() const
+{
+	return m_fPrevY;
 }
 
 //---------------------------------------------------------------------------

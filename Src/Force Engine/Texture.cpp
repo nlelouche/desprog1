@@ -13,20 +13,20 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-Texture::Texture(std::string kFilename)
+Texture::Texture(std::string kFilename, unsigned long ulColor)
 :
 m_uiWidth(0),
 m_uiHeight(0),
-m_kFilename(kFilename)
+m_kFilename(kFilename),
+m_ulColor(ulColor)
 {
-	//setWidth(512);
-	//setHeight(512);
+	/********/
 }
 
 //---------------------------------------------------------------------------
 Texture::~Texture()
 {
-	
+	/********/
 }
 
 //---------------------------------------------------------------------------

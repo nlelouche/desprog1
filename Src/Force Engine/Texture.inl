@@ -40,3 +40,9 @@ inline std::string Texture::getFileName() const
 }
 
 //---------------------------------------------------------------------------
+inline unsigned long Texture::getColorkey() const
+{
+	return m_ulColor;
+}
+
+//---------------------------------------------------------------------------

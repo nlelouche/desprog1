@@ -25,14 +25,17 @@ class Graphics;
 class FORCEENGINE_API Shape : public Entity2D
 {
 public:
+
 	~Shape();
 
 	virtual void Draw(Graphics &g_graphics) const;
+	virtual void onCollision (Entity2D* pkEntity) { /*****/ }
 
 	int m_iCantVertices;
 	ColorVertex * m_Vertices;
 
 protected:
+
 	Shape();
 
 };
