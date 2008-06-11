@@ -33,15 +33,21 @@ protected:
 
 private:
 
-	Sprite * m_pPhantom;
-	Sprite * m_pPacmanAnim;
-
-	ForceBOX * m_pShapeBox;
-
 	Texture::Ptr m_pkPacman;
+
+	Sprite * m_pPacman;
+	Sprite * m_pPhantom;
+
+	ForceBOX * m_pShapeBox1;
+	ForceBOX * m_pShapeBox2;
+	ForceBOX * m_pShapeRoof;
+	ForceBOX * m_pShapeFloor;
 	
-	Animation * m_pAnimation;
-	AnimationInfo::Ptr m_pAnimationInfo;
+	Animation * m_pAnimationPac;
+	Animation * m_pAnimationPacMuerte;
+
+	AnimationInfo::Ptr m_pAnimationInfoPac;
+	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;
 
 	friend class Graphics;
 };

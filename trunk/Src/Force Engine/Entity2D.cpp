@@ -103,11 +103,14 @@ Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 
 	if(fAuxPosX <= fAuxW && fAuxPosY <= fAuxH)
 	{
-		return Vertical;
-	}
-	else
-	{
-		return Horizontal;
+		if(fAuxPosX + fAuxW && fAuxPosY + fAuxH)
+		{
+			return Vertical;
+		}
+		else
+		{
+			return Horizontal;
+		}
 	}
 	
 	return None;
