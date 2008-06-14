@@ -3,39 +3,35 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceGame.h
+Clase: MyScene.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCE_GAME_H
-#define FORCE_GAME_H
+#ifndef MY_SCENE_H
+#define MY_SCENE_H
 //---------------------------------------------------------------------------
-class MyScene;
-//---------------------------------------------------------------------------
-#include "MyScene.h"
 #include <fmod/fmod.h>
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-class ForceGame: public Game
+
+class MyScene : public Scene
 {
+
 public:
 
-	ForceGame(HINSTANCE hInstance);
-	~ForceGame();
-
-protected:
+	MyScene();
+	virtual ~MyScene();
 
 	bool onInit();
-	bool onLoop();
+	bool onUpdate(float fTimeBetweenFrames);
+	void onDraw(Graphics& rkGraphics) const;
 	bool onDeInit();
 
 private:
 
-	MyScene * m_pkMyScene;
-/*
 	Sprite * m_pPacman;
 	Sprite * m_pPhantom;
 
@@ -45,18 +41,18 @@ private:
 	ForceBOX * m_pShapeBox2;
 	ForceBOX * m_pShapeRoof;
 	ForceBOX * m_pShapeFloor;
-	
+
 	Animation * m_pAnimationPac;
 	Animation * m_pAnimationPacMuerte;
 
 	AnimationInfo::Ptr m_pAnimationInfoPac;
-	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;*/
+	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;
 
 	friend class Graphics;
 };
 
 //---------------------------------------------------------------------------
 
-#endif /*--- FORCE_GAME_H ---*/
+#endif /*--- MY_SCENE_H ---*/
 
 //---------------------------------------------------------------------------

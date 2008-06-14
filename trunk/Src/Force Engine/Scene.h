@@ -3,60 +3,54 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceGame.h
+Clase: Scene.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCE_GAME_H
-#define FORCE_GAME_H
+#ifndef SCENE_H
+#define SCENE_H
 //---------------------------------------------------------------------------
-class MyScene;
+#include "Defines.h"
+#include "Texture.h"
 //---------------------------------------------------------------------------
-#include "MyScene.h"
-#include <fmod/fmod.h>
-#include "../Force Engine/Defines.h"
-#include "../Force Engine/ForceEngine.h"
+class Graphics;
+class Texture;
+class Entity2D;
 //---------------------------------------------------------------------------
-class ForceGame: public Game
+class FORCEENGINE_API Scene
 {
-public:
 
-	ForceGame(HINSTANCE hInstance);
-	~ForceGame();
+public:
+	Scene(Graphics * m_pGraficos);
+	virtual ~Scene();
+
+	bool Init();
+	bool Update(float fTimeBetweenFrames);
+	void Draw(Graphics& rkGraphics) const;
+	bool deInit();
+
+	void addEntity(Entity2D* pkEntity);
 
 protected:
 
-	bool onInit();
-	bool onLoop();
-	bool onDeInit();
+	virtual bool onInit() = 0;
+	virtual bool onUpdate(float fTimeBetweenFrames) = 0;
+	virtual void onDraw(Graphics& rkGraphics) const = 0;
+	virtual bool onDeInit() = 0;
 
 private:
 
-	MyScene * m_pkMyScene;
-/*
-	Sprite * m_pPacman;
-	Sprite * m_pPhantom;
-
-	Texture::Ptr m_pkPacman;
-
-	ForceBOX * m_pShapeBox1;
-	ForceBOX * m_pShapeBox2;
-	ForceBOX * m_pShapeRoof;
-	ForceBOX * m_pShapeFloor;
-	
-	Animation * m_pAnimationPac;
-	Animation * m_pAnimationPacMuerte;
-
-	AnimationInfo::Ptr m_pAnimationInfoPac;
-	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;*/
+	std::vector<Entity2D*> m_apkEntities;
 
 	friend class Graphics;
 };
 
 //---------------------------------------------------------------------------
+#include "Scene.inl"
+//---------------------------------------------------------------------------
 
-#endif /*--- FORCE_GAME_H ---*/
+#endif /*--- SCENE_H ---*/
 
 //---------------------------------------------------------------------------

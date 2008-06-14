@@ -16,6 +16,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Game.h"
 #include "Shape.h"
+#include "Scene.h"
 #include "Sprite.h"
 #include "Texture.h"
 #include "ForceBOX.h"
