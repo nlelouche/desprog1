@@ -22,7 +22,7 @@ Hecho by: German Battiston AKA Melkor
 	#define FORCEENGINE_API __declspec(dllimport)
 #endif /*--- SUPERENGINE_EXPORTS ---*/
 
-// Sin Esto NO ANDA NADA 
+// Sin Esto NO ANDA NADA
 // Includes Basicos
 
 #include <map>
@@ -40,6 +40,14 @@ Hecho by: German Battiston AKA Melkor
 #define DECLARE_SMART_POINTER(classname) \
 	public:	\
 	typedef boost::shared_ptr <classname> Ptr;
+
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+
+// Fmod Sound System
+
+#include <fmod/fmod.hpp>
 
 //---------------------------------------------------------------------------
 	

@@ -3,36 +3,38 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceGame.cpp
+Clase: MyScene.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#include "ForceGame.h"
+#include "MyScene.h"
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-ForceGame::ForceGame(HINSTANCE hInstance)
+MyScene::MyScene()
 :
-Game(hInstance)/*
-m_pPhantom(new Sprite()),
-m_pPacman(new Sprite()),
-m_pShapeBox1(new ForceBOX()),
-m_pShapeBox2(new ForceBOX()),
-m_pShapeRoof(new ForceBOX()),
-m_pShapeFloor(new ForceBOX())*/
+m_pPhantom(NULL),
+m_pPacman(NULL),
+m_pShapeBox1(NULL),
+m_pShapeBox2(NULL),
+m_pShapeRoof(NULL),
+m_pShapeFloor(NULL)
 {
-	m_pkMyScene = new MyScene();
 
-	setCurrentScene(m_pkMyScene);
 }
 
 //---------------------------------------------------------------------------
-bool ForceGame::onInit()
+bool MyScene::onInit()
 {
-	//setCurrentScene(m_pkMyScene);
-	/*
+	m_pPhantom = new Sprite();
+	m_pPacman = new Sprite();
+	m_pShapeBox1 = new ForceBOX();
+	m_pShapeBox2 = new ForceBOX();
+	m_pShapeRoof = new ForceBOX();
+	m_pShapeFloor = new ForceBOX();
+
 	FMOD_RESULT result;
 	FMOD::System * system;
 	FMOD::Sound * m_pSonido;
@@ -48,7 +50,7 @@ bool ForceGame::onInit()
 	result = channel->setVolume(0.5f);
 	result = channel->setPaused(false);
 
-	
+
 	m_pAnimationInfoPac = AnimationInfo::Ptr(new AnimationInfo());
 	m_pAnimationInfoPacMuerte = AnimationInfo::Ptr(new AnimationInfo());
 
@@ -58,7 +60,6 @@ bool ForceGame::onInit()
 	{
 		return false;
 	}
-
 
 	m_pShapeRoof->setDim(800,20);
 	m_pShapeRoof->setPosXY(0,300);
@@ -71,7 +72,6 @@ bool ForceGame::onInit()
 
 	m_pShapeBox2->setDim(64,64);
 	m_pShapeBox2->setPosXY(300,-200);
-
 
 	m_pPacman->setDim(64,64);
 	m_pPacman->setPosXY(0,-200);
@@ -103,8 +103,6 @@ bool ForceGame::onInit()
 	m_pAnimationInfoPacMuerte->setLength(250.0f);
 	m_pAnimationInfoPacMuerte->setLoopable(false);
 
-
-
 	m_pAnimationPac = new Animation(m_pAnimationInfoPac);
 	m_pAnimationPacMuerte = new Animation(m_pAnimationInfoPacMuerte);
 
@@ -115,21 +113,14 @@ bool ForceGame::onInit()
 	addEntity(m_pShapeRoof);
 	addEntity(m_pShapeFloor);
 	addEntity(m_pShapeBox1);
-	addEntity(m_pShapeBox2);*/
+	addEntity(m_pShapeBox2);
 
 	return true;
 }
 
 //---------------------------------------------------------------------------
-bool ForceGame::onLoop()
-{/*
-	m_pPacman->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pPhantom->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pShapeBox1->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pShapeBox2->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pShapeRoof->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pShapeFloor->Update(m_pkTimer->getTimeBetweenFrames());
-
+bool MyScene::onUpdate(float fTimeBetweenFrames)
+{
 	m_pAnimationPac->Play();
 
 	Entity2D::CollisionResult eResult = m_pPacman->checkCollision(m_pPhantom);
@@ -141,7 +132,7 @@ bool ForceGame::onLoop()
 			float fSpeed = m_pPhantom->getMovingSpeed();
 
 			m_pPhantom->setMovingSpeed(fSpeed * -1);
-			
+
 			m_pPacman->setAnimation(m_pAnimationPacMuerte);
 			m_pAnimationPacMuerte->Play();
 		}
@@ -215,7 +206,7 @@ bool ForceGame::onLoop()
 	}
 
 	eResult = m_pPacman->checkCollision(m_pShapeBox1);
-	
+
 	if(eResult != Entity2D::None)
 	{
 		m_pPacman->setPosXY(m_pPacman->getPrevPosX(), m_pPacman->getPrevPosY());
@@ -236,24 +227,21 @@ bool ForceGame::onLoop()
 		}	
 	}
 
-	m_pPacman->Draw(*m_pGraficos);
-	m_pPhantom->Draw(*m_pGraficos);
-	m_pShapeBox1->Draw(*m_pGraficos);
-	m_pShapeBox2->Draw(*m_pGraficos);
-	m_pShapeRoof->Draw(*m_pGraficos);
-	m_pShapeFloor->Draw(*m_pGraficos);*/
-
 	return true;
 }
 
 //---------------------------------------------------------------------------
-bool ForceGame::onDeInit()
+void MyScene::onDraw(Graphics& rkGraphics) const
 {
-	m_pkMyScene->onDeInit();
+	/***/
+}
 
-	/*delete m_pPacman;
+//---------------------------------------------------------------------------
+bool MyScene::onDeInit()
+{
+	delete m_pPacman;
 	m_pPacman = NULL;
-	
+
 	delete m_pShapeBox1;
 	m_pShapeBox1 = NULL;
 
@@ -270,16 +258,15 @@ bool ForceGame::onDeInit()
 	m_pShapeRoof = NULL;
 
 	delete m_pShapeFloor;
-	m_pShapeFloor = NULL;*/
+	m_pShapeFloor = NULL;
 
 	return true;
 }
 
 //---------------------------------------------------------------------------
-ForceGame::~ForceGame()
+MyScene::~MyScene()
 {
-	delete m_pkMyScene;	
-	m_pkMyScene = NULL;
+	/***/
 }
 
 //---------------------------------------------------------------------------

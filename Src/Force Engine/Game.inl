@@ -19,3 +19,15 @@ inline void Game::addEntity(Entity2D * pkEntity)
 }
 
 //---------------------------------------------------------------------------
+inline void Game::setCurrentScene(Scene * pkCurrentScene)
+{
+	m_pkCurrentScene = pkCurrentScene;
+}
+
+//---------------------------------------------------------------------------
+inline const Scene * Game::getCurrentScene() const
+{
+	return m_pkCurrentScene;
+}
+
+//---------------------------------------------------------------------------

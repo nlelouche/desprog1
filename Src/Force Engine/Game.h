@@ -16,7 +16,9 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Timer.h"
 #include "Shape.h"
+#include "Scene.h"
 #include "Window.h"
+#include "Texture.h"
 #include "Defines.h"
 #include "Graphics.h"
 #include "GraphicsStructs.h"
@@ -24,6 +26,8 @@ Hecho by: German Battiston AKA Melkor
 class Timer;
 class Window;
 class Graphics;
+class Texture;
+class Scene;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Game
 {
@@ -38,6 +42,9 @@ public:
 
 	void addEntity(Entity2D* pkEntity);
 
+	const Scene * getCurrentScene() const;
+	void setCurrentScene(Scene * pkCurrentScene);
+
 protected:
 
 	virtual bool onInit() = 0;
@@ -49,6 +56,8 @@ protected:
 	Graphics * m_pGraficos;
 
 	std::vector <Entity2D*> m_apkEntities;
+
+	Scene * m_pkCurrentScene;
 
 private:
 
