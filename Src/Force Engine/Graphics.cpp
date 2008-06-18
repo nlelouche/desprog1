@@ -60,7 +60,7 @@ bool Graphics::InitDX(Window * m_pWindow)
 	d3DPresentParameters.hDeviceWindow = 0; 
 	d3DPresentParameters.Flags = 0;
 	d3DPresentParameters.EnableAutoDepthStencil = TRUE;
-	d3DPresentParameters.AutoDepthStencilFormat = D3DFMT_D24S8; 
+	d3DPresentParameters.AutoDepthStencilFormat = D3DFMT_D16;
 	d3DPresentParameters.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
 	d3DPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
 
@@ -126,8 +126,10 @@ bool Graphics::InitMat()
 	HRESULT hr = m_pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
 	
 	m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-	m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+	m_pDevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
+
 	m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+	m_pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 
 	return true;
 }
@@ -135,7 +137,7 @@ bool Graphics::InitMat()
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
-	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,0), 1.0f, 0);
+	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0,0,0), 1.0f, 0);
 }
 
 //---------------------------------------------------------------------------
@@ -240,6 +242,7 @@ void Graphics::rotateZ(float fAngle)
 void Graphics::setViewPosition(float fPosX, float fPosY)
 {
 	D3DXMATRIX kMatrix;
+
 	D3DXVECTOR3 kEyePos;
 	D3DXVECTOR3 kLookPos;
 	D3DXVECTOR3 kUpVector;

@@ -12,7 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #ifndef MY_SCENE_H
 #define MY_SCENE_H
 //---------------------------------------------------------------------------
-#include <fmod/fmod.h>
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
@@ -22,12 +21,12 @@ class MyScene : public Scene
 
 public:
 
-	MyScene();
+	MyScene(Graphics & rkGraphics);
 	virtual ~MyScene();
 
 	bool onInit();
 	bool onUpdate(float fTimeBetweenFrames);
-	void onDraw(Graphics& rkGraphics) const;
+	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
 private:
