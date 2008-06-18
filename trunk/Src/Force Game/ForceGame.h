@@ -15,7 +15,6 @@ Hecho by: German Battiston AKA Melkor
 class MyScene;
 //---------------------------------------------------------------------------
 #include "MyScene.h"
-#include <fmod/fmod.h>
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
@@ -35,22 +34,6 @@ protected:
 private:
 
 	MyScene * m_pkMyScene;
-/*
-	Sprite * m_pPacman;
-	Sprite * m_pPhantom;
-
-	Texture::Ptr m_pkPacman;
-
-	ForceBOX * m_pShapeBox1;
-	ForceBOX * m_pShapeBox2;
-	ForceBOX * m_pShapeRoof;
-	ForceBOX * m_pShapeFloor;
-	
-	Animation * m_pAnimationPac;
-	Animation * m_pAnimationPacMuerte;
-
-	AnimationInfo::Ptr m_pAnimationInfoPac;
-	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;*/
 
 	friend class Graphics;
 };

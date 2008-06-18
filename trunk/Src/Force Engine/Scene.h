@@ -13,7 +13,7 @@ Hecho by: German Battiston AKA Melkor
 #define SCENE_H
 //---------------------------------------------------------------------------
 #include "Defines.h"
-#include "Texture.h"
+#include "Entity2D.h"
 //---------------------------------------------------------------------------
 class Graphics;
 class Texture;
@@ -23,15 +23,17 @@ class FORCEENGINE_API Scene
 {
 
 public:
-	Scene(Graphics * m_pGraficos);
+
+	Scene();
+	Scene(Graphics & rkGraphics);
 	virtual ~Scene();
 
 	bool Init();
 	bool Update(float fTimeBetweenFrames);
-	void Draw(Graphics& rkGraphics) const;
+	void Draw(Graphics & rkGraphics) const;
 	bool deInit();
 
-	void addEntity(Entity2D* pkEntity);
+	void addEntity(Entity2D * pkEntity);
 
 protected:
 
@@ -40,9 +42,16 @@ protected:
 	virtual void onDraw(Graphics& rkGraphics) const = 0;
 	virtual bool onDeInit() = 0;
 
+	void sortEntitiesByZ();
+
+	Graphics * m_pkGraphics;
+
 private:
 
+
 	std::vector<Entity2D*> m_apkEntities;
+
+	static bool entity2DComp(Entity2D* pkEnt1, Entity2D* pkEnt2);
 
 	friend class Graphics;
 };

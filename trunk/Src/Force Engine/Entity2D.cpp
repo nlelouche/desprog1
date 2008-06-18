@@ -31,31 +31,31 @@ m_kName("")
 	pkV = &(m_akAABBVertices[0]);
 	pkV->x = -0.5f;
 	pkV->y = -0.5f;
-	pkV->z = 1.0f;
+	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);
 	
 	pkV = &(m_akAABBVertices[1]);
 	pkV->x = -0.5f;
 	pkV->y = 0.5f;	
-	pkV->z = 1.0f;
+	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);
 
 	pkV = &(m_akAABBVertices[2]);
 	pkV->x = 0.5f;
 	pkV->y = 0.5f;
-	pkV->z = 1.0f;
+	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);	
 	
 	pkV = &(m_akAABBVertices[3]);
 	pkV->x = 0.5f;	
 	pkV->y = -0.5f;	
-	pkV->z = 1.0f;
+	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);
 
 	pkV = &(m_akAABBVertices[4]);
 	pkV->x = -0.5f;	
 	pkV->y = -0.5f;	
-	pkV->z = 1.0f;
+	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);
 }
 
@@ -74,7 +74,7 @@ void Entity2D::Draw(Graphics & m_pGraficos) const
 	*/
 
 	m_pGraficos.loadIdentity();
-	m_pGraficos.Translate(m_fX, m_fY);
+	m_pGraficos.Translate(m_fX, m_fY, m_fZ);
 	m_pGraficos.rotateZ(m_fRotationZ * PI / 180.0f);
 	m_pGraficos.Scale(m_fW, m_fH);
 }

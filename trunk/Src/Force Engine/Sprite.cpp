@@ -22,28 +22,28 @@ Entity2D()
 	pkv = &(m_Vertex[0]);
 	pkv->x = -0.5f;	
 	pkv->y = -0.5f;	
-	pkv->z = 1.0f;
+	pkv->z = 0.0f;
 	pkv->tu = 0.0f;	
 	pkv->tv = 1.0f;
 	
 	pkv = &(m_Vertex[1]);
 	pkv->x = -0.5f;
 	pkv->y = 0.5f;	
-	pkv->z = 1.0f;
+	pkv->z = 0.0f;
 	pkv->tu = 0.0f;	
 	pkv->tv = 0.0f;
 
 	pkv = &(m_Vertex[2]);
 	pkv->x = 0.5f;	
 	pkv->y = -0.5f;
-	pkv->z = 1.0f;
+	pkv->z = 0.0f;
 	pkv->tu = 1.0f;	
 	pkv->tv = 1.0f;
 
 	pkv = &(m_Vertex[3]);
 	pkv->x = 0.5f;	
 	pkv->y = 0.5f;	
-	pkv->z = 1.0f;
+	pkv->z = 0.0f;
 	pkv->tu = 1.0f;	
 	pkv->tv = 0.0f;
 }
@@ -123,7 +123,7 @@ void Sprite::setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsi
 //---------------------------------------------------------------------------
 Sprite::~Sprite()
 {
-
+	/***/
 }
 
 //---------------------------------------------------------------------------

@@ -10,15 +10,16 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Scene.h"
-#include "Entity2D.h"
 //---------------------------------------------------------------------------
-Scene::Scene(Graphics * m_pGraficos)
+Scene::Scene()
 {
-	/***/
+
 }
 
 //---------------------------------------------------------------------------
-Scene::~Scene()
+Scene::Scene(Graphics & rkGraphics)
+:
+m_pkGraphics(&rkGraphics)
 {
 	/***/
 }
@@ -41,7 +42,7 @@ bool Scene::Update(float fTimeBetweenFrames)
 }
 
 //---------------------------------------------------------------------------
-void Scene::Draw(Graphics& rkGraphics) const
+void Scene::Draw(Graphics & rkGraphics) const
 {
 	for(unsigned int i = 0; i < m_apkEntities.size(); i++)
 	{
@@ -52,9 +53,27 @@ void Scene::Draw(Graphics& rkGraphics) const
 }
 
 //---------------------------------------------------------------------------
+void Scene::sortEntitiesByZ()
+{
+	sort(m_apkEntities.begin(), m_apkEntities.end(), Scene::entity2DComp);
+}
+
+//---------------------------------------------------------------------------
+bool Scene::entity2DComp(Entity2D* pkEnt1, Entity2D* pkEnt2)
+{
+	return (pkEnt1->getPosZ() > pkEnt2->getPosZ());
+}
+
+//---------------------------------------------------------------------------
 bool Scene::deInit()
 {
 	return onDeInit();
+}
+
+//---------------------------------------------------------------------------
+Scene::~Scene()
+{
+	/***/
 }
 
 //---------------------------------------------------------------------------

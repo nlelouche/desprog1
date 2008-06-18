@@ -41,11 +41,15 @@ public:
 	float getPosY() const;
 	void setPosY(float fY);
 
+	float getPosZ() const;
+	void setPosZ(float fZ);
+
 	float getRotationZ() const;
 	void setRotationZ(float rotationZ);
 
 	void setDim(float fW, float fH);
 	void setPosXY(float fX, float fY);
+	void setPosXYZ(float fX, float fY, float fZ);
 
 	float getPrevPosX() const;
 	float getPrevPosY() const;
@@ -99,6 +103,7 @@ private:
 
 	float m_fX;
 	float m_fY;
+	float m_fZ;
 
 	float m_fRotationZ;
 

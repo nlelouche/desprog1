@@ -53,10 +53,7 @@ bool Game::Loop()
 {
 	assert(m_pkTimer);
 
-	for(unsigned int i = 0; i < m_apkEntities.size(); i++)
-	{
-		m_apkEntities[i]->Update(m_pkTimer->getTimeBetweenFrames());
-	}
+	m_pkTimer->Measure();
 
 	m_pGraficos->Clear();
 	m_pGraficos->BeginScene();
@@ -71,8 +68,6 @@ bool Game::Loop()
 
 	m_pWindow->SetWindowTitle(s.str().c_str());
 
-	m_pkTimer->Measure();
-
 	m_pGraficos->EndScene();
 	m_pGraficos->Present();
 
@@ -82,8 +77,6 @@ bool Game::Loop()
 //---------------------------------------------------------------------------
 bool Game::deInit()
 {
-	onDeInit();
-
 	delete m_pGraficos;
 	m_pGraficos = NULL;
 

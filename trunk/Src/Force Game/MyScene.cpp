@@ -11,31 +11,34 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "MyScene.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
-MyScene::MyScene()
+MyScene::MyScene(Graphics & rkGraphics)
 :
-m_pPhantom(NULL),
+Scene(rkGraphics),
 m_pPacman(NULL),
+m_pPhantom(NULL),
 m_pShapeBox1(NULL),
 m_pShapeBox2(NULL),
 m_pShapeRoof(NULL),
-m_pShapeFloor(NULL)
+m_pShapeFloor(NULL),
+m_pAnimationPac(NULL),
+m_pAnimationPacMuerte(NULL)
 {
-
+	
 }
 
 //---------------------------------------------------------------------------
 bool MyScene::onInit()
 {
-	m_pPhantom = new Sprite();
 	m_pPacman = new Sprite();
+	m_pPhantom = new Sprite();
+
 	m_pShapeBox1 = new ForceBOX();
 	m_pShapeBox2 = new ForceBOX();
 	m_pShapeRoof = new ForceBOX();
 	m_pShapeFloor = new ForceBOX();
 
 	FMOD_RESULT result;
+
 	FMOD::System * system;
 	FMOD::Sound * m_pSonido;
 	FMOD::Channel *channel;
@@ -50,13 +53,12 @@ bool MyScene::onInit()
 	result = channel->setVolume(0.5f);
 	result = channel->setPaused(false);
 
-
 	m_pAnimationInfoPac = AnimationInfo::Ptr(new AnimationInfo());
 	m_pAnimationInfoPacMuerte = AnimationInfo::Ptr(new AnimationInfo());
 
 	m_pkPacman = Texture::Ptr(new Texture("../../res/Pacman.bmp", D3DCOLOR_XRGB(255,255,255)));
 
-	if(!m_pGraficos->loadTexture("../../res/Pacman.bmp", * m_pkPacman))
+	if(!m_pkGraphics->loadTexture("../../res/Pacman.bmp", * m_pkPacman))
 	{
 		return false;
 	}
@@ -83,7 +85,7 @@ bool MyScene::onInit()
 	m_pAnimationInfoPac->addFrame(0,0,18,18);
 	m_pAnimationInfoPac->addFrame(18,0,18,18);
 	m_pAnimationInfoPac->addFrame(36,0,18,18);
-	m_pAnimationInfoPac->setLength(350.0f);
+	m_pAnimationInfoPac->setLength(200.0f);
 	m_pAnimationInfoPac->setLoopable(true);
 
 	m_pPhantom->setDim(64,64);
@@ -94,12 +96,12 @@ bool MyScene::onInit()
 	m_pPhantom->setMovingSpeed(80.0f);
 	m_pPhantom->setMovingAngle(90.0f);
 
+	m_pAnimationInfoPacMuerte->addFrame(108,18,18,18);
 	m_pAnimationInfoPacMuerte->addFrame(36,0,18,18);
 	m_pAnimationInfoPacMuerte->addFrame(90,0,18,18);
 	m_pAnimationInfoPacMuerte->addFrame(108,0,18,18);
 	m_pAnimationInfoPacMuerte->addFrame(72,0,18,18);
 	m_pAnimationInfoPacMuerte->addFrame(54,0,18,18);
-	m_pAnimationInfoPacMuerte->addFrame(108,18,18,18);
 	m_pAnimationInfoPacMuerte->setLength(250.0f);
 	m_pAnimationInfoPacMuerte->setLoopable(false);
 
@@ -115,14 +117,14 @@ bool MyScene::onInit()
 	addEntity(m_pShapeBox1);
 	addEntity(m_pShapeBox2);
 
+	m_pAnimationPac->Play();
+
 	return true;
 }
 
 //---------------------------------------------------------------------------
 bool MyScene::onUpdate(float fTimeBetweenFrames)
 {
-	m_pAnimationPac->Play();
-
 	Entity2D::CollisionResult eResult = m_pPacman->checkCollision(m_pPhantom);
 
 	if(eResult != Entity2D::None)
@@ -231,7 +233,7 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 }
 
 //---------------------------------------------------------------------------
-void MyScene::onDraw(Graphics& rkGraphics) const
+void MyScene::onDraw(Graphics & rkGraphics) const
 {
 	/***/
 }

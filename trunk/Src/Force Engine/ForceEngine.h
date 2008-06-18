@@ -22,6 +22,11 @@ Hecho by: German Battiston AKA Melkor
 #include "ForceBOX.h"
 #include "ForceCIRCLE.h"
 #include "ForceTRIANGLE.h"
+
+//---------------------------------------------------------------------------
+// FMOD INCLUDE FILE
+
+#include <fmod/fmod.h>
 //---------------------------------------------------------------------------
 
 #endif /*--- FORCE_ENGINE_H ---*/
