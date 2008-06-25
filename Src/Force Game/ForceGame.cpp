@@ -18,17 +18,17 @@ ForceGame::ForceGame(HINSTANCE hInstance)
 Game(hInstance),
 m_pkMyScene(NULL)
 {
-
+	
 }
 
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
-	m_pkMyScene = new MyScene(*m_pGraficos);
+	m_pkMyScene = new MyScene(*m_pkGraficos);
 
 	setCurrentScene(m_pkMyScene);
 
-	m_pkMyScene->Init();
+	m_pkMyScene->Init(m_pkInput);
 
 	return true;
 }
@@ -37,7 +37,13 @@ bool ForceGame::onInit()
 bool ForceGame::onLoop()
 {
 	m_pkMyScene->Update(m_pkTimer->getTimeBetweenFrames());
-	m_pkMyScene->Draw(*m_pGraficos);
+
+	if(m_pkInput->getKeyDown(DIK_ESCAPE))
+	{
+		return true;
+	}
+
+	m_pkMyScene->Draw(*m_pkGraficos);
 
 	return true;
 }

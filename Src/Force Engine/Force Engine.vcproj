@@ -383,6 +383,30 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Input"
+			>
+			<File
+				RelativePath=".\DirectInput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DirectInput.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Input.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Input.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Input.inl"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

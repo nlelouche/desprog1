@@ -2,40 +2,62 @@
 
 Force Engine v0.5
 
-Creado: 09/05/08
-Clase: ForceEngine.h
+Creado: 24/06/08
+Clase: DirectInput.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCE_ENGINE_H
-#define FORCE_ENGINE_H
+#ifndef DIRECT_INPUT_H
+#define DIRECT_INPUT_H
 //---------------------------------------------------------------------------
-
+#define DIRECTINPUT_VERSION 0x0800
 //---------------------------------------------------------------------------
-// Includes Varios
-#include "Game.h"
-#include "Shape.h"
-#include "Scene.h"
-#include "Sprite.h"
-#include "Texture.h"
-#include "Entity2D.h"
-//---------------------------------------------------------------------------
-// Shapes Basicas
-#include "ForceBOX.h"
-#include "ForceCIRCLE.h"
-#include "ForceTRIANGLE.h"
-//---------------------------------------------------------------------------
-// Input
 #include "Input.h"
-#include "DirectInput.h"
 //---------------------------------------------------------------------------
-// FMOD INCLUDE FILE
-
-#include <fmod/fmod.h>
+#include "d3d9.h"
+#include "dinput.h"
+//---------------------------------------------------------------------------
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dxguid.lib")
 //---------------------------------------------------------------------------
 
-#endif /*--- FORCE_ENGINE_H ---*/
+class FORCEENGINE_API DirectInput : public Input
+{
+
+public:
+
+	DirectInput(HINSTANCE hInstance, HWND hWnd);
+	virtual ~DirectInput();
+
+	bool Init();
+	void deInit();
+
+	// Mouse y Keyboard
+
+	void Acquire();
+	void Reacquire();
+	void Unacquire();
+	void Reset();
+
+private:
+
+	LPDIRECTINPUT8 m_lpObjectOne;
+	LPDIRECTINPUT8 m_lpObjectTwo;
+
+	LPDIRECTINPUTDEVICE8 m_lpKeyboard;
+	LPDIRECTINPUTDEVICE8 m_lpMouse;
+
+	DIMOUSESTATE m_kMouseTaken;
+
+	HINSTANCE m_hInstance;
+
+	HWND m_hWnd;
+};
+
+//---------------------------------------------------------------------------
+
+#endif /*--- DIRECT_INPUT_H ---*/
 
 //---------------------------------------------------------------------------

@@ -18,7 +18,7 @@ class MyScene;
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-class ForceGame: public Game
+class ForceGame : public Game
 {
 public:
 
