@@ -202,6 +202,18 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Animacion N-Gin"
+			>
+			<File
+				RelativePath=".\AnimEngine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\AnimEngine.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

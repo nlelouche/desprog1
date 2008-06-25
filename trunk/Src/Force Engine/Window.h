@@ -30,12 +30,12 @@ public:
 	bool createWindow(unsigned int uiWidth, unsigned int uiHeight);
 	void SetWindowTitle(LPCSTR lpString);
 
+	HWND m_hWnd;
+	HINSTANCE m_hInstance;
+
 private:
 
 	Timer * m_pkTimer;
-
-	HWND m_hWnd;
-	HINSTANCE m_hInstance;
 
 	friend class Graphics;
 };

@@ -12,12 +12,14 @@ Hecho by: German Battiston AKA Melkor
 #ifndef SCENE_H
 #define SCENE_H
 //---------------------------------------------------------------------------
+#include "Input.h"
 #include "Defines.h"
 #include "Entity2D.h"
 //---------------------------------------------------------------------------
 class Graphics;
 class Texture;
 class Entity2D;
+class Input;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Scene
 {
@@ -28,7 +30,7 @@ public:
 	Scene(Graphics & rkGraphics);
 	virtual ~Scene();
 
-	bool Init();
+	bool Init(Input * pkInput);
 	bool Update(float fTimeBetweenFrames);
 	void Draw(Graphics & rkGraphics) const;
 	bool deInit();
@@ -46,8 +48,9 @@ protected:
 
 	Graphics * m_pkGraphics;
 
-private:
+	Input * m_pkInput;
 
+private:
 
 	std::vector<Entity2D*> m_apkEntities;
 
@@ -56,8 +59,8 @@ private:
 	friend class Graphics;
 };
 
-//---------------------------------------------------------------------------
 #include "Scene.inl"
+
 //---------------------------------------------------------------------------
 
 #endif /*--- SCENE_H ---*/

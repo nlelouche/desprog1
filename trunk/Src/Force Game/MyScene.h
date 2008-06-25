@@ -29,23 +29,16 @@ public:
 	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
+protected:
+
+	void updateGhostInput();
+	void updatePacmanCollision();
+
 private:
 
-	Sprite * m_pPacman;
-	Sprite * m_pPhantom;
+	Sprite * m_pkGhost;
 
 	Texture::Ptr m_pkPacman;
-
-	ForceBOX * m_pShapeBox1;
-	ForceBOX * m_pShapeBox2;
-	ForceBOX * m_pShapeRoof;
-	ForceBOX * m_pShapeFloor;
-
-	Animation * m_pAnimationPac;
-	Animation * m_pAnimationPacMuerte;
-
-	AnimationInfo::Ptr m_pAnimationInfoPac;
-	AnimationInfo::Ptr m_pAnimationInfoPacMuerte;
 
 	friend class Graphics;
 };

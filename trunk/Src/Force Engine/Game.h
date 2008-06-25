@@ -17,17 +17,20 @@ Hecho by: German Battiston AKA Melkor
 #include "Timer.h"
 #include "Shape.h"
 #include "Scene.h"
+#include "Input.h"
 #include "Window.h"
 #include "Texture.h"
 #include "Defines.h"
 #include "Graphics.h"
+#include "DirectInput.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
+class Scene;
+class Input;
 class Timer;
 class Window;
 class Graphics;
 class Texture;
-class Scene;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Game
 {
@@ -40,7 +43,7 @@ public:
 	bool Loop();
 	bool deInit();
 
-	void addEntity(Entity2D* pkEntity);
+	void addEntity(Entity2D * pkEntity);
 
 	const Scene * getCurrentScene() const;
 	void setCurrentScene(Scene * pkCurrentScene);
@@ -53,7 +56,9 @@ protected:
 
 	Timer * m_pkTimer;
 
-	Graphics * m_pGraficos;
+	Input * m_pkInput;
+
+	Graphics * m_pkGraficos;
 
 	std::vector <Entity2D*> m_apkEntities;
 
@@ -61,13 +66,13 @@ protected:
 
 private:
 
-	Window * m_pWindow;
+	Window * m_pkWindow;
 
 	HINSTANCE m_hInstance;
 };
 
-//---------------------------------------------------------------------------
 #include "Game.inl"
+
 //---------------------------------------------------------------------------
 
 #endif /*--- GAME_H ---*/

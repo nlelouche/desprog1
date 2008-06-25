@@ -19,14 +19,19 @@ Scene::Scene()
 //---------------------------------------------------------------------------
 Scene::Scene(Graphics & rkGraphics)
 :
-m_pkGraphics(&rkGraphics)
+m_pkGraphics(&rkGraphics),
+m_pkInput(NULL)
 {
 	/***/
 }
 
 //---------------------------------------------------------------------------
-bool Scene::Init()
+bool Scene::Init(Input * pkInput)
 {
+	m_pkInput = pkInput;
+
+	sortEntitiesByZ();
+
 	return onInit();
 }
 

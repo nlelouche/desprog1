@@ -17,9 +17,10 @@ using namespace std;
 Game::Game(HINSTANCE hInstance)
 :
 m_hInstance(hInstance),
+m_pkInput(NULL),
 m_pkTimer(new Timer()),
-m_pGraficos(new Graphics()),
-m_pWindow(new Window(hInstance))
+m_pkGraficos(new Graphics()),
+m_pkWindow(new Window(hInstance))
 {
 	
 }
@@ -33,12 +34,24 @@ Game::~Game()
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
-	if(!m_pWindow->createWindow(800, 600))
+	if(!m_pkWindow->createWindow(800,600))
 	{
 		return false;
 	}
 
-	if(!m_pGraficos->InitDX(m_pWindow))
+	if(!m_pkGraficos->InitDX(m_pkWindow))
+	{
+		return false;
+	}
+
+	m_pkInput = new DirectInput(m_pkWindow->m_hInstance, m_pkWindow->m_hWnd);
+
+	if(!m_pkInput->Init())
+	{
+		return false;
+	}
+
+	if(!onInit())
 	{
 		return false;
 	}
@@ -55,8 +68,10 @@ bool Game::Loop()
 
 	m_pkTimer->Measure();
 
-	m_pGraficos->Clear();
-	m_pGraficos->BeginScene();
+	m_pkInput->Reacquire();
+
+	m_pkGraficos->Clear();
+	m_pkGraficos->BeginScene();
 
 	onLoop();
 
@@ -66,10 +81,10 @@ bool Game::Loop()
 
 	s << "Force Engine v0.5 | FPS: " << m_pkTimer->getFPS();
 
-	m_pWindow->SetWindowTitle(s.str().c_str());
+	m_pkWindow->SetWindowTitle(s.str().c_str());
 
-	m_pGraficos->EndScene();
-	m_pGraficos->Present();
+	m_pkGraficos->EndScene();
+	m_pkGraficos->Present();
 
 	return true;
 }
@@ -77,14 +92,19 @@ bool Game::Loop()
 //---------------------------------------------------------------------------
 bool Game::deInit()
 {
-	delete m_pGraficos;
-	m_pGraficos = NULL;
+	delete m_pkGraficos;
+	m_pkGraficos = NULL;
 
-	delete m_pWindow;
-	m_pWindow = NULL;
+	delete m_pkWindow;
+	m_pkWindow = NULL;
 
 	delete m_pkTimer;
 	m_pkTimer = NULL;
+
+	m_pkInput->deInit();
+
+	delete m_pkInput;
+	m_pkInput = NULL;
 
 	return true;
 }
