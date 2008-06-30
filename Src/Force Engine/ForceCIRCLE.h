@@ -28,7 +28,7 @@ public:
 	ForceCIRCLE(int iNumCaras);
 	~ForceCIRCLE();
 
-	void Draw(Graphics & g_graphics) const;
+	void Draw(Graphics & rkGraphics) const;
 	
 	int getNumeroCaras();
 	void setCantidadCaras(int iNumCaras);
@@ -37,6 +37,8 @@ private:
 
 	int m_iNumCaras;
 };
+
+//---------------------------------------------------------------------------
 
 #endif /*--- FORCECIRCLE_H ---*/
 

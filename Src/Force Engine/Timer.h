@@ -15,8 +15,6 @@ Hecho by: German Battiston AKA Melkor
 #include <windows.h>
 #include "Defines.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 class FORCEENGINE_API Timer
 {
 
@@ -25,7 +23,7 @@ public:
 	Timer ();
 	~Timer ();
 
-	void FirstMeasure();
+	void firstMeasure();
 	void Measure();
 
 	float getTimeBetweenFrames() const;

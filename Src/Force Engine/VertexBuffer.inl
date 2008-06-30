@@ -9,8 +9,6 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 VertexBuffer<PixelFormatClass,FVF>::VertexBuffer()
 :
@@ -18,25 +16,23 @@ m_pkDevice(NULL)
 {
 
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 VertexBuffer<PixelFormatClass,FVF>::~VertexBuffer()
 {
 
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
-bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * m_pDevice, bool bDynamic)
+bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * pkDevice, bool bDynamic)
 {
-	m_pkDevice = m_pDevice;
+	m_pkDevice = pkDevice;
 
 	m_uiBase = 0;
 	m_uiFlush = 150;
 	m_uiVbSize = 450;
 
-	HRESULT hr = m_pDevice->CreateVertexBuffer(
+	HRESULT hr = pkDevice->CreateVertexBuffer(
 											m_uiVbSize * sizeof(PixelFormatClass),
 											(bDynamic ? D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC : 0),
 											FVF,
@@ -55,14 +51,12 @@ bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * m_pDevice, bo
 		return false;
 	}
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Release()
 {
 
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount)
@@ -129,7 +123,6 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 	m_pVertexBuffer->Unlock();
 	
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Flush()
@@ -165,7 +158,6 @@ void VertexBuffer<PixelFormatClass,FVF>::Flush()
 
 	assert(hr == D3D_OK);
 }
-
 //---------------------------------------------------------------------------
 template <class PixelFormatClass, unsigned int FVF>
 void VertexBuffer<PixelFormatClass,FVF>::Bind(void)
@@ -176,5 +168,4 @@ void VertexBuffer<PixelFormatClass,FVF>::Bind(void)
 	hr = m_pkDevice->SetFVF(FVF);
 	hr = m_pkDevice->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
 }
-
 //---------------------------------------------------------------------------

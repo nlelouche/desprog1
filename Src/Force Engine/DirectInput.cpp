@@ -22,13 +22,11 @@ m_hWnd(hWnd)
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 DirectInput::~DirectInput()
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 bool DirectInput::Init()
 {
@@ -123,7 +121,6 @@ bool DirectInput::Init()
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 void DirectInput::deInit()
 {
@@ -139,7 +136,6 @@ void DirectInput::deInit()
 	m_lpObjectTwo->Release();
 	m_lpObjectTwo = NULL;
 }
-
 //---------------------------------------------------------------------------
 void DirectInput::Reacquire()
 {
@@ -151,7 +147,6 @@ void DirectInput::Reacquire()
 
 	Acquire();
 }
-
 //---------------------------------------------------------------------------
 void DirectInput::Unacquire()
 {
@@ -162,7 +157,6 @@ void DirectInput::Unacquire()
 	m_lpMouse->Unacquire();
 	m_lpKeyboard->Unacquire();
 }
-
 //---------------------------------------------------------------------------
 void DirectInput::Acquire()
 {
@@ -193,7 +187,6 @@ void DirectInput::Acquire()
 	// Update el Estado General
 	Update();
 }
-
 //---------------------------------------------------------------------------
 void DirectInput::Reset()
 {
@@ -201,5 +194,4 @@ void DirectInput::Reset()
 	Input::Reset();
 	ZeroMemory(&m_kMouseTaken, sizeof(m_kMouseTaken));
 }
-
 //---------------------------------------------------------------------------

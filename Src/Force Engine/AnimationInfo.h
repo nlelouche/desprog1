@@ -23,7 +23,6 @@ struct FrameInfo
 	unsigned int uiWidth;
 	unsigned int uiHeight;
 };
-
 //---------------------------------------------------------------------------
 class FORCEENGINE_API AnimationInfo
 {

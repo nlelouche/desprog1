@@ -14,7 +14,8 @@ Hecho by: German Battiston AKA Melkor
 Entity2D::Entity2D()
 :
 m_fX(0), 
-m_fY(0), 
+m_fY(0),
+m_fZ(0),
 m_fW(0),
 m_fH(0),
 m_fRotationZ(0),
@@ -58,27 +59,26 @@ m_kName("")
 	pkV->z = 0.0f;
 	pkV->Color = D3DCOLOR_XRGB(255,255,255);
 }
-
 //---------------------------------------------------------------------------
-void Entity2D::Draw(Graphics & m_pGraficos) const
+void Entity2D::Draw(Graphics & rkGraphics) const
 {
-	m_pGraficos.setMatrixMode(WORLD);
+	rkGraphics.setMatrixMode(WORLD);
 	
-	m_pGraficos.loadIdentity();
+	rkGraphics.loadIdentity();
 
-	/*	
-	m_pGraficos.Translate(m_fX, m_fY);
-	m_pGraficos.Scale(m_fW, m_fH);
-	m_pGraficos.unbindTexture();
-	m_pGraficos.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5);
+	/*		Dibuja los Bordes de Entities
+
+	rkGraphics.Translate(m_fX, m_fY);
+	rkGraphics.Scale(m_fW, m_fH);
+	rkGraphics.unbindTexture();
+	rkGraphics.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5);
 	*/
 
-	m_pGraficos.loadIdentity();
-	m_pGraficos.Translate(m_fX, m_fY, m_fZ);
-	m_pGraficos.rotateZ(m_fRotationZ * PI / 180.0f);
-	m_pGraficos.Scale(m_fW, m_fH);
+	rkGraphics.loadIdentity();
+	rkGraphics.Translate(m_fX, m_fY, m_fZ);
+	rkGraphics.rotateZ(m_fRotationZ * PI / 180.0f);
+	rkGraphics.Scale(m_fW, m_fH);
 }
-
 //---------------------------------------------------------------------------
 void Entity2D::Update(float fTimeBetweenFrames)
 {
@@ -91,7 +91,6 @@ void Entity2D::Update(float fTimeBetweenFrames)
 		m_fY += (fTimeBetweenFrames / 1000.0f) * m_fMovingSpeed * sin(m_fMovingAngleRad);
 	}
 }
-
 //---------------------------------------------------------------------------
 Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 {
@@ -115,11 +114,9 @@ Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 	
 	return None;
 }
-
 //---------------------------------------------------------------------------
 Entity2D::~Entity2D()
 {
 
 }
-
 //---------------------------------------------------------------------------

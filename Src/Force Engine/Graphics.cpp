@@ -11,27 +11,23 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Graphics.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 Graphics::Graphics()
 :
 m_pD3D(NULL),
-m_pDevice(NULL),
+m_pkDevice(NULL),
 m_hWnd(NULL),
 m_eCurrentMatMode(VIEW)
 {
 	
 }
-
 //---------------------------------------------------------------------------
 Graphics::~Graphics()
 {
 	m_vtxBufColor.Release();
 	m_vtxBufTexture.Release();
 }
-
 //---------------------------------------------------------------------------
-bool Graphics::InitDX(Window * m_pWindow)
+bool Graphics::InitDX(Window * m_pkWindow)
 {
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -67,18 +63,18 @@ bool Graphics::InitDX(Window * m_pWindow)
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
  							  D3DDEVTYPE_HAL,							
-							  m_pWindow->m_hWnd,
+							  m_pkWindow->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
-							  &m_pDevice
+							  &m_pkDevice
 							  );
 
-	if(!m_vtxBufColor.Create(m_pDevice, true))
+	if(!m_vtxBufColor.Create(m_pkDevice, true))
 	{
 		return false;
 	}
 
-	if(!m_vtxBufTexture.Create(m_pDevice, true))
+	if(!m_vtxBufTexture.Create(m_pkDevice, true))
 	{
 		return false;
 	}
@@ -87,7 +83,6 @@ bool Graphics::InitDX(Window * m_pWindow)
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 bool Graphics::InitMat()
 {	
@@ -98,7 +93,7 @@ bool Graphics::InitMat()
 	D3DXMatrixTranslation(&d3dmatMundo, 0,  0, 1.0f);
 	D3DXMatrixRotationZ(&d3dmatMundo, 0);
 
-	m_pDevice->SetTransform(D3DTS_WORLD, &d3dmatMundo);
+	m_pkDevice->SetTransform(D3DTS_WORLD, &d3dmatMundo);
 
 	// Matriz de Vista
 
@@ -110,12 +105,12 @@ bool Graphics::InitMat()
 	D3DXVECTOR3 upVec(0.0f, 1.0f, 0.0f); 
 
 	D3DXMatrixLookAtLH(&d3dmatVista, &eyePos, &lookPos, &upVec);
-	m_pDevice->SetTransform(D3DTS_VIEW, &d3dmatVista);
+	m_pkDevice->SetTransform(D3DTS_VIEW, &d3dmatVista);
 
 	// Matriz de Proyeccion
 
 	D3DVIEWPORT9 viewport;
-	m_pDevice->GetViewport(&viewport);
+	m_pkDevice->GetViewport(&viewport);
 
 	float viewportWidth = static_cast <float> (viewport.Width);
 	float viewportHeight = static_cast <float> (viewport.Height);
@@ -123,55 +118,48 @@ bool Graphics::InitMat()
 	D3DXMATRIX d3dmatProy;
 	D3DXMatrixOrthoLH(&d3dmatProy, viewportWidth, viewportHeight, -25, 25);
 	
-	HRESULT hr = m_pDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
+	HRESULT hr = m_pkDevice->SetTransform(D3DTS_PROJECTION, &d3dmatProy);	
 	
-	m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-	m_pDevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
+	m_pkDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+	m_pkDevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 
-	m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
-	m_pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+	m_pkDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+	m_pkDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
-	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0,0,0), 1.0f, 0);
+	m_pkDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0,0,0), 1.0f, 0);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::BeginScene()
 {
-	m_pDevice->BeginScene();
+	m_pkDevice->BeginScene();
 }
-
 //---------------------------------------------------------------------------
 void Graphics::EndScene()
 {
-	m_pDevice->EndScene();
+	m_pkDevice->EndScene();
 }
-
 //---------------------------------------------------------------------------
 void Graphics::Present()
 {
-	m_pDevice->Present(NULL, NULL, NULL, NULL);
+	m_pkDevice->Present(NULL, NULL, NULL, NULL);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::Draw(const ColorVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
 {
 	m_vtxBufColor.Bind();
 	m_vtxBufColor.Draw(vertexCollection, prim, uiVertexCount);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::Draw(const TextureVertex * vertexCollection, D3DPRIMITIVETYPE prim, unsigned int uiVertexCount)
 {
 	m_vtxBufTexture.Bind();
 	m_vtxBufTexture.Draw(vertexCollection, prim, uiVertexCount);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::loadIdentity()
 {
@@ -190,17 +178,14 @@ void Graphics::loadIdentity()
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 	
-	m_pDevice->SetTransform(eMatMode, &kTempMatrix);
+	m_pkDevice->SetTransform(eMatMode, &kTempMatrix);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::setMatrixMode(MatrixMode eMode)
 {
 	m_eCurrentMatMode = eMode;
 }
-
 //---------------------------------------------------------------------------
-
 void Graphics::Translate(float fX, float fY, float fZ)
 {
 	D3DXMATRIX kTempMatrix;
@@ -209,9 +194,8 @@ void Graphics::Translate(float fX, float fY, float fZ)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast <D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pkDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::Scale(float fW, float fH, float fD)
 {
@@ -223,9 +207,8 @@ void Graphics::Scale(float fW, float fH, float fD)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pkDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::rotateZ(float fAngle)
 {
@@ -235,9 +218,8 @@ void Graphics::rotateZ(float fAngle)
 
 	D3DTRANSFORMSTATETYPE eMatMode = static_cast<D3DTRANSFORMSTATETYPE>(m_eCurrentMatMode);
 
-	m_pDevice->MultiplyTransform(eMatMode, &kTempMatrix);
+	m_pkDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::setViewPosition(float fPosX, float fPosY)
 {
@@ -260,26 +242,23 @@ void Graphics::setViewPosition(float fPosX, float fPosY)
 	kUpVector.z = 0.0f;
 
 	D3DXMatrixLookAtLH(&kMatrix, &kEyePos, &kLookPos, &kUpVector);
-	m_pDevice->SetTransform(D3DTS_VIEW, &kMatrix);
+	m_pkDevice->SetTransform(D3DTS_VIEW, &kMatrix);
 }
-
 //---------------------------------------------------------------------------
 void Graphics::unbindTexture()
 {
-	m_pDevice->SetTexture(0, NULL);
+	m_pkDevice->SetTexture(0, NULL);
 }
-
 //---------------------------------------------------------------------------
-bool Graphics::bindTexture(Texture &rkTexture)
+bool Graphics::bindTexture(Texture & rkTexture)
 {
 	IDirect3DTexture9 * pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
 	assert(pkDXTexture);
 	
-	HRESULT hr = m_pDevice->SetTexture(0, pkDXTexture);
+	HRESULT hr = m_pkDevice->SetTexture(0, pkDXTexture);
 
 	return (hr == D3D_OK);
 }
-
 //---------------------------------------------------------------------------
 bool Graphics::loadTexture(const char * pszFilename, Texture & rkTexture)
 {
@@ -293,12 +272,12 @@ bool Graphics::loadTexture(const char * pszFilename, Texture & rkTexture)
 		HRESULT hr;
 		
 		hr = D3DXCreateTextureFromFileEx(
-										m_pDevice,
+										m_pkDevice,
 										rkTexture.getFileName().c_str(), 
 										0, 0, 0, 0,
 										D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
 										D3DX_FILTER_NONE, D3DX_FILTER_NONE,
-										rkTexture.getColorkey(),
+										rkTexture.getColorKey(),
 										NULL,
 										NULL,
 										&pkDXTexture
@@ -319,5 +298,4 @@ bool Graphics::loadTexture(const char * pszFilename, Texture & rkTexture)
 
 	return true;
 }
-
 //---------------------------------------------------------------------------

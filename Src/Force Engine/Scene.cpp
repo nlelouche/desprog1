@@ -13,9 +13,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 Scene::Scene()
 {
-
+	/***/
 }
-
 //---------------------------------------------------------------------------
 Scene::Scene(Graphics & rkGraphics)
 :
@@ -24,7 +23,6 @@ m_pkInput(NULL)
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 bool Scene::Init(Input * pkInput)
 {
@@ -34,7 +32,6 @@ bool Scene::Init(Input * pkInput)
 
 	return onInit();
 }
-
 //---------------------------------------------------------------------------
 bool Scene::Update(float fTimeBetweenFrames)
 {
@@ -45,7 +42,6 @@ bool Scene::Update(float fTimeBetweenFrames)
 
 	return onUpdate(fTimeBetweenFrames);
 }
-
 //---------------------------------------------------------------------------
 void Scene::Draw(Graphics & rkGraphics) const
 {
@@ -56,29 +52,24 @@ void Scene::Draw(Graphics & rkGraphics) const
 
 	onDraw(rkGraphics);
 }
-
 //---------------------------------------------------------------------------
 void Scene::sortEntitiesByZ()
 {
 	sort(m_apkEntities.begin(), m_apkEntities.end(), Scene::entity2DComp);
 }
-
 //---------------------------------------------------------------------------
 bool Scene::entity2DComp(Entity2D* pkEnt1, Entity2D* pkEnt2)
 {
 	return (pkEnt1->getPosZ() > pkEnt2->getPosZ());
 }
-
 //---------------------------------------------------------------------------
 bool Scene::deInit()
 {
 	return onDeInit();
 }
-
 //---------------------------------------------------------------------------
 Scene::~Scene()
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------

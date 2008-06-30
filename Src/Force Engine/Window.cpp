@@ -11,8 +11,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Window.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 Window::Window(HINSTANCE hInstance)
 :
 m_hInstance(hInstance),
@@ -20,7 +18,6 @@ m_pkTimer(NULL)
 {
 	m_pkTimer = new Timer();
 }
-
 //---------------------------------------------------------------------------
 bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 {
@@ -63,7 +60,6 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -78,18 +74,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
-
 //---------------------------------------------------------------------------
 void Window::SetWindowTitle(LPCSTR lpString)
 {
 	SetWindowText(m_hWnd, lpString);
 }
-
 //---------------------------------------------------------------------------
 Window::~Window()
 {
 	delete m_pkTimer;
 	m_pkTimer = NULL;
 }
-
 //---------------------------------------------------------------------------

@@ -12,8 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #ifndef VERTEX_BUFFER_H
 #define VERTEX_BUFFER_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <cassert>
@@ -21,12 +19,9 @@ Hecho by: German Battiston AKA Melkor
 #include "Defines.h"
 #include "GraphicsStructs.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
 //---------------------------------------------------------------------------
-
 template <class PixelFormatClass, unsigned int FVF>
 class VertexBuffer
 {
@@ -35,7 +30,7 @@ public:
 	VertexBuffer();
 	~VertexBuffer();
 
-	bool Create(IDirect3DDevice9 * m_pDevice, bool bDynamic);
+	bool Create(IDirect3DDevice9 * pkDevice, bool bDynamic);
 	void Bind(void);
 	void Flush(void);
 	void Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount);

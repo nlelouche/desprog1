@@ -11,51 +11,48 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Sprite.h"
 //---------------------------------------------------------------------------
-
 Sprite::Sprite()
 :
-m_pkCurrentAnim(NULL),
-Entity2D()
+Entity2D(),
+m_pkCurrentAnim(NULL)
 {
 	TextureVertex * pkv;
 
-	pkv = &(m_Vertex[0]);
+	pkv = &(m_pkVertex[0]);
 	pkv->x = -0.5f;	
 	pkv->y = -0.5f;	
 	pkv->z = 0.0f;
 	pkv->tu = 0.0f;	
 	pkv->tv = 1.0f;
 	
-	pkv = &(m_Vertex[1]);
+	pkv = &(m_pkVertex[1]);
 	pkv->x = -0.5f;
 	pkv->y = 0.5f;	
 	pkv->z = 0.0f;
 	pkv->tu = 0.0f;	
 	pkv->tv = 0.0f;
 
-	pkv = &(m_Vertex[2]);
+	pkv = &(m_pkVertex[2]);
 	pkv->x = 0.5f;	
 	pkv->y = -0.5f;
 	pkv->z = 0.0f;
 	pkv->tu = 1.0f;	
 	pkv->tv = 1.0f;
 
-	pkv = &(m_Vertex[3]);
+	pkv = &(m_pkVertex[3]);
 	pkv->x = 0.5f;	
 	pkv->y = 0.5f;	
 	pkv->z = 0.0f;
 	pkv->tu = 1.0f;	
 	pkv->tv = 0.0f;
 }
-
 //---------------------------------------------------------------------------
 Sprite::Sprite(const Sprite& rkSprite)
 {
 	*this = rkSprite;
 }
-
 //---------------------------------------------------------------------------
-void Sprite::Draw(Graphics& rkGraphics) const
+void Sprite::Draw(Graphics & rkGraphics) const
 {
 	assert(m_pkTexture);
 
@@ -63,14 +60,13 @@ void Sprite::Draw(Graphics& rkGraphics) const
 	
 	if(rkGraphics.bindTexture(* m_pkTexture))
 	{
-		rkGraphics.Draw(m_Vertex, D3DPT_TRIANGLESTRIP, 4);
+		rkGraphics.Draw(m_pkVertex, D3DPT_TRIANGLESTRIP, 4);
 	}
 	else
 	{
 		assert(0);
 	}
 }
-
 //---------------------------------------------------------------------------
 void Sprite::Update(float fTimeBetweenFrames)
 {
@@ -86,7 +82,6 @@ void Sprite::Update(float fTimeBetweenFrames)
 		setTextureArea(kInfo.uiOffsetX, kInfo.uiOffsetY, kInfo.uiWidth, kInfo.uiHeight);
 	}
 }
-
 //---------------------------------------------------------------------------
 void Sprite::setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsigned int uiWidth, unsigned int uiHeight)
 {
@@ -103,27 +98,25 @@ void Sprite::setTextureArea(unsigned int uiOffsetX, unsigned int uiOffsetY, unsi
 	
 	TextureVertex * pkv;
 
-	pkv = &(m_Vertex[0]);
+	pkv = &(m_pkVertex[0]);
 	pkv->tu = fU1;	
 	pkv->tv = fV2;
 	
-	pkv = &(m_Vertex[1]);
+	pkv = &(m_pkVertex[1]);
 	pkv->tu = fU1;
 	pkv->tv = fV1;
 
-	pkv = &(m_Vertex[2]);
+	pkv = &(m_pkVertex[2]);
 	pkv->tu = fU2;	
 	pkv->tv = fV2;
 
-	pkv = &(m_Vertex[3]);
+	pkv = &(m_pkVertex[3]);
 	pkv->tu = fU2;	
 	pkv->tv = fV1;
 }
-
 //---------------------------------------------------------------------------
 Sprite::~Sprite()
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------

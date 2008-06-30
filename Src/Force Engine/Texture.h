@@ -33,7 +33,7 @@ public:
 	void setWidth(unsigned int uiWidth);
 	void setHeight(unsigned int uiHeight);
 
-	unsigned long getColorkey() const;
+	unsigned long getColorKey() const;
 
 private:
 

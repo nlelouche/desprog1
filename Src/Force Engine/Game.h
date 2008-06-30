@@ -12,8 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #ifndef GAME_H
 #define GAME_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include "Timer.h"
 #include "Shape.h"
 #include "Scene.h"
@@ -60,9 +58,9 @@ protected:
 
 	Graphics * m_pkGraficos;
 
-	std::vector <Entity2D*> m_apkEntities;
-
 	Scene * m_pkCurrentScene;
+
+	std::vector <Entity2D*> m_apkEntities;
 
 private:
 
@@ -71,8 +69,8 @@ private:
 	HINSTANCE m_hInstance;
 };
 
+//---------------------------------------------------------------------------
 #include "Game.inl"
-
 //---------------------------------------------------------------------------
 
 #endif /*--- GAME_H ---*/

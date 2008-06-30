@@ -15,6 +15,7 @@ Hecho by: German Battiston AKA Melkor
 class MyScene;
 //---------------------------------------------------------------------------
 #include "MyScene.h"
+#include "AnimEngine.h"
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
@@ -33,7 +34,7 @@ protected:
 
 private:
 
-	MyScene * m_pkMyScene;
+	AnimEngine * m_pkAnimEngine;
 
 	friend class Graphics;
 };

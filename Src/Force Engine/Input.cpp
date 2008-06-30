@@ -15,13 +15,11 @@ Input::Input()
 {
 	Reset();
 }
-
 //---------------------------------------------------------------------------
 Input::~Input()
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 void Input::Update()
 {
@@ -82,7 +80,6 @@ void Input::Update()
 		m_bButtonState[MB_3] = false;
 	}
 }
-
 //---------------------------------------------------------------------------
 void Input::getKeyEvent()
 {
@@ -107,7 +104,6 @@ void Input::getKeyEvent()
 		}
 	}
 }
-
 //---------------------------------------------------------------------------
 void Input::setMousePosition(long x, long y, long z)
 {
@@ -119,7 +115,6 @@ void Input::setMousePosition(long x, long y, long z)
 	m_lMouseRelPosition[POS_Y] = 0;
 	m_lMouseRelPosition[POS_Z] = 0;
 }
-
 //---------------------------------------------------------------------------
 void Input::Reset()
 {
@@ -137,5 +132,4 @@ void Input::Reset()
 
 	m_bButtonState[0] = false;	m_bButtonState[1] = false;	m_bButtonState[2] = false;
 }
-
 //---------------------------------------------------------------------------

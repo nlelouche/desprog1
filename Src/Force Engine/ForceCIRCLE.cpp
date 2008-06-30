@@ -11,22 +11,18 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "ForceCIRCLE.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 ForceCIRCLE::ForceCIRCLE(int iNumCaras)
 :
 Shape()
 {
 	setCantidadCaras(iNumCaras);
 }
-
 //---------------------------------------------------------------------------
-void ForceCIRCLE::Draw(Graphics & g_graphics) const
+void ForceCIRCLE::Draw(Graphics & rkGraphics) const
 {
-	Shape::Draw(g_graphics);
-	g_graphics.Draw(m_Vertices, D3DPT_TRIANGLEFAN, m_iCantVertices);
+	Shape::Draw(rkGraphics);
+	rkGraphics.Draw(m_pkVertices, D3DPT_TRIANGLEFAN, m_iCantVertices);
 }
-
 //---------------------------------------------------------------------------
 void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 {
@@ -40,10 +36,11 @@ void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 	}
 
 	ColorVertex * pkv;
-	m_Vertices = new ColorVertex[m_iNumCaras + 2];
+
+	m_pkVertices = new ColorVertex[m_iNumCaras + 2];
 	m_iCantVertices = m_iNumCaras + 2;
 
-	pkv = &(m_Vertices[0]);
+	pkv = &(m_pkVertices[0]);
 	pkv->x = 0.0f;
 	pkv->y = 0.0f;	
 	pkv->z = 1.0f;
@@ -56,25 +53,22 @@ void ForceCIRCLE::setCantidadCaras(int iNumCaras)
 		double dSin = sin(dAngle * dPIsobre180);
 		double dCos = cos(dAngle * dPIsobre180);
 
-		pkv = &(m_Vertices[i]);
+		pkv = &(m_pkVertices[i]);
 		pkv->x = (float)(dSin);
 		pkv->y = (float)(dCos);
 		pkv->z = 1.0f;
 		pkv->Color = D3DCOLOR_XRGB(255, 0, 0);
 	}
 }
-
 //---------------------------------------------------------------------------
 int ForceCIRCLE::getNumeroCaras()
 {
 	return m_iNumCaras;
 }
-
 //---------------------------------------------------------------------------
 ForceCIRCLE::~ForceCIRCLE()
 {
-	delete m_Vertices;
-	m_Vertices = NULL;
+	delete m_pkVertices;
+	m_pkVertices = NULL;
 }
-
 //---------------------------------------------------------------------------

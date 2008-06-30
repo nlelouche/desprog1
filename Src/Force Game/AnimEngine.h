@@ -9,3 +9,43 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
+#ifndef ANIM_ENGINE_H
+#define ANIM_ENGINE_H
+//---------------------------------------------------------------------------
+#include "../Force Engine/Defines.h"
+#include "../Force Engine/ForceEngine.h"
+//---------------------------------------------------------------------------
+class AnimEngine : public Scene
+{
+
+public:
+
+	AnimEngine(Graphics & rkGraphics);
+	virtual ~AnimEngine();
+
+	bool onInit();
+	bool onUpdate(float fTimeBetweenFrames);
+	void onDraw(Graphics & rkGraphics) const;
+	bool onDeInit();
+
+	void rotateLogo(float fTimeBetweenFrames);
+
+private:
+
+	Sprite * m_pkSpriteLogoFist;
+	Sprite * m_pkSpriteLogoGear;
+
+	Texture::Ptr m_pkTextureLogoFist;
+	Texture::Ptr m_pkTextureLogoGear;
+
+	Animation * m_pkAnimationLogo;
+	AnimationInfo::Ptr m_pkAnimationLogoInfo;
+
+	friend class Graphics;
+};
+
+//---------------------------------------------------------------------------
+
+#endif /*--- ANIM_ENGINE_H ---*/
+
+//---------------------------------------------------------------------------

@@ -15,5 +15,4 @@ inline void Scene::addEntity(Entity2D * pkEntity)
 
 	m_apkEntities.push_back(pkEntity);
 }
-
 //---------------------------------------------------------------------------

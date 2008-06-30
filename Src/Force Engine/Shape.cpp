@@ -11,27 +11,23 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Shape.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 Shape::Shape()
 :
 Entity2D(),
-m_Vertices(NULL)
+m_pkVertices(NULL),
+m_iCantVertices(0)
 {
 	
 }
-
 //---------------------------------------------------------------------------
-void Shape::Draw(Graphics &g_graphics) const
+void Shape::Draw(Graphics & rkGraphics) const
 {
-	Entity2D::Draw(g_graphics);
-	g_graphics.unbindTexture();
+	Entity2D::Draw(rkGraphics);
+	rkGraphics.unbindTexture();
 }
-
 //---------------------------------------------------------------------------
 Shape::~Shape()
 {
-
+	/***/
 }
-
 //---------------------------------------------------------------------------

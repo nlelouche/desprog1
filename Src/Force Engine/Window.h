@@ -12,13 +12,9 @@ Hecho by: German Battiston AKA Melkor
 #ifndef WINDOW_H
 #define WINDOW_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include "Timer.h"
 #include "Defines.h"
 #include <windows.h>
-//---------------------------------------------------------------------------
-
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Window
 {
@@ -41,6 +37,8 @@ private:
 };
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
+//---------------------------------------------------------------------------
 
 #endif /*--- WINDOW_H ---*/
 

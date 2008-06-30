@@ -11,7 +11,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Timer.h"
 //---------------------------------------------------------------------------
-
 Timer::Timer()
 :
 m_dTimeBetweenFrames(0),
@@ -21,15 +20,13 @@ m_uiFrameCounter(0)
 {
 	
 }
-
 //---------------------------------------------------------------------------
 Timer::~Timer()
 {
 	
 }
-
 //---------------------------------------------------------------------------
-void Timer::FirstMeasure()
+void Timer::firstMeasure()
 {
 	QueryPerformanceFrequency(&m_kFrequency);
 	QueryPerformanceCounter(&m_kPerfCount1);
@@ -39,7 +36,6 @@ void Timer::FirstMeasure()
 	m_uiFPS = 0;
 	m_uiFrameCounter = 0;
 }
-
 //---------------------------------------------------------------------------
 void Timer::Measure()
 {
@@ -60,5 +56,4 @@ void Timer::Measure()
 		m_uiFrameCounter = 0;
 	}
 }
-
 //---------------------------------------------------------------------------
