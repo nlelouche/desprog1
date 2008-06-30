@@ -13,11 +13,9 @@ inline float Timer::getTimeBetweenFrames() const
 {	
 	return static_cast<float>(m_dTimeBetweenFrames);
 }
-
 //---------------------------------------------------------------------------
 inline unsigned int Timer::getFPS() const
 {
 	return m_uiFPS;
 }
-
 //---------------------------------------------------------------------------

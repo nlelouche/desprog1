@@ -372,18 +372,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Intro Anim"
-			>
-			<File
-				RelativePath=".\IntroAnim.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\IntroAnim.h"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="Input"
 			>
 			<File

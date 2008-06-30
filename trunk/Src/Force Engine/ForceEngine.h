@@ -32,7 +32,6 @@ Hecho by: German Battiston AKA Melkor
 #include "DirectInput.h"
 //---------------------------------------------------------------------------
 // FMOD INCLUDE FILE
-
 #include <fmod/fmod.h>
 //---------------------------------------------------------------------------
 

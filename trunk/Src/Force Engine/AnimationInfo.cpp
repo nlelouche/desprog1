@@ -12,7 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #include "AnimationInfo.h"
 #include "Sprite.h"
 //---------------------------------------------------------------------------
-
 void AnimationInfo::addFrame(
 							unsigned int uiOffsetX, 
 							unsigned int uiOffsetY, 

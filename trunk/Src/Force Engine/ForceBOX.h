@@ -12,15 +12,12 @@ Hecho by: German Battiston AKA Melkor
 #ifndef FORCEBOX_H
 #define FORCEBOX_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include "Shape.h"
 #include "Entity2D.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
-
 class FORCEENGINE_API ForceBOX : public Shape
 {
 public:
@@ -28,8 +25,10 @@ public:
 	ForceBOX();
 	~ForceBOX();
 
-	void Draw(Graphics & g_graphics) const;
+	void Draw(Graphics & rkGraphics) const;
 };
+
+//---------------------------------------------------------------------------
 
 #endif /*--- FORCEBOX_H ---*/
 

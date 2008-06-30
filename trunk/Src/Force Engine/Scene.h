@@ -55,8 +55,6 @@ private:
 	std::vector<Entity2D*> m_apkEntities;
 
 	static bool entity2DComp(Entity2D* pkEnt1, Entity2D* pkEnt2);
-
-	friend class Graphics;
 };
 
 #include "Scene.inl"

@@ -24,13 +24,11 @@ m_pkWindow(new Window(hInstance))
 {
 	
 }
-
 //---------------------------------------------------------------------------
 Game::~Game()
 {
 
 }
-
 //---------------------------------------------------------------------------
 bool Game::Init()
 {
@@ -56,11 +54,10 @@ bool Game::Init()
 		return false;
 	}
 
-	m_pkTimer->FirstMeasure();
+	m_pkTimer->firstMeasure();
 
 	return onInit();
 }
-
 //---------------------------------------------------------------------------
 bool Game::Loop()
 {
@@ -88,7 +85,6 @@ bool Game::Loop()
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 bool Game::deInit()
 {
@@ -102,7 +98,6 @@ bool Game::deInit()
 	m_pkTimer = NULL;
 
 	m_pkInput->deInit();
-
 	delete m_pkInput;
 	m_pkInput = NULL;
 

@@ -12,8 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #ifndef ENTITY2D_H
 #define ENTITY2D_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include <d3dx9.h>
 #include "Defines.h"
 #include "Graphics.h"
@@ -27,19 +25,16 @@ class FORCEENGINE_API Entity2D
 
 public:
 
-	// Metodos
-
 	Entity2D();
 	virtual ~Entity2D();
 
-	float getDimHeight();
-	float getDimWidth();
-
 	float getPosX() const;
 	void setPosX(float fX);
+	float getPrevPosX() const;
 
 	float getPosY() const;
 	void setPosY(float fY);
+	float getPrevPosY() const;
 
 	float getPosZ() const;
 	void setPosZ(float fZ);
@@ -47,12 +42,11 @@ public:
 	float getRotationZ() const;
 	void setRotationZ(float rotationZ);
 
+	float getDimWidth();
+	float getDimHeight();
 	void setDim(float fW, float fH);
 	void setPosXY(float fX, float fY);
 	void setPosXYZ(float fX, float fY, float fZ);
-
-	float getPrevPosX() const;
-	float getPrevPosY() const;
 
 	bool getMoving();
 	void setMoving(bool bMoving);
@@ -69,10 +63,8 @@ public:
 	void setName(std::string kName);
 	const std::string& getName() const;
 
-	virtual void Draw(Graphics & m_pGraficos) const;
+	virtual void Draw(Graphics & rkGraphics) const;
 	virtual void Update(float fTimeBetweenFrames);
-
-	// COLISION
 
 	enum CollisionResult
 	{
@@ -83,18 +75,6 @@ public:
 
 	virtual void onCollision(Entity2D * pkEntity) = 0;
 	CollisionResult checkCollision(Entity2D* pkEntity) const;
-
-public:
-
-	// Variables
-
-	bool m_bMoving;
-
-	float m_fPrevX;
-	float m_fPrevY;
-	float m_fMovingSpeed;
-	float m_fMovingAngle;
-	float m_fMovingAngleRad;
 
 private:
 
@@ -107,8 +87,17 @@ private:
 
 	float m_fRotationZ;
 
+	bool m_bMoving;
+
+	float m_fPrevX;
+	float m_fPrevY;
+	float m_fMovingSpeed;
+	float m_fMovingAngle;
+	float m_fMovingAngleRad;
+
 	std::string m_kName;
 
+	// Axis Aligned Bounding Box Vertices
 	ColorVertex m_akAABBVertices[5];
 };
 

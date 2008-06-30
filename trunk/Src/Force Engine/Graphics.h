@@ -23,7 +23,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 class Texture;
 //---------------------------------------------------------------------------
-
 class FORCEENGINE_API Graphics
 {
 public:
@@ -31,7 +30,7 @@ public:
 	Graphics();
 	~Graphics();
 
-	bool InitDX(Window * m_pWindow);
+	bool InitDX(Window * m_pkWindow);
 	bool InitMat();
 
 	void BeginScene();
@@ -64,7 +63,7 @@ private:
 
 	HWND m_hWnd;
 	IDirect3D9 * m_pD3D;
-	IDirect3DDevice9 * m_pDevice;
+	IDirect3DDevice9 * m_pkDevice;
 
 	VertexBuffer <ColorVertex, D3DFVF_COLORVERTEX> m_vtxBufColor;
 	VertexBuffer <TextureVertex, D3DFVF_TEXVERTEX> m_vtxBufTexture;

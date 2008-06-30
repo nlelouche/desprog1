@@ -11,7 +11,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "Animation.h"
 //---------------------------------------------------------------------------
-
 Animation::Animation(AnimationInfo::Ptr pkInfo)
 :
 m_pkInfo(pkInfo),
@@ -21,13 +20,11 @@ m_eCurrentState(STOP)
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 Animation::~Animation()
 {
 	/***/
 }
-
 //---------------------------------------------------------------------------
 void Animation::Play()
 {
@@ -39,13 +36,11 @@ void Animation::Play()
 		m_fCurrentFrameTime = 0.0f;
 	}
 }
-
 //---------------------------------------------------------------------------
 void Animation::Stop()
 {
 	m_eCurrentState = STOP;
 }
-
 //---------------------------------------------------------------------------
 void Animation::Update(float fTimeBetweenFrames)
 {
@@ -75,5 +70,4 @@ void Animation::Update(float fTimeBetweenFrames)
 		}
 	}
 }
-
 //---------------------------------------------------------------------------

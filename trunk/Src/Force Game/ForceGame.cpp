@@ -11,56 +11,49 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "ForceGame.h"
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 ForceGame::ForceGame(HINSTANCE hInstance)
 :
 Game(hInstance),
-m_pkMyScene(NULL)
+m_pkAnimEngine(NULL)
 {
 	
 }
-
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
-	m_pkMyScene = new MyScene(*m_pkGraficos);
+	m_pkAnimEngine = new AnimEngine(* m_pkGraficos);
 
-	setCurrentScene(m_pkMyScene);
+	setCurrentScene(m_pkAnimEngine);
 
-	m_pkMyScene->Init(m_pkInput);
+	m_pkAnimEngine->Init(m_pkInput);
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 bool ForceGame::onLoop()
 {
-	m_pkMyScene->Update(m_pkTimer->getTimeBetweenFrames());
+	m_pkAnimEngine->Update(m_pkTimer->getTimeBetweenFrames());
 
 	if(m_pkInput->getKeyDown(DIK_ESCAPE))
 	{
 		return true;
 	}
 
-	m_pkMyScene->Draw(*m_pkGraficos);
+	m_pkAnimEngine->Draw(* m_pkGraficos);
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 bool ForceGame::onDeInit()
 {
-	m_pkMyScene->onDeInit();
+	m_pkAnimEngine->onDeInit();
 
 	return true;
 }
-
 //---------------------------------------------------------------------------
 ForceGame::~ForceGame()
 {
-	delete m_pkMyScene;	
-	m_pkMyScene = NULL;
+	delete m_pkAnimEngine;
+	m_pkAnimEngine = NULL;
 }
-
 //---------------------------------------------------------------------------

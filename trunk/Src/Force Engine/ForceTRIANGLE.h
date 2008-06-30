@@ -12,15 +12,12 @@ Hecho by: German Battiston AKA Melkor
 #ifndef FORCETRIANGLE_H
 #define FORCETRIANGLE_H
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #include "Shape.h"
 #include "Entity2D.h"
 #include "Graphics.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
-
 class FORCEENGINE_API ForceTRIANGLE : public Shape
 {
 public:
@@ -28,8 +25,10 @@ public:
 	ForceTRIANGLE();
 	~ForceTRIANGLE();
 
-	void Draw(Graphics & g_graphics) const;
+	void Draw(Graphics & rkGraphics) const;
 };
+
+//---------------------------------------------------------------------------
 
 #endif /*--- FORCETRIANGLE_H ---*/
 

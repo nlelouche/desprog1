@@ -15,7 +15,6 @@ Hecho by: German Battiston AKA Melkor
 #include "../Force Engine/Defines.h"
 #include "../Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-
 class MyScene : public Scene
 {
 
@@ -29,18 +28,6 @@ public:
 	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
-protected:
-
-	void updateGhostInput();
-	void updatePacmanCollision();
-
-private:
-
-	Sprite * m_pkGhost;
-
-	Texture::Ptr m_pkPacman;
-
-	friend class Graphics;
 };
 
 //---------------------------------------------------------------------------

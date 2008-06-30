@@ -14,8 +14,6 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #pragma warning(disable : 4251)
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 #ifdef FORCEENGINE_EXPORTS
 	#define FORCEENGINE_API __declspec(dllexport)
 #else
