@@ -56,7 +56,7 @@ protected:
 
 	Input * m_pkInput;
 
-	Graphics * m_pkGraficos;
+	Graphics * m_pkGraphics;
 
 	Scene * m_pkCurrentScene;
 

@@ -28,6 +28,14 @@ public:
 	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
+private:
+
+	Sprite		*	m_pkSprite;
+	Animation	*	m_pkMegaman;
+
+	Texture::Ptr		m_pkMegamanTex;
+	AnimationInfo::Ptr	m_pkMegamanAnimInfo;
+
 };
 
 //---------------------------------------------------------------------------

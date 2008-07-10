@@ -38,9 +38,6 @@ private:
 	Texture::Ptr m_pkTextureLogoFist;
 	Texture::Ptr m_pkTextureLogoGear;
 
-	Animation * m_pkAnimationLogo;
-	AnimationInfo::Ptr m_pkAnimationLogoInfo;
-
 	friend class Graphics;
 };
 
