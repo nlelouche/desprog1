@@ -34,7 +34,7 @@ protected:
 
 private:
 
-	AnimEngine * m_pkAnimEngine;
+	MyScene	* m_pkMyScene;
 
 	friend class Graphics;
 };

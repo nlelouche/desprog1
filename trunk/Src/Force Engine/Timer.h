@@ -20,11 +20,13 @@ class FORCEENGINE_API Timer
 
 public:
 
-	Timer ();
-	~Timer ();
+	Timer();
+	~Timer();
 
 	void firstMeasure();
 	void Measure();
+
+	void lockFPS();
 
 	float getTimeBetweenFrames() const;
 	unsigned int getFPS() const;

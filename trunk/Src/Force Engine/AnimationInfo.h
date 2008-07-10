@@ -46,8 +46,8 @@ public:
 
 	const FrameInfo& getFrameInfo(unsigned int uiIndex) const;
 
-	bool getLoopable() const;
 	void setLoopable(bool bIsLoopable);
+	bool getLoopable() const;
 
 private:
 
@@ -56,7 +56,7 @@ private:
 	float m_fLength;
 	float m_fTimePerFrame;
 
-	std::vector<FrameInfo> m_akFramesInfo;
+	std::vector <FrameInfo> m_akFramesInfo;
 };
 
 //---------------------------------------------------------------------------

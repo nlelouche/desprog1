@@ -14,46 +14,36 @@ Hecho by: German Battiston AKA Melkor
 ForceGame::ForceGame(HINSTANCE hInstance)
 :
 Game(hInstance),
-m_pkAnimEngine(NULL)
+m_pkMyScene(new MyScene(* m_pkGraphics))
 {
-	
+	setCurrentScene(m_pkMyScene);
 }
 //---------------------------------------------------------------------------
 bool ForceGame::onInit()
 {
-	m_pkAnimEngine = new AnimEngine(* m_pkGraficos);
-
-	setCurrentScene(m_pkAnimEngine);
-
-	m_pkAnimEngine->Init(m_pkInput);
+	m_pkMyScene->Init(m_pkInput);
 
 	return true;
 }
 //---------------------------------------------------------------------------
 bool ForceGame::onLoop()
 {
-	m_pkAnimEngine->Update(m_pkTimer->getTimeBetweenFrames());
+	m_pkMyScene->Update(m_pkTimer->getTimeBetweenFrames());
 
-	if(m_pkInput->getKeyDown(DIK_ESCAPE))
-	{
-		return true;
-	}
-
-	m_pkAnimEngine->Draw(* m_pkGraficos);
+	m_pkMyScene->Draw(* m_pkGraphics);
 
 	return true;
 }
 //---------------------------------------------------------------------------
 bool ForceGame::onDeInit()
 {
-	m_pkAnimEngine->onDeInit();
+	m_pkMyScene->deInit();
 
 	return true;
 }
 //---------------------------------------------------------------------------
 ForceGame::~ForceGame()
 {
-	delete m_pkAnimEngine;
-	m_pkAnimEngine = NULL;
+
 }
 //---------------------------------------------------------------------------

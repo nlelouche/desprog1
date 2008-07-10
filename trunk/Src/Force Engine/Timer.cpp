@@ -42,7 +42,7 @@ void Timer::Measure()
 	QueryPerformanceCounter(&m_kPerfCount2);
 	
 	m_dTimeBetweenFrames = static_cast <double>
-		((m_kPerfCount2.QuadPart - m_kPerfCount1.QuadPart) *1000.0f / m_kFrequency.QuadPart);
+		((m_kPerfCount2.QuadPart - m_kPerfCount1.QuadPart) * 1000.0f / m_kFrequency.QuadPart);
 	
 	m_dMeasureFpsSample += m_dTimeBetweenFrames;
 
@@ -55,5 +55,10 @@ void Timer::Measure()
 		m_uiFPS = m_uiFrameCounter;
 		m_uiFrameCounter = 0;
 	}
+}
+//---------------------------------------------------------------------------
+void Timer::lockFPS()
+{
+	m_uiFPS = 60;
 }
 //---------------------------------------------------------------------------

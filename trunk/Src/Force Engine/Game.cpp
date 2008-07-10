@@ -19,7 +19,7 @@ Game::Game(HINSTANCE hInstance)
 m_hInstance(hInstance),
 m_pkInput(NULL),
 m_pkTimer(new Timer()),
-m_pkGraficos(new Graphics()),
+m_pkGraphics(new Graphics()),
 m_pkWindow(new Window(hInstance))
 {
 	
@@ -37,7 +37,7 @@ bool Game::Init()
 		return false;
 	}
 
-	if(!m_pkGraficos->InitDX(m_pkWindow))
+	if(!m_pkGraphics->InitDX(m_pkWindow))
 	{
 		return false;
 	}
@@ -67,8 +67,8 @@ bool Game::Loop()
 
 	m_pkInput->Reacquire();
 
-	m_pkGraficos->Clear();
-	m_pkGraficos->BeginScene();
+	m_pkGraphics->Clear();
+	m_pkGraphics->BeginScene();
 
 	onLoop();
 
@@ -80,16 +80,16 @@ bool Game::Loop()
 
 	m_pkWindow->SetWindowTitle(s.str().c_str());
 
-	m_pkGraficos->EndScene();
-	m_pkGraficos->Present();
+	m_pkGraphics->EndScene();
+	m_pkGraphics->Present();
 
 	return true;
 }
 //---------------------------------------------------------------------------
 bool Game::deInit()
 {
-	delete m_pkGraficos;
-	m_pkGraficos = NULL;
+	delete m_pkGraphics;
+	m_pkGraphics = NULL;
 
 	delete m_pkWindow;
 	m_pkWindow = NULL;

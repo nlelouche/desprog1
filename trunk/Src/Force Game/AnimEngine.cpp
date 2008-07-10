@@ -14,7 +14,6 @@ Hecho by: German Battiston AKA Melkor
 AnimEngine::AnimEngine(Graphics & rkGraphics)
 :
 Scene(rkGraphics),
-m_pkAnimationLogo(NULL),
 m_pkSpriteLogoFist(NULL),
 m_pkSpriteLogoGear(NULL)
 {
@@ -36,7 +35,7 @@ bool AnimEngine::onInit()
 	result = pkSystem->setHardwareChannels(32, 64, 32, 64);
 	result = pkSystem->init(1, FMOD_INIT_NORMAL, 0);
 	result = pkSystem->setSpeakerMode(FMOD_SPEAKERMODE_STEREO);
-	result = pkSystem->createSound("../../res/transform.wav",FMOD_DEFAULT,0,& pkSonido);
+	result = pkSystem->createSound("../../res/transform2.wav",FMOD_DEFAULT,0,& pkSonido);
 	result = pkSystem->playSound(FMOD_CHANNEL_FREE,pkSonido, false, &pkChannel);
 	result = pkChannel->setVolume(0.5f);
 	result = pkChannel->setPaused(false);
@@ -47,14 +46,14 @@ bool AnimEngine::onInit()
 	m_pkSpriteLogoGear = new Sprite();
 
 	m_pkTextureLogoFist = Texture::Ptr(new Texture("../../res/Force Logo.png", D3DCOLOR_XRGB(255,255,255)));
-	m_pkTextureLogoGear = Texture::Ptr(new Texture("../../res/Force Logo 2.png", D3DCOLOR_XRGB(255,255,255)));
+	m_pkTextureLogoGear = Texture::Ptr(new Texture("../../res/Force Logo.png", D3DCOLOR_XRGB(255,255,255)));
 
 	if(!m_pkGraphics->loadTexture("../../res/Force Logo.png", * m_pkTextureLogoFist))
 	{
 		return false;
 	}
 
-	if(!m_pkGraphics->loadTexture("../../res/Force Logo 2.png", * m_pkTextureLogoGear))
+	if(!m_pkGraphics->loadTexture("../../res/Force Logo.png", * m_pkTextureLogoGear))
 	{
 		return false;
 	}
@@ -83,7 +82,7 @@ bool AnimEngine::onUpdate(float fTimeBetweenFrames)
 void AnimEngine::rotateLogo(float fTimeBetweenFrames)
 {
 	static float m_fAngle = 0.0f;
-	static float m_fAccel = 0.001f;
+	static float m_fAccel = 0.0001f;
 
 	m_fAngle += fTimeBetweenFrames * m_fAccel;
 	
@@ -94,7 +93,7 @@ void AnimEngine::rotateLogo(float fTimeBetweenFrames)
 
 	if(m_fAccel < 0.5f)
 	{
-		m_fAccel += 0.001f;
+		m_fAccel += 0.0001f;
 	}
 }
 //---------------------------------------------------------------------------
