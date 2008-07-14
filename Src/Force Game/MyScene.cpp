@@ -14,61 +14,80 @@ Hecho by: German Battiston AKA Melkor
 MyScene::MyScene(Graphics & rkGraphics)
 :
 Scene(rkGraphics),
-m_pkSprite(NULL),
-m_pkMegaman(NULL)
+m_pkChar(NULL),
+m_pkCharAnim(NULL),
+m_pkBack(NULL)
 {
 	
 }
 //---------------------------------------------------------------------------
 bool MyScene::onInit()
 {
-	m_pkSprite = new Sprite();
-	m_pkMegamanTex = Texture::Ptr(new Texture("../../res/Megaman.bmp",D3DCOLOR_XRGB(255,0,255)));
+	m_pkChar = new Sprite();
+	m_pkBack = new Sprite();
 
-	if(!m_pkGraphics->loadTexture("../../res/Megaman.bmp",* m_pkMegamanTex))
+	m_pkCharText = Texture::Ptr(new Texture("../../res/character.png",D3DCOLOR_XRGB(0,0,0)));
+	if(!m_pkGraphics->loadTexture("../../res/character.png",* m_pkCharText))
 	{
 		return false;
 	}
 
-	m_pkSprite->setTexture(m_pkMegamanTex);
-	m_pkSprite->setTextureArea(0,0,1024,1024);
-	m_pkSprite->setDim(128,128);
-	m_pkSprite->setPosXY(0,0);
+	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png",NULL));
+	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
+	{
+		return false;
+	}
 
-	m_pkMegamanAnimInfo = AnimationInfo::Ptr(new AnimationInfo());
+	m_pkChar->setTexture(m_pkCharText);
+	m_pkChar->setTextureArea(0,0,128,128);
+	m_pkChar->setDim(64,64);
+	m_pkChar->setPosXYZ(0,0,0);
 
-	m_pkMegamanAnimInfo->addFrame(160,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(240,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(320,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(400,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(480,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(540,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(620,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(700,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(780,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(860,160,80,80);
-	m_pkMegamanAnimInfo->addFrame(0,240,80,80);
-	m_pkMegamanAnimInfo->addFrame(80,240,80,80);
-	m_pkMegamanAnimInfo->addFrame(160,240,80,80);
-	m_pkMegamanAnimInfo->addFrame(240,240,80,80);
-	
-	m_pkMegamanAnimInfo->setLength(2200.0f);
-	m_pkMegamanAnimInfo->setLoopable(false);
+	m_pkBack->setTexture(m_pkBackText);
+	m_pkBack->setTextureArea(0,0,512,512);
+	m_pkBack->setDim(800,600);
+	m_pkBack->setPosXYZ(0,0,0);
 
-	m_pkMegaman = new Animation(m_pkMegamanAnimInfo);
+	m_pkCharAnimInfo = AnimationInfo::Ptr(new AnimationInfo());
+	m_pkCharAnimInfo->addFrame(0,0,32,32);
+	m_pkCharAnimInfo->addFrame(32,0,32,32);
+	m_pkCharAnimInfo->addFrame(64,0,32,32);
+	m_pkCharAnimInfo->addFrame(32,0,32,32);
+	m_pkCharAnimInfo->setLength(1000.0f);
+	m_pkCharAnimInfo->setLoopable(true);
 
-	m_pkSprite->setAnimation(m_pkMegaman);
+	m_pkCharAnim = new Animation(m_pkCharAnimInfo);
 
-	addEntity(m_pkSprite);
+	m_pkChar->setAnimation(m_pkCharAnim);
+
+
+	addEntity(m_pkBack);
+	addEntity(m_pkChar);
 
 	return true;
 }
 //---------------------------------------------------------------------------
 bool MyScene::onUpdate(float fTimeBetweenFrames)
 {
-	m_pkSprite->Update(fTimeBetweenFrames);
-	m_pkMegaman->Update(fTimeBetweenFrames);
-	m_pkMegaman->Play();
+	m_pkBack->Update(fTimeBetweenFrames);
+	m_pkChar->Update(fTimeBetweenFrames);
+
+	m_pkCharAnim->Update(fTimeBetweenFrames);
+
+	if(m_pkInput->getKeyDown(DIK_RIGHTARROW))
+	{
+		m_pkChar->setMoving(true);
+		m_pkChar->setMovingSpeed(50.0f);
+		m_pkChar->setMovingAngle(0.0f);
+		m_pkCharAnim->Play();
+	}
+	else if(m_pkInput->getKeyDown(DIK_LEFTARROW))
+	{
+		m_pkChar->setMoving(true);
+		m_pkChar->setMovingSpeed(50.0f);
+		m_pkChar->setMovingAngle(180.0f);
+		m_pkCharAnim->Play();
+	}
 
 	return true;
 }
@@ -80,11 +99,14 @@ void MyScene::onDraw(Graphics & rkGraphics) const
 //---------------------------------------------------------------------------
 bool MyScene::onDeInit()
 {
-	delete m_pkSprite;
-	m_pkSprite = NULL;
+	delete m_pkChar;
+	m_pkChar = NULL;
 
-	delete m_pkMegaman;
-	m_pkMegaman = NULL;
+	delete m_pkBack;
+	m_pkBack = NULL;
+
+	delete m_pkCharAnim;
+	m_pkCharAnim = NULL;
 
 	return true;
 }
