@@ -3,43 +3,49 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceCIRCLE.h
+Clase: MyScene.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCECIRCLE_H
-#define FORCECIRCLE_H
+#ifndef MY_SCENE_H
+#define MY_SCENE_H
 //---------------------------------------------------------------------------
-
+#include "../Src/Force Engine/Defines/Defines.h"
+#include "../Src/Force Engine/Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-#include "Shape.h"
-#include "Entity2D.h"
-#include "Graphics.h"
-//---------------------------------------------------------------------------
-class Graphics;
-//---------------------------------------------------------------------------
-
-class FORCEENGINE_API ForceCIRCLE : public Shape
+class MyScene : public Scene
 {
+
 public:
 
-	ForceCIRCLE(int iNumCaras);
-	~ForceCIRCLE();
+	MyScene(Graphics & rkGraphics);
+	virtual ~MyScene();
 
-	void Draw(Graphics & rkGraphics) const;
-	
-	int getNumeroCaras();
-	void setCantidadCaras(int iNumCaras);
+	bool onInit();
+	bool onUpdate(float fTimeBetweenFrames);
+	void onDraw(Graphics & rkGraphics) const;
+	bool onDeInit();
 
 private:
 
-	int m_iNumCaras;
+	Sprite * m_pkChar;
+	Sprite * m_pkBack;
+
+	Texture::Ptr m_pkCharText;
+	Texture::Ptr m_pkBackText;
+
+	Animation * m_pkCharAnimIzq;
+	Animation * m_pkCharAnimDer;
+
+	AnimationInfo::Ptr m_pkCharAnimInfoIzq;
+	AnimationInfo::Ptr m_pkCharAnimInfoDer;
+
 };
 
 //---------------------------------------------------------------------------
 
-#endif /*--- FORCECIRCLE_H ---*/
+#endif /*--- MY_SCENE_H ---*/
 
 //---------------------------------------------------------------------------

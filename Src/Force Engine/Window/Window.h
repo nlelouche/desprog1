@@ -3,44 +3,43 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceGame.h
+Clase: Window.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCE_GAME_H
-#define FORCE_GAME_H
+#ifndef WINDOW_H
+#define WINDOW_H
 //---------------------------------------------------------------------------
-class MyScene;
+#include "../Timer/Timer.h"
+#include "../Defines/Defines.h"
+#include <windows.h>
 //---------------------------------------------------------------------------
-#include "MyScene.h"
-#include "AnimEngine.h"
-#include "../Force Engine/Defines.h"
-#include "../Force Engine/ForceEngine.h"
-//---------------------------------------------------------------------------
-class ForceGame : public Game
+class FORCEENGINE_API Window
 {
 public:
 
-	ForceGame(HINSTANCE hInstance);
-	~ForceGame();
+	Window(HINSTANCE hInstance);
+	~Window();
 
-protected:
+	bool createWindow(unsigned int uiWidth, unsigned int uiHeight);
+	void SetWindowTitle(LPCSTR lpString);
 
-	bool onInit();
-	bool onLoop();
-	bool onDeInit();
+	HWND m_hWnd;
+	HINSTANCE m_hInstance;
 
 private:
 
-	MyScene	* m_pkMyScene;
+	Timer * m_pkTimer;
 
 	friend class Graphics;
 };
 
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
 //---------------------------------------------------------------------------
 
-#endif /*--- FORCE_GAME_H ---*/
+#endif /*--- WINDOW_H ---*/
 
 //---------------------------------------------------------------------------

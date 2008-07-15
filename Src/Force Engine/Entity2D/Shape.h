@@ -3,49 +3,42 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: MyScene.h
+Clase: Shape.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef MY_SCENE_H
-#define MY_SCENE_H
+#ifndef SHAPE_H
+#define SHAPE_H
 //---------------------------------------------------------------------------
-#include "../Force Engine/Defines.h"
-#include "../Force Engine/ForceEngine.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/Graphics.h"
+#include "../Entity2D/Entity2D.h"
+#include "../Graphics/GraphicsStructs.h"
 //---------------------------------------------------------------------------
-class MyScene : public Scene
+class Graphics;
+//---------------------------------------------------------------------------
+class FORCEENGINE_API Shape : public Entity2D
 {
-
 public:
 
-	MyScene(Graphics & rkGraphics);
-	virtual ~MyScene();
+	~Shape();
 
-	bool onInit();
-	bool onUpdate(float fTimeBetweenFrames);
-	void onDraw(Graphics & rkGraphics) const;
-	bool onDeInit();
+	virtual void Draw(Graphics & rkGraphics) const;
+	virtual void onCollision(Entity2D* pkEntity) { /*****/ }
 
-private:
+	int m_iCantVertices;
+	ColorVertex * m_pkVertices;
 
-	Sprite * m_pkChar;
-	Sprite * m_pkBack;
+protected:
 
-	Texture::Ptr m_pkCharText;
-	Texture::Ptr m_pkBackText;
-
-	Animation * m_pkCharAnimIzq;
-	Animation * m_pkCharAnimDer;
-
-	AnimationInfo::Ptr m_pkCharAnimInfoIzq;
-	AnimationInfo::Ptr m_pkCharAnimInfoDer;
+	Shape();
 
 };
 
 //---------------------------------------------------------------------------
 
-#endif /*--- MY_SCENE_H ---*/
+#endif /*--- SHAPE_H ---*/
 
 //---------------------------------------------------------------------------

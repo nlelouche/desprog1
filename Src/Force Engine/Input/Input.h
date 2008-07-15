@@ -12,7 +12,7 @@ Hecho by: German Battiston AKA Melkor
 #ifndef INPUT_H
 #define INPUT_H
 //---------------------------------------------------------------------------
-#include "Defines.h"
+#include "../Defines/Defines.h"
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Input
 {

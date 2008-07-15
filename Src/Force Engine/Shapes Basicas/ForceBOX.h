@@ -12,9 +12,9 @@ Hecho by: German Battiston AKA Melkor
 #ifndef FORCEBOX_H
 #define FORCEBOX_H
 //---------------------------------------------------------------------------
-#include "Shape.h"
-#include "Entity2D.h"
-#include "Graphics.h"
+#include "../Entity2D/Shape.h"
+#include "../Entity2D/Entity2D.h"
+#include "../Graphics/Graphics.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------

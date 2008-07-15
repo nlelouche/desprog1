@@ -15,21 +15,22 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 // Includes Varios
-#include "Game.h"
-#include "Shape.h"
-#include "Scene.h"
-#include "Sprite.h"
-#include "Texture.h"
-#include "Entity2D.h"
+#include "../Game/Game.h"
+#include "../Entity2D/Shape.h"
+#include "../Game/Scene.h"
+#include "../Entity2D/Sprite.h"
+#include "../Timer/Timer.h"
+#include "../Graphics/Texture.h"
+#include "../Entity2D/Entity2D.h"
 //---------------------------------------------------------------------------
 // Shapes Basicas
-#include "ForceBOX.h"
-#include "ForceCIRCLE.h"
-#include "ForceTRIANGLE.h"
+#include "../Shapes Basicas/ForceBOX.h"
+#include "../Shapes Basicas/ForceCIRCLE.h"
+#include "../Shapes Basicas/ForceTRIANGLE.h"
 //---------------------------------------------------------------------------
 // Input
-#include "Input.h"
-#include "DirectInput.h"
+#include "../Input/Input.h"
+#include "../Input/DirectInput.h"
 //---------------------------------------------------------------------------
 // FMOD INCLUDE FILE
 #include <fmod/fmod.h>

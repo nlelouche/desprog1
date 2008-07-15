@@ -13,10 +13,10 @@ Hecho by: German Battiston AKA Melkor
 #define GRAPHICS_H
 //---------------------------------------------------------------------------
 #include <d3dx9.h>
-#include "Defines.h"
-#include "Texture.h"
-#include "VertexBuffer.h"
-#include "GraphicsStructs.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/Texture.h"
+#include "../VertexBuffer/VertexBuffer.h"
+#include "../Graphics/GraphicsStructs.h"
 //---------------------------------------------------------------------------
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")

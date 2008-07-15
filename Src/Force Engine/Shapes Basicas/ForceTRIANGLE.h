@@ -2,50 +2,34 @@
 
 Force Engine v0.5
 
-Creado: 06/05/08
-Clase: Timer.h
+Creado: 28/03/08
+Clase: ForceTRIANGLE.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef FORCETRIANGLE_H
+#define FORCETRIANGLE_H
 //---------------------------------------------------------------------------
-#include <windows.h>
-#include "Defines.h"
+#include "../Entity2D/Shape.h"
+#include "../Entity2D/Entity2D.h"
+#include "../Graphics/Graphics.h"
 //---------------------------------------------------------------------------
-class FORCEENGINE_API Timer
+class Graphics;
+//---------------------------------------------------------------------------
+class FORCEENGINE_API ForceTRIANGLE : public Shape
 {
-
 public:
 
-	Timer();
-	~Timer();
+	ForceTRIANGLE();
+	~ForceTRIANGLE();
 
-	void firstMeasure();
-	void Measure();
-
-	void lockFPS();
-
-	float getTimeBetweenFrames() const;
-	unsigned int getFPS() const;
-
-	double m_dMeasureFpsSample;
-	double m_dTimeBetweenFrames;
-
-	unsigned int m_uiFPS;
-	unsigned int m_uiFrameCounter;
-
-	LARGE_INTEGER m_kFrequency;
-	LARGE_INTEGER m_kPerfCount1;
-	LARGE_INTEGER m_kPerfCount2;
+	void Draw(Graphics & rkGraphics) const;
 };
 
 //---------------------------------------------------------------------------
-#include "Timer.inl"
-//---------------------------------------------------------------------------
 
-#endif /*--- TIMER_H ---*/
+#endif /*--- FORCETRIANGLE_H ---*/
 
 //---------------------------------------------------------------------------

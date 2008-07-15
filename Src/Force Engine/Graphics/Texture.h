@@ -12,8 +12,8 @@ Hecho by: German Battiston AKA Melkor
 #ifndef TEXTURE_H
 #define TEXTURE_H
 //---------------------------------------------------------------------------
-#include "Defines.h"
-#include "Graphics.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/Graphics.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------

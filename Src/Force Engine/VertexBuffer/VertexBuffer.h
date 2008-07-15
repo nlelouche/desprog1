@@ -15,9 +15,9 @@ Hecho by: German Battiston AKA Melkor
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <cassert>
-#include "Window.h"
-#include "Defines.h"
-#include "GraphicsStructs.h"
+#include "../Window/Window.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/GraphicsStructs.h"
 //---------------------------------------------------------------------------
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")

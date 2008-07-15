@@ -137,7 +137,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="user32.lib"
+				AdditionalDependencies="user32.lib fmodex_vc.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -178,19 +178,19 @@
 			Name="Test Force Game"
 			>
 			<File
-				RelativePath=".\ForceGame.cpp"
+				RelativePath=".\MyGame\ForceGame.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceGame.h"
+				RelativePath=".\MyGame\ForceGame.h"
 				>
 			</File>
 			<File
-				RelativePath=".\MyScene.cpp"
+				RelativePath=".\MyGame\MyScene.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\MyScene.h"
+				RelativePath=".\MyGame\MyScene.h"
 				>
 			</File>
 		</Filter>
@@ -198,7 +198,7 @@
 			Name="Main"
 			>
 			<File
-				RelativePath=".\Main.cpp"
+				RelativePath=".\MyGame\Main.cpp"
 				>
 			</File>
 		</Filter>
@@ -206,11 +206,11 @@
 			Name="Animacion N-Gin"
 			>
 			<File
-				RelativePath=".\AnimEngine.cpp"
+				RelativePath=".\Animation Engine\AnimEngine.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\AnimEngine.h"
+				RelativePath=".\Animation Engine\AnimEngine.h"
 				>
 			</File>
 		</Filter>

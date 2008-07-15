@@ -12,7 +12,7 @@ Hecho by: German Battiston AKA Melkor
 #ifndef ANIMATIONINFO_H
 #define ANIMATIONINFO_H
 //---------------------------------------------------------------------------
-#include "Defines.h"
+#include "../Defines/Defines.h"
 //---------------------------------------------------------------------------
 class Sprite;
 //---------------------------------------------------------------------------

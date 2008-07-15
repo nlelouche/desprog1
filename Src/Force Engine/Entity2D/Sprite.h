@@ -12,11 +12,11 @@ Hecho by: German Battiston AKA Melkor
 #ifndef SPRITE_H
 #define SPRITE_H
 //---------------------------------------------------------------------------
-#include "Texture.h"
-#include "Entity2D.h"
-#include "Graphics.h"
-#include "Animation.h"
-#include "GraphicsStructs.h"
+#include "../Graphics/Texture.h"
+#include "../Entity2D/Entity2D.h"
+#include "../Graphics/Graphics.h"
+#include "../Animation/Animation.h"
+#include "../Graphics/GraphicsStructs.h"
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Sprite: public Entity2D
 {
