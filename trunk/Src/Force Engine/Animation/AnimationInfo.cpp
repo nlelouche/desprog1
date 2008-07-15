@@ -9,8 +9,8 @@ Hecho by: German Battiston AKA Melkor
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#include "AnimationInfo.h"
-#include "Sprite.h"
+#include "../Animation/AnimationInfo.h"
+#include "../Entity2D/Sprite.h"
 //---------------------------------------------------------------------------
 void AnimationInfo::addFrame(
 							unsigned int uiOffsetX, 

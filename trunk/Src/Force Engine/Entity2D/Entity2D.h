@@ -13,8 +13,8 @@ Hecho by: German Battiston AKA Melkor
 #define ENTITY2D_H
 //---------------------------------------------------------------------------
 #include <d3dx9.h>
-#include "Defines.h"
-#include "Graphics.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/Graphics.h"
 //---------------------------------------------------------------------------
 #define PI 3.1415926535897932384626433832795f
 //---------------------------------------------------------------------------

@@ -3,33 +3,44 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: ForceTRIANGLE.h
+Clase: ForceGame.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef FORCETRIANGLE_H
-#define FORCETRIANGLE_H
+#ifndef FORCE_GAME_H
+#define FORCE_GAME_H
 //---------------------------------------------------------------------------
-#include "Shape.h"
-#include "Entity2D.h"
-#include "Graphics.h"
+class MyScene;
 //---------------------------------------------------------------------------
-class Graphics;
+#include "../Src/Force Game/MyGame/MyScene.h"
+#include "../Src/Force Game/Animation Engine/AnimEngine.h"
+#include "../Src/Force Engine/Defines/Defines.h"
+#include "../Src/Force Engine/Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-class FORCEENGINE_API ForceTRIANGLE : public Shape
+class ForceGame : public Game
 {
 public:
 
-	ForceTRIANGLE();
-	~ForceTRIANGLE();
+	ForceGame(HINSTANCE hInstance);
+	~ForceGame();
 
-	void Draw(Graphics & rkGraphics) const;
+protected:
+
+	bool onInit();
+	bool onLoop();
+	bool onDeInit();
+
+private:
+
+	MyScene	* m_pkMyScene;
+
+	friend class Graphics;
 };
 
 //---------------------------------------------------------------------------
 
-#endif /*--- FORCETRIANGLE_H ---*/
+#endif /*--- FORCE_GAME_H ---*/
 
 //---------------------------------------------------------------------------

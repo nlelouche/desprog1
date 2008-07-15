@@ -2,55 +2,50 @@
 
 Force Engine v0.5
 
-Creado: 28/03/08
-Clase: Animation.h
+Creado: 06/05/08
+Clase: Timer.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef ANIMATION_H
-#define ANIMATION_H
+#ifndef TIMER_H
+#define TIMER_H
 //---------------------------------------------------------------------------
-#include "Defines.h"
-#include "AnimationInfo.h"
+#include <windows.h>
+#include "../Defines/Defines.h"
 //---------------------------------------------------------------------------
-class FORCEENGINE_API Animation
+class FORCEENGINE_API Timer
 {
+
 public:
 
-	enum PlayState
-	{
-		STOP,
-		PLAY,
-		PAUSE
-	};
+	Timer();
+	~Timer();
 
-	Animation(AnimationInfo::Ptr pkInfo);
-	~Animation();
+	void firstMeasure();
+	void Measure();
 
-	void Play();
-	void Stop();
+	void lockFPS();
 
-	PlayState getState() const;
-	unsigned int getCurrentFrame() const;
-	const AnimationInfo::Ptr getInfo() const;
+	float getTimeBetweenFrames() const;
+	unsigned int getFPS() const;
 
-	void Update(float fTimeBetweenFrames);
+	double m_dMeasureFpsSample;
+	double m_dTimeBetweenFrames;
 
-private:
+	unsigned int m_uiFPS;
+	unsigned int m_uiFrameCounter;
 
-	PlayState m_eCurrentState;
-	AnimationInfo::Ptr m_pkInfo;
-
-	float m_fCurrentFrameTime;
-	unsigned int m_uiCurrentFrame;
+	LARGE_INTEGER m_kFrequency;
+	LARGE_INTEGER m_kPerfCount1;
+	LARGE_INTEGER m_kPerfCount2;
 };
 
 //---------------------------------------------------------------------------
-#include "Animation.inl"
+#include "Timer.inl"
 //---------------------------------------------------------------------------
 
-#endif /*--- ANIMATION_H ---*/
+#endif /*--- TIMER_H ---*/
 
 //---------------------------------------------------------------------------

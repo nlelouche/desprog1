@@ -179,11 +179,11 @@
 			Name="Window"
 			>
 			<File
-				RelativePath=".\Window.cpp"
+				RelativePath=".\Window\Window.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Window.h"
+				RelativePath=".\Window\Window.h"
 				>
 			</File>
 		</Filter>
@@ -191,35 +191,27 @@
 			Name="Graphics"
 			>
 			<File
-				RelativePath=".\Graphics.cpp"
+				RelativePath=".\Graphics\Graphics.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Graphics.h"
+				RelativePath=".\Graphics\Graphics.h"
 				>
 			</File>
 			<File
-				RelativePath=".\GraphicsStructs.h"
+				RelativePath=".\Graphics\GraphicsStructs.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Texture.cpp"
+				RelativePath=".\Graphics\Texture.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Texture.h"
+				RelativePath=".\Graphics\Texture.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Texture.inl"
-				>
-			</File>
-			<File
-				RelativePath=".\VertexBuffer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\VertexBuffer.inl"
+				RelativePath=".\Graphics\Texture.inl"
 				>
 			</File>
 		</Filter>
@@ -227,27 +219,27 @@
 			Name="Game"
 			>
 			<File
-				RelativePath=".\Game.cpp"
+				RelativePath=".\Game\Game.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Game.h"
+				RelativePath=".\Game\Game.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Game.inl"
+				RelativePath=".\Game\Game.inl"
 				>
 			</File>
 			<File
-				RelativePath=".\Scene.cpp"
+				RelativePath=".\Game\Scene.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Scene.h"
+				RelativePath=".\Game\Scene.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Scene.inl"
+				RelativePath=".\Game\Scene.inl"
 				>
 			</File>
 		</Filter>
@@ -255,35 +247,35 @@
 			Name="Entities"
 			>
 			<File
-				RelativePath=".\Entity2D.cpp"
+				RelativePath=".\Entity2D\Entity2D.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Entity2D.h"
+				RelativePath=".\Entity2D\Entity2D.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Entity2D.inl"
+				RelativePath=".\Entity2D\Entity2D.inl"
 				>
 			</File>
 			<File
-				RelativePath=".\Shape.cpp"
+				RelativePath=".\Entity2D\Shape.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Shape.h"
+				RelativePath=".\Entity2D\Shape.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Sprite.cpp"
+				RelativePath=".\Entity2D\Sprite.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Sprite.h"
+				RelativePath=".\Entity2D\Sprite.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Sprite.inl"
+				RelativePath=".\Entity2D\Sprite.inl"
 				>
 			</File>
 		</Filter>
@@ -291,11 +283,7 @@
 			Name="Defines"
 			>
 			<File
-				RelativePath=".\Defines.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ForceEngine.h"
+				RelativePath=".\Defines\Defines.h"
 				>
 			</File>
 		</Filter>
@@ -303,27 +291,27 @@
 			Name="Shapes Basicas"
 			>
 			<File
-				RelativePath=".\ForceBOX.cpp"
+				RelativePath=".\Shapes Basicas\ForceBOX.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceBOX.h"
+				RelativePath=".\Shapes Basicas\ForceBOX.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceCIRCLE.cpp"
+				RelativePath=".\Shapes Basicas\ForceCIRCLE.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceCIRCLE.h"
+				RelativePath=".\Shapes Basicas\ForceCIRCLE.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceTRIANGLE.cpp"
+				RelativePath=".\Shapes Basicas\ForceTRIANGLE.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ForceTRIANGLE.h"
+				RelativePath=".\Shapes Basicas\ForceTRIANGLE.h"
 				>
 			</File>
 		</Filter>
@@ -331,15 +319,15 @@
 			Name="Timer"
 			>
 			<File
-				RelativePath=".\Timer.cpp"
+				RelativePath=".\Timer\Timer.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Timer.h"
+				RelativePath=".\Timer\Timer.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Timer.inl"
+				RelativePath=".\Timer\Timer.inl"
 				>
 			</File>
 		</Filter>
@@ -347,27 +335,27 @@
 			Name="Animation"
 			>
 			<File
-				RelativePath=".\Animation.cpp"
+				RelativePath=".\Animation\Animation.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Animation.h"
+				RelativePath=".\Animation\Animation.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Animation.inl"
+				RelativePath=".\Animation\Animation.inl"
 				>
 			</File>
 			<File
-				RelativePath=".\AnimationInfo.cpp"
+				RelativePath=".\Animation\AnimationInfo.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\AnimationInfo.h"
+				RelativePath=".\Animation\AnimationInfo.h"
 				>
 			</File>
 			<File
-				RelativePath=".\AnimationInfo.inl"
+				RelativePath=".\Animation\AnimationInfo.inl"
 				>
 			</File>
 		</Filter>
@@ -375,23 +363,43 @@
 			Name="Input"
 			>
 			<File
-				RelativePath=".\DirectInput.cpp"
+				RelativePath=".\Input\DirectInput.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DirectInput.h"
+				RelativePath=".\Input\DirectInput.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Input.cpp"
+				RelativePath=".\Input\Input.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Input.h"
+				RelativePath=".\Input\Input.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Input.inl"
+				RelativePath=".\Input\Input.inl"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Force Engine"
+			>
+			<File
+				RelativePath=".\Force Engine\ForceEngine.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Vertex Buffer"
+			>
+			<File
+				RelativePath=".\VertexBuffer\VertexBuffer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\VertexBuffer\VertexBuffer.inl"
 				>
 			</File>
 		</Filter>

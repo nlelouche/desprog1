@@ -3,42 +3,46 @@
 Force Engine v0.5
 
 Creado: 28/03/08
-Clase: Shape.h
+Clase: AnimEngine.h
 Hecho by: German Battiston AKA Melkor
 
 ****************************************************************************/
 
 //---------------------------------------------------------------------------
-#ifndef SHAPE_H
-#define SHAPE_H
+#ifndef ANIM_ENGINE_H
+#define ANIM_ENGINE_H
 //---------------------------------------------------------------------------
-#include "Defines.h"
-#include "Graphics.h"
-#include "Entity2D.h"
-#include "GraphicsStructs.h"
+#include "../Src/Force Engine/Defines/Defines.h"
+#include "../Src/Force Engine/Force Engine/ForceEngine.h"
 //---------------------------------------------------------------------------
-class Graphics;
-//---------------------------------------------------------------------------
-class FORCEENGINE_API Shape : public Entity2D
+class AnimEngine : public Scene
 {
+
 public:
 
-	~Shape();
+	AnimEngine(Graphics & rkGraphics);
+	virtual ~AnimEngine();
 
-	virtual void Draw(Graphics & rkGraphics) const;
-	virtual void onCollision(Entity2D* pkEntity) { /*****/ }
+	bool onInit();
+	bool onUpdate(float fTimeBetweenFrames);
+	void onDraw(Graphics & rkGraphics) const;
+	bool onDeInit();
 
-	int m_iCantVertices;
-	ColorVertex * m_pkVertices;
+	void rotateLogo(float fTimeBetweenFrames);
 
-protected:
+private:
 
-	Shape();
+	Sprite * m_pkSpriteLogoFist;
+	Sprite * m_pkSpriteLogoGear;
 
+	Texture::Ptr m_pkTextureLogoFist;
+	Texture::Ptr m_pkTextureLogoGear;
+
+	friend class Graphics;
 };
 
 //---------------------------------------------------------------------------
 
-#endif /*--- SHAPE_H ---*/
+#endif /*--- ANIM_ENGINE_H ---*/
 
 //---------------------------------------------------------------------------

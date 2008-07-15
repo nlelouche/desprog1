@@ -12,16 +12,13 @@ Hecho by: German Battiston AKA Melkor
 #ifndef GAME_H
 #define GAME_H
 //---------------------------------------------------------------------------
-#include "Timer.h"
-#include "Shape.h"
-#include "Scene.h"
-#include "Input.h"
-#include "Window.h"
-#include "Texture.h"
-#include "Defines.h"
-#include "Graphics.h"
-#include "DirectInput.h"
-#include "GraphicsStructs.h"
+#include "../Force Engine/ForceEngine.h"
+#include "../Window/Window.h"
+#include "../Graphics/Texture.h"
+#include "../Defines/Defines.h"
+#include "../Graphics/Graphics.h"
+#include "../Graphics/GraphicsStructs.h"
+#include "../Entity2D/Entity2D.h"
 //---------------------------------------------------------------------------
 class Scene;
 class Input;

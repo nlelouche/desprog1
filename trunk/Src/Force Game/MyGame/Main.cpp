@@ -10,14 +10,14 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include <windows.h>
-#include "ForceGame.h"
+#include "../Src/Force Game/MyGame/ForceGame.h"
 //---------------------------------------------------------------------------
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
-	Game * forceGame = new ForceGame(hInstance);
+	Game * pkforceGame = new ForceGame(hInstance);
 
-	if(!forceGame->Init())
+	if(!pkforceGame->Init())
 	{
 		return 0;
 	}
@@ -25,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	bool boolQuit = false;
 	MSG kMsg;
 
-	while(!(forceGame->Loop()) || !boolQuit)
+	while(!(pkforceGame->Loop()) || !boolQuit)
 	{
 		// Capturo el mensaje de Windows
 		if (PeekMessage(&kMsg,NULL,0,0,PM_REMOVE))
@@ -64,7 +64,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
 	// Termino el Juego
 
-	forceGame->deInit();
+	pkforceGame->deInit();
 
 	return 0;
 }
