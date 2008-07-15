@@ -30,15 +30,17 @@ public:
 
 private:
 
-	Sprite		*	m_pkChar;
-	Sprite		*	m_pkBack;
+	Sprite * m_pkChar;
+	Sprite * m_pkBack;
 
-	Texture::Ptr	m_pkCharText;
-	Texture::Ptr	m_pkBackText;
+	Texture::Ptr m_pkCharText;
+	Texture::Ptr m_pkBackText;
 
-	Animation	*		m_pkCharAnim;
+	Animation * m_pkCharAnimIzq;
+	Animation * m_pkCharAnimDer;
 
-	AnimationInfo::Ptr	m_pkCharAnimInfo;
+	AnimationInfo::Ptr m_pkCharAnimInfoIzq;
+	AnimationInfo::Ptr m_pkCharAnimInfoDer;
 
 };
 
