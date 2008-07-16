@@ -60,6 +60,9 @@ public:
 	float getMovingAngleRad() const;
 	void setMovingAngleRad(float fMovingAngleRad);
 
+	float getGravity() const;
+	void setGravity(float fGravity);
+
 	void setName(std::string kName);
 	const std::string& getName() const;
 
@@ -94,6 +97,7 @@ private:
 	float m_fMovingSpeed;
 	float m_fMovingAngle;
 	float m_fMovingAngleRad;
+	float m_fGravity;
 
 	std::string m_kName;
 

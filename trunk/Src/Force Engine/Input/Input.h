@@ -64,12 +64,13 @@ public:
 
 	bool getMouseButton(unsigned int uiButtonID);
 	bool getMouseClick(unsigned int uiButtonID);
-	long getMouseScrAbsPosX();
-	long getMouseScrAbsPosY();
-	long getMouseScrAbsPosZ();
+
 	long getMouseRelPosX();
 	long getMouseRelPosY();
 	long getMouseRelPosZ();
+	long getMouseScrAbsPosX();
+	long getMouseScrAbsPosY();
+	long getMouseScrAbsPosZ();
 
 protected:
 
@@ -81,8 +82,10 @@ protected:
 	
 	bool m_bButtonState[3];
 	bool m_lMouseButtonClick[3];
+
 	long m_lMouseRelPosition[3];
 	long m_lMouseScreenAbsPosition[3];
+
 	unsigned char m_ucMouseButton[3];
 
 };
