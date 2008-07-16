@@ -28,7 +28,11 @@ public:
 	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
+	void updateCollisionChar();
+
 private:
+
+	ForceBOX * m_pkFloor;
 
 	Sprite * m_pkChar;
 	Sprite * m_pkBack;
@@ -41,6 +45,14 @@ private:
 
 	AnimationInfo::Ptr m_pkCharAnimInfoIzq;
 	AnimationInfo::Ptr m_pkCharAnimInfoDer;
+
+	float	fVelocityX;
+	float	fVelocityY;
+	
+	float	fPosX;
+	float	fPosY;
+
+	float	fGravity;
 
 };
 

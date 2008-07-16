@@ -42,6 +42,11 @@ inline void Entity2D::setPosXYZ(float fX, float fY, float fZ)
 	m_fZ = fZ;
 }
 //---------------------------------------------------------------------------
+inline void Entity2D::setGravity(float fGravity)
+{
+	m_fGravity = fGravity;
+}
+//---------------------------------------------------------------------------
 inline void Entity2D::setDim(float fW, float fH)
 {
 	m_fW = fW;
@@ -82,6 +87,11 @@ inline float Entity2D::getPosY() const
 inline float Entity2D::getPosZ() const
 {
 	return m_fZ;
+}
+//---------------------------------------------------------------------------
+inline float Entity2D::getGravity() const
+{
+	return m_fGravity;
 }
 //---------------------------------------------------------------------------
 inline float Entity2D::getRotationZ() const

@@ -25,6 +25,7 @@ m_fMovingAngle(0),
 m_fMovingAngleRad(0),
 m_fPrevX(0),
 m_fPrevY(0),
+m_fGravity(0),
 m_kName("")
 {
 	ColorVertex * pkV;
@@ -117,6 +118,6 @@ Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 //---------------------------------------------------------------------------
 Entity2D::~Entity2D()
 {
-
+	/*****/
 }
 //---------------------------------------------------------------------------
