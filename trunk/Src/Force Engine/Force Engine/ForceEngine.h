@@ -32,6 +32,9 @@ Hecho by: German Battiston AKA Melkor
 #include "../Input/Input.h"
 #include "../Input/DirectInput.h"
 //---------------------------------------------------------------------------
+// Ini Importer
+#include "../INI Parser/ConfigFile.h"
+//---------------------------------------------------------------------------
 // FMOD INCLUDE FILE
 #include <fmod/fmod.h>
 //---------------------------------------------------------------------------

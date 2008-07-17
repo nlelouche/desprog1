@@ -18,7 +18,7 @@ m_pkChar(NULL),
 m_pkCharAnimIzq(NULL),
 m_pkCharAnimDer(NULL),
 m_pkBack(NULL),
-m_pkFloor(),
+m_pkFloor(NULL),
 fGravity(0),
 fPosX(0),
 fPosY(0),
@@ -72,7 +72,7 @@ bool MyScene::onInit()
 	m_pkChar->setTexture(m_pkCharText);
 	m_pkChar->setTextureArea(0,0,128,128);
 	m_pkChar->setDim(64,64);
-	m_pkChar->setPosXYZ(0,0,1.0f);
+	m_pkChar->setPosXYZ(0,-220,1.0f);
 
 	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png",D3DCOLOR_XRGB(0,0,0)));
 	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
@@ -91,32 +91,33 @@ bool MyScene::onInit()
 
 	m_pkCharAnimInfoDer = AnimationInfo::Ptr(new AnimationInfo());
 
-	m_pkCharAnimInfoDer->addFrame(0,0,32,32);
 	m_pkCharAnimInfoDer->addFrame(32,0,32,32);
+	m_pkCharAnimInfoDer->addFrame(0,0,32,32);
 	m_pkCharAnimInfoDer->addFrame(64,0,32,32);
 	m_pkCharAnimInfoDer->addFrame(32,0,32,32);
+	m_pkCharAnimInfoDer->addFrame(0,0,32,32);
 	m_pkCharAnimInfoDer->setLength(900.0f);
 	m_pkCharAnimInfoDer->setLoopable(true);
 	m_pkCharAnimDer = new Animation(m_pkCharAnimInfoDer);
 
 	m_pkCharAnimInfoIzq = AnimationInfo::Ptr(new AnimationInfo());
 
-	m_pkCharAnimInfoIzq->addFrame(0,32,32,32);
 	m_pkCharAnimInfoIzq->addFrame(32,32,32,32);
+	m_pkCharAnimInfoIzq->addFrame(0,32,32,32);
 	m_pkCharAnimInfoIzq->addFrame(64,32,32,32);
 	m_pkCharAnimInfoIzq->addFrame(32,32,32,32);
+	m_pkCharAnimInfoIzq->addFrame(0,32,32,32);
 	m_pkCharAnimInfoIzq->setLength(900.0f);
 	m_pkCharAnimInfoIzq->setLoopable(true);
 	m_pkCharAnimIzq = new Animation(m_pkCharAnimInfoIzq);
 
 	m_pkChar->setAnimation(m_pkCharAnimIzq);
-	m_pkChar->setAnimation(m_pkCharAnimDer);
 
 	// FIN ANIMATION Y ANIMATION INFO
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
-	addEntity(m_pkBack);
+	//addEntity(m_pkBack);
 	addEntity(m_pkChar);
 	addEntity(m_pkFloor);
 

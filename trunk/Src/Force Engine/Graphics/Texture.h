@@ -20,6 +20,7 @@ class Graphics;
 class FORCEENGINE_API Texture
 {
 	DECLARE_SMART_POINTER(Texture);
+
 public:
 
 	Texture(std::string kFilename, unsigned long ulColor);

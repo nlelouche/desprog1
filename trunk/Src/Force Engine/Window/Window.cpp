@@ -55,7 +55,7 @@ bool Window::createWindow(unsigned int uiWidth, unsigned int uiHeight)
 		return false;
 	}
 
-	ShowWindow(m_hWnd,SW_SHOW);
+	ShowWindow(m_hWnd, SW_SHOW);
 	UpdateWindow(m_hWnd);
 
 	return true;

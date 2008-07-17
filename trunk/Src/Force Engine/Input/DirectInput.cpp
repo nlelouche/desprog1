@@ -150,7 +150,7 @@ void DirectInput::Reacquire()
 //---------------------------------------------------------------------------
 void DirectInput::Unacquire()
 {
-	//Desdquirir Todos los Dispositivos de Input
+	//Desadquirir Todos los Dispositivos de Input
 
 	ZeroMemory(&m_ucKeyBuffer, sizeof(m_ucKeyBuffer));
 	ZeroMemory(&m_kMouseTaken, sizeof(m_kMouseTaken));

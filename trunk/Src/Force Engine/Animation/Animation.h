@@ -13,7 +13,7 @@ Hecho by: German Battiston AKA Melkor
 #define ANIMATION_H
 //---------------------------------------------------------------------------
 #include "../Defines/Defines.h"
-#include "../Animation/AnimationInfo.h."
+#include "../Animation/AnimationInfo.h"
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Animation
 {

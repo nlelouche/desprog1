@@ -49,7 +49,7 @@ m_pkCurrentAnim(NULL)
 //---------------------------------------------------------------------------
 Sprite::Sprite(const Sprite& rkSprite)
 {
-	*this = rkSprite;
+	* this = rkSprite;
 }
 //---------------------------------------------------------------------------
 void Sprite::Draw(Graphics & rkGraphics) const

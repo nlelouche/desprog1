@@ -403,6 +403,18 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="INI Parser"
+			>
+			<File
+				RelativePath=".\INI Parser\ConfigFile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\INI Parser\ConfigFile.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

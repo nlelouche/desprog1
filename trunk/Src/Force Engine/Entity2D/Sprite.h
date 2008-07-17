@@ -12,6 +12,7 @@ Hecho by: German Battiston AKA Melkor
 #ifndef SPRITE_H
 #define SPRITE_H
 //---------------------------------------------------------------------------
+#include "../Defines/Defines.h"
 #include "../Graphics/Texture.h"
 #include "../Entity2D/Entity2D.h"
 #include "../Graphics/Graphics.h"

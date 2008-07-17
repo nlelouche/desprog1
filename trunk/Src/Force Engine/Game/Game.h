@@ -13,19 +13,14 @@ Hecho by: German Battiston AKA Melkor
 #define GAME_H
 //---------------------------------------------------------------------------
 #include "../Force Engine/ForceEngine.h"
-#include "../Window/Window.h"
-#include "../Graphics/Texture.h"
 #include "../Defines/Defines.h"
-#include "../Graphics/Graphics.h"
-#include "../Graphics/GraphicsStructs.h"
 #include "../Entity2D/Entity2D.h"
 //---------------------------------------------------------------------------
 class Scene;
 class Input;
 class Timer;
-class Window;
 class Graphics;
-class Texture;
+class ConfigFile;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Game
 {

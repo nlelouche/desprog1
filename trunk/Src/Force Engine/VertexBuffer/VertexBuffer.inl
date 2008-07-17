@@ -37,7 +37,7 @@ bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * pkDevice, boo
 											(bDynamic ? D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC : 0),
 											FVF,
 											D3DPOOL_DEFAULT,
-											&m_pVertexBuffer,
+											&m_VertexBuffer,
 											NULL
 											);
 
@@ -79,7 +79,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 
 	void * pVertices = NULL;
 
-	HRESULT hr = m_pVertexBuffer->Lock(
+	HRESULT hr = m_VertexBuffer->Lock(
 										m_uiBase * sizeof(PixelFormatClass),
 										m_uiVtxToLock * sizeof(PixelFormatClass),
 										(void **) (&pVertices),
@@ -93,7 +93,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 		memcpy(pVertices, &pVtxCollection[uiVtxProcNow], sizeof(PixelFormatClass)* m_uiVtxToLock);
 
 		uiVtxProcNow += m_uiVtxToLock;
-		hr = m_pVertexBuffer->Unlock();
+		hr = m_VertexBuffer->Unlock();
 		Flush();
 
 		m_uiBase += m_uiVtxToLock;
@@ -112,7 +112,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 			m_uiVtxToLock = uiVtxCount - uiVtxProcNow;
 		}
 
-		hr = m_pVertexBuffer->Lock(
+		hr = m_VertexBuffer->Lock(
 								   m_uiBase * sizeof(PixelFormatClass), 
 								   m_uiVtxToLock * sizeof(PixelFormatClass), 
 								   (void **)(&pVertices),
@@ -120,7 +120,7 @@ void VertexBuffer<PixelFormatClass,FVF>::Draw(const PixelFormatClass * pVtxColle
 								   );
 	}
 
-	m_pVertexBuffer->Unlock();
+	m_VertexBuffer->Unlock();
 	
 }
 //---------------------------------------------------------------------------
@@ -166,6 +166,6 @@ void VertexBuffer<PixelFormatClass,FVF>::Bind(void)
 	
 	hr = m_pkDevice->SetVertexShader(NULL);
 	hr = m_pkDevice->SetFVF(FVF);
-	hr = m_pkDevice->SetStreamSource(0, m_pVertexBuffer, NULL, sizeof(PixelFormatClass));
+	hr = m_pkDevice->SetStreamSource(0, m_VertexBuffer, NULL, sizeof(PixelFormatClass));
 }
 //---------------------------------------------------------------------------
