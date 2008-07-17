@@ -43,11 +43,11 @@ public:
 
 	void loadIdentity ();
 	void setMatrixMode(MatrixMode eMode);
-	void Translate(float fX, float fY, float fZ = 0.0f);
+	void Translate(float fX, float fY, float fZ);
 	void Scale(float fW, float fH, float fD = 1.0f);
 	void rotateZ(float fAngle);
 
-	void setViewPosition (float fPosX, float fPosY);
+	void setViewPosition(float fPosX, float fPosY);
 
 	void unbindTexture();
 	bool bindTexture(Texture & rkTexture);

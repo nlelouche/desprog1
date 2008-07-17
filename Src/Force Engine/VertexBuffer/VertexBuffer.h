@@ -54,7 +54,7 @@ private:
 	D3DPRIMITIVETYPE m_primitiveType;
 
 	// El Vertex Buffer creado queda encapsulado dentro de la clase
-	LPDIRECT3DVERTEXBUFFER9 m_pVertexBuffer;
+	LPDIRECT3DVERTEXBUFFER9 m_VertexBuffer;
 
 	// Almaceno Temporalmente el Dispositivo que pase como parametro en Draw
 	IDirect3DDevice9 * m_pkDevice;

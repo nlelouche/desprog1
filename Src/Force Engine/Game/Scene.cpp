@@ -58,7 +58,7 @@ void Scene::sortEntitiesByZ()
 	sort(m_apkEntities.begin(), m_apkEntities.end(), Scene::entity2DComp);
 }
 //---------------------------------------------------------------------------
-bool Scene::entity2DComp(Entity2D* pkEnt1, Entity2D* pkEnt2)
+bool Scene::entity2DComp(Entity2D * pkEnt1, Entity2D * pkEnt2)
 {
 	return (pkEnt1->getPosZ() > pkEnt2->getPosZ());
 }

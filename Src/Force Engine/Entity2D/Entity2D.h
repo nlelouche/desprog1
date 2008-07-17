@@ -12,7 +12,6 @@ Hecho by: German Battiston AKA Melkor
 #ifndef ENTITY2D_H
 #define ENTITY2D_H
 //---------------------------------------------------------------------------
-#include <d3dx9.h>
 #include "../Defines/Defines.h"
 #include "../Graphics/Graphics.h"
 //---------------------------------------------------------------------------
@@ -26,6 +25,7 @@ class FORCEENGINE_API Entity2D
 public:
 
 	Entity2D();
+
 	virtual ~Entity2D();
 
 	float getPosX() const;

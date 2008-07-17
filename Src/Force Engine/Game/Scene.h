@@ -17,8 +17,8 @@ Hecho by: German Battiston AKA Melkor
 #include "../Entity2D/Entity2D.h"
 //---------------------------------------------------------------------------
 class Graphics;
-class Texture;
 class Entity2D;
+class ConfigFile;
 class Input;
 //---------------------------------------------------------------------------
 class FORCEENGINE_API Scene

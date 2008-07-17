@@ -22,7 +22,6 @@ Hecho by: German Battiston AKA Melkor
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
 //---------------------------------------------------------------------------
-
 class FORCEENGINE_API DirectInput : public Input
 {
 

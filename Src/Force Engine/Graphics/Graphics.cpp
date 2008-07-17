@@ -16,7 +16,10 @@ Graphics::Graphics()
 m_pD3D(NULL),
 m_pkDevice(NULL),
 m_hWnd(NULL),
-m_eCurrentMatMode(VIEW)
+m_eCurrentMatMode(VIEW),
+fX(0),
+fY(0),
+fAngle(0)
 {
 	
 }
@@ -167,7 +170,7 @@ void Graphics::loadIdentity()
 
 	D3DXMatrixIdentity(&kTempMatrix);
 
-	if (m_eCurrentMatMode == VIEW) 
+	if(m_eCurrentMatMode == VIEW) 
 	{		
 		D3DXVECTOR3 kEyePos(0,0,-1);
 		D3DXVECTOR3 kLookPos(0,0,0);
