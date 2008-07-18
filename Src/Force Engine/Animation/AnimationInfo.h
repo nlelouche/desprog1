@@ -30,6 +30,7 @@ class FORCEENGINE_API AnimationInfo
 
 public:
 	
+	// Agrega Cuadros de Animacions
 	void addFrame(
 				 unsigned int uiOffsetX,
 				 unsigned int uiOffsetY, 

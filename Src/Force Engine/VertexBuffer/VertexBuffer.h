@@ -31,9 +31,15 @@ public:
 	~VertexBuffer();
 
 	bool Create(IDirect3DDevice9 * pkDevice, bool bDynamic);
-	void Bind(void);
-	void Flush(void);
-	void Draw(const PixelFormatClass * pVtxCollection, D3DPRIMITIVETYPE primitiveType, unsigned int uiVtxCount);
+	void Bind(void); // Indica a DX Cual es el Vertex Buffer Activo
+	void Flush(void); // Primitivas de Dibujado de DX
+
+	void Draw(
+			 const PixelFormatClass * pVtxCollection,
+			 D3DPRIMITIVETYPE primitiveType, 
+			 unsigned int uiVtxCount
+			 );
+
 	void Release();
 
 private:

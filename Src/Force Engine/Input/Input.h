@@ -43,14 +43,16 @@ public:
 	Input();
 	virtual ~Input();
 
+	// Sobrecargados de DirectInput.h
+
 	virtual bool Init() = 0;
 	virtual void deInit() = 0;
-
-	// Mouse y Keyboard
 
 	virtual void Acquire() = 0;
 	virtual void Reacquire() = 0;
 	virtual void Unacquire() = 0;
+
+	// Mouse y Keyboard
 
 	void getKeyEvent();
 	void setMousePosition(long x, long y, long z);
