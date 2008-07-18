@@ -130,6 +130,10 @@ bool Graphics::InitMat()
 	m_pkDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 	m_pkDevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 
+	m_pkDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	m_pkDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	m_pkDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+
 	m_pkDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	m_pkDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 
