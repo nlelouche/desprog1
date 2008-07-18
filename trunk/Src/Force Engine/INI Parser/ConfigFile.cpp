@@ -56,18 +56,18 @@ void ConfigFile::deleteUnneeded(char * pszString)
 	pszResult = szResult;
 	p = pszString;
 
-	while(*p != 0 && *p != FORCE_CFG_COMMENT)
+	while(* p != 0 && * p != FORCE_CFG_COMMENT)
 	{
-		if((*p >='0' && *p <= 'z')					||
-			 *p == FORCE_CFG_EQUAL					||
-			 *p == FORCE_CFG_START_SECTION_NAME		||
-			 *p == FORCE_CFG_END_SECTION_NAME		||
-			 *p == 'ñ' ||
-			 *p == 'Ñ' ||
-			 *p == '-' ||
-			 *p == '.')
+		if((* p >='0' && * p <= 'z')					||
+			 * p == FORCE_CFG_EQUAL					||
+			 * p == FORCE_CFG_START_SECTION_NAME		||
+			 * p == FORCE_CFG_END_SECTION_NAME		||
+			 * p == 'ñ' ||
+			 * p == 'Ñ' ||
+			 * p == '-' ||
+			 * p == '.')
 		{
-			* pszResult = *p;
+			* pszResult = * p;
 			pszResult++;
 			* pszResult = 0;
 
@@ -138,9 +138,9 @@ void ConfigFile::searchValue(char * pszString, const char * szOption)
 		deleteUnneeded(szString);
 		p = szString;
 
-		while (*p != 0 && *p != '=') 
+		while (* p != 0 && * p != '=') 
 		{
-			if (*p >='0' && *p <= 'z' || *p == '-') 
+			if (* p >='0' && * p <= 'z' || * p == '-') 
 			{
 				* pszResult = * p;
 				pszResult++;
@@ -207,7 +207,7 @@ DWORD ConfigFile::ReadDWord(const char * pszSection, const char * pszOption, DWO
 	searchSection(pszSection);
 	searchValue(szString,pszOption);
 
-	if(*szString >= '0' && *szString <= '9')
+	if(* szString >= '0' && * szString <= '9')
 	{
 		dwValor = (DWORD)strtoul(szString,NULL,10);
 	}
@@ -245,21 +245,21 @@ bool ConfigFile::ReadBoolean(const char * pszSection, const char * pszOption, bo
 	// To LowerCase
 	while(* p != 0) 
 	{
-		if(*p >= 'A' && *p <= 'Z')
+		if(* p >= 'A' && * p <= 'Z')
 		{
-			* p = * p+32;
+			* p = * p + 32;
 		}
 
 		p++;
 	}
 
-	if(strcmp (szString,"true") == 0)
+	if(strcmp(szString,"true") == 0)
 	{
 		bValor = true;
 	}
 	else
 	{
-		if(strcmp (szString,"false") == 0)
+		if(strcmp(szString,"false") == 0)
 		{
 			bValor = false;
 		}

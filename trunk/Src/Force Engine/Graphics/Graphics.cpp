@@ -52,6 +52,8 @@ bool Graphics::InitDX(Window * m_pkWindow)
 	D3DPRESENT_PARAMETERS d3DPresentParameters;
 	ZeroMemory(&d3DPresentParameters, sizeof(d3DPresentParameters));
 
+	// Fijo los Valores de la Estructura D3DPRESENTPARAMETERS
+
 	d3DPresentParameters.BackBufferFormat = displayMode.Format;
 	d3DPresentParameters.Windowed = true;
 	d3DPresentParameters.BackBufferCount = 1; 
@@ -89,6 +91,8 @@ bool Graphics::InitDX(Window * m_pkWindow)
 //---------------------------------------------------------------------------
 bool Graphics::InitMat()
 {	
+	// Inicializacion de Matrices
+
 	// Matriz de Mundo
 
 	D3DXMATRIX d3dmatMundo;
@@ -134,6 +138,8 @@ bool Graphics::InitMat()
 //---------------------------------------------------------------------------
 void Graphics::Clear()
 {
+	// Limpia la Escena
+
 	m_pkDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255,255,255), 1.0f, 0);
 }
 //---------------------------------------------------------------------------
@@ -256,6 +262,7 @@ void Graphics::unbindTexture()
 bool Graphics::bindTexture(Texture & rkTexture)
 {
 	IDirect3DTexture9 * pkDXTexture = m_kTextureMap[rkTexture.getFileName()];
+
 	assert(pkDXTexture);
 	
 	HRESULT hr = m_pkDevice->SetTexture(0, pkDXTexture);

@@ -28,7 +28,7 @@ bool ForceGame::onInit()
 //---------------------------------------------------------------------------
 bool ForceGame::onLoop()
 {
-	m_pkTimer->lockFPS();
+	//m_pkTimer->lockFPS();
 
 	m_pkMyScene->Update(m_pkTimer->getTimeBetweenFrames());
 

@@ -76,7 +76,7 @@ bool Game::Loop()
 
 	stringstream s;
 
-	s << "Force Engine v0.5 | FPS: " << m_pkTimer->getFPS();
+	s << "Force Engine v0.5 Beta | FPS: " << m_pkTimer->getFPS();
 
 	m_pkWindow->SetWindowTitle(s.str().c_str());
 

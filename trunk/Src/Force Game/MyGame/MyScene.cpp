@@ -54,7 +54,7 @@ bool MyScene::onInit()
 
 	m_pkFloor = new ForceBOX();
 	m_pkFloor->setDim(800,10);
-	m_pkFloor->setPosXYZ(0,-285,1.0f);
+	m_pkFloor->setPosXYZ(0,-285,0.0f);
 
 	// FIN SHAPES
 
@@ -117,7 +117,7 @@ bool MyScene::onInit()
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
-	//addEntity(m_pkBack);
+	addEntity(m_pkBack);
 	addEntity(m_pkChar);
 	addEntity(m_pkFloor);
 

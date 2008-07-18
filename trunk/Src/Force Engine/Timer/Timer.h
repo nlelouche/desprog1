@@ -26,7 +26,7 @@ public:
 	void firstMeasure();
 	void Measure();
 
-	void lockFPS();
+	void lockFPS(); // Modificar...
 
 	float getTimeBetweenFrames() const;
 	unsigned int getFPS() const;
