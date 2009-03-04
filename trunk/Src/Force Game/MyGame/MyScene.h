@@ -14,6 +14,8 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "../Src/Force Engine/Defines/Defines.h"
 #include "../Src/Force Engine/Force Engine/ForceEngine.h"
+#include "../Src/Force Engine/TileMap/Map.h"
+#include "../Src/Force Engine/Graphics/Graphics.h"
 //---------------------------------------------------------------------------
 class MyScene : public Scene
 {
@@ -53,6 +55,9 @@ private:
 	float	fPosY;
 
 	float	fGravity;
+
+	Graphics * m_kGraphics;
+	Map *m_pkTileMap;
 
 };
 

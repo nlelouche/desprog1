@@ -1,0 +1,39 @@
+//-------------------------------------------------------------------//
+//*																	*//
+//*		Importer.H - Created 04/07/2008								*//
+//*						PitBull Engine V0.1							*//
+//*								By CalaveraX						*//
+//-------------------------------------------------------------------//
+				
+//----------------------------------------------------------------
+#pragma once
+
+//----------------------------------------------------------------
+#include "../Defines/Defines.h"
+#include "../Entity2D/Sprite.h"
+#include "XMLParser.h"
+#include <list>
+//----------------------------------------------------------------
+//----------------------------------------------------------------
+class FORCEENGINE_API Importer
+{
+// entry point
+public:
+//---------------------------------------------------------------------------------
+	static bool ImportSprite (const char* pszName, Sprite& rkSprite,Graphics *pkRender);
+	static bool ImportSpriteAnimation(const char *pszName, Sprite &rkSprite);
+//---------------------------------------------------------------------------------
+private:
+		friend class TileMap;
+//---------------------------------------------------------------------------------
+		static bool LoadTileMap (	const char* pszMapName,
+									const char* pszTileName,
+									TileMap &rkTileMap,
+									list<TileMap::Tile> TilesList);
+									/*std::vector<TileMap::Tile*> TileList*/);
+
+//---------------------------------------------------------------------------------
+	friend class TileMap;
+//---------------------------------------------------------------------------------
+};
+//---------------------------------------------------------------------------------

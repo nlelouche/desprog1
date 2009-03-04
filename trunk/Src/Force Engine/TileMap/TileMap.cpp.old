@@ -1,0 +1,97 @@
+/****************************************************************************
+
+Force Engine v0.5
+
+Creado: 7/01/09
+Clase: TileMap.h
+Hecho by: Nahuel "CalaveraX" Lelouche
+
+****************************************************************************/
+//------------------------------------------------------------------------------------------------------------
+#include "TileMap.h"
+//------------------------------------------------------------------------------------------------------------
+TileMap::TileMap()
+{
+	/***/
+}
+//------------------------------------------------------------------------------------------------------------
+TileMap::~TileMap(){
+	/***/
+}
+//------------------------------------------------------------------------------------------------------------
+void TileMap::DrawMap(Graphics *pkRenderer){
+	/***/
+}
+//------------------------------------------------------------------------------------------------------------
+bool TileMap::LoadMap(const char *pszFilename,const char *pszTileFilename){
+	
+	// Verificamos por que se nos haya pasado una ruta al archivo.
+	if ((pszFilename == NULL) || (pszTileFilename == NULL)){
+		return false;
+	}
+
+	// Cargar Tileset para saber que coordenadas de textura tiene cada tile.
+	// cargar mapa todos sus datos y luego sos tiles.
+
+
+	// Creamos el MainNode que usaremos para leer los Encabezados XML del mapa
+	XMLNode rkMapNode = XMLNode::openFileHelper(pszFilename,"TilemapFile");
+	// Creamos el node para TileMap
+	XMLNode rkTileMapNode = rkMapNode.getChildNode("tilemap");	
+
+	// load Map attributes
+	const char* pszName				= rkTileMapNode.getAttribute("name");
+	const char* pszBackgroundRGB	= rkTileMapNode.getAttribute("backgroundRGB");
+	const char* pszLayers			= rkTileMapNode.getAttribute("layers");
+	const char* pszRows				= rkTileMapNode.getAttribute("rows");
+	const char* pszColums			= rkTileMapNode.getAttribute("columns");
+	const char* pszTileWidth		= rkTileMapNode.getAttribute("tileWidth");
+	const char* pszTileHeigth		= rkTileMapNode.getAttribute("tileHeight");
+
+
+
+	// Tiles Attributes
+
+	// Creamos el MainNode que usaremos para leer los Encabezados XML del Tileset
+	XMLNode rkTileNode = XMLNode::openFileHelper(pszTileFilename,"tilesetFile");
+	// Load Tiles Quantity.
+	const char*  pszTileCant	= rkTileNode.getAttribute("tiles");
+	int TempCant = atoi(pszTileCant);
+	// Creamos el node para Tiles Data
+	XMLNode rkTilesNode = rkTileNode.getChildNode("tiles");
+
+
+
+	for (int i = 0; i < TempCant; i++){
+
+		// Creamos los nodos para cargar los datos
+		XMLNode rkTilesTitleNode = rkTilesNode.getChildNode("tilesetTile");
+		XMLNode rkTilesImageNode = rkTilesTitleNode.getChildNode("tilesetImage");
+		
+
+		// load Tile attributes
+		const char*	 pszId			= rkTilesTitleNode.getAttribute("id");
+		const char*  pszwidth		= rkTilesTitleNode.getAttribute("width");
+		const char*  pszheight		= rkTilesTitleNode.getAttribute("height");
+		const char*  pszImageFile	= rkTilesImageNode.getAttribute("file");
+		const char*  pszPosX		= rkTilesImageNode.getAttribute("posx");
+		const char*  pszPosY		= rkTilesImageNode.getAttribute("posy");
+
+
+	}
+
+
+
+// TODO: Ya tengo cargados todos los datos del mapa, ahora tengo que guardarlos en la lista de 
+// Tiles y hacer el update y Draw.
+
+
+	/***/
+	return true;
+}
+//------------------------------------------------------------------------------------------------------------
+void TileMap::Update(){
+	/***/
+}
+//------------------------------------------------------------------------------------------------------------
+

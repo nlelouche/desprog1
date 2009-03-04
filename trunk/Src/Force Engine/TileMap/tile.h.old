@@ -1,0 +1,46 @@
+/****************************************************************************
+
+Force Engine v0.5
+
+Creado: 7/01/09
+Clase: TileMap.h
+Hecho by: Nahuel "CalaveraX" Lelouche
+
+****************************************************************************/
+
+//---------------------------------------------------------------------------
+#ifndef TILE_H
+#define TILE_H
+//---------------------------------------------------------------------------
+#include <fstream>
+#include <list>
+#include <string.h>
+#include <stdlib.h>
+#include <iostream>
+//#include "../Xml Parser/Importer.h"
+#include "../Defines/Defines.h"
+#include "../Src/Force Engine/Force Engine/ForceEngine.h"
+#include "../Graphics/Graphics.h"
+//#include "../INI Parser/ConfigFile.h"
+//---------------------------------------------------------------------------
+using namespace std;
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+class FORCEENGINE_API Tile : public Sprite
+{
+
+public:
+	Tile();
+	Tile(int tx,int ty,int th, int tw,int tid);
+	~Tile();
+
+private:
+	int m_x,m_y,m_h,m_w,m_id;
+
+};
+
+//---------------------------------------------------------------------------
+
+#endif /*--- TILE_H ---*/
+
+//---------------------------------------------------------------------------

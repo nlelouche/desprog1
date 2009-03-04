@@ -415,6 +415,46 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="TileMap"
+			>
+			<File
+				RelativePath=".\TileMap\Map.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TileMap\Map.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TileMap\Map.inl"
+				>
+			</File>
+			<File
+				RelativePath=".\TileMap\Tile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TileMap\Tile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TileMap\Tile.inl"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="XmlParser"
+			>
+			<File
+				RelativePath=".\Xml Parser\XMLParser.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Xml Parser\XMLParser.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

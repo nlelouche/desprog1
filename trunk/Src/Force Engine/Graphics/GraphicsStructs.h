@@ -52,7 +52,22 @@ enum MatrixMode
 	PROJECTION = D3DTS_PROJECTION
 };
 //---------------------------------------------------------------------------
+struct RGBColor {
+	int iRed;
+	int iGreen;
+	int iBlue;
 
+	RGBColor(int iR, int iG, int iB)
+	{
+		iRed = iR;
+		iGreen = iG;
+		iBlue = iB;
+	}
+	RGBColor()
+	{
+		/***/
+	}
+};
 //---------------------------------------------------------------------------
 
 #endif  /*--- GRAPHICS_STRUCTS_H ---*/

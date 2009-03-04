@@ -14,6 +14,7 @@ Hecho by: German Battiston AKA Melkor
 MyScene::MyScene(Graphics & rkGraphics)
 :
 Scene(rkGraphics),
+m_kGraphics(NULL),
 m_pkChar(NULL),
 m_pkCharAnimIzq(NULL),
 m_pkCharAnimDer(NULL),
@@ -23,9 +24,10 @@ fGravity(0),
 fPosX(0),
 fPosY(0),
 fVelocityX(0),
-fVelocityY(0)
+fVelocityY(0),
+m_pkTileMap(NULL)
 {
-	
+	m_kGraphics = &rkGraphics;
 }
 //---------------------------------------------------------------------------
 bool MyScene::onInit()
@@ -125,6 +127,9 @@ bool MyScene::onInit()
 	fVelocityY = 0.0f;
 	fGravity = 0.006f;
 
+	m_pkTileMap = new Map(m_kGraphics);
+	m_pkTileMap->loadMap("../../res/mapas/tileset.xml","../../res/Mapas/Mapa1.xml");
+
 	return true;
 }
 //---------------------------------------------------------------------------
@@ -169,11 +174,15 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 
 	m_pkChar->setPosXY(fPosX,fPosY);
 
+	m_pkTileMap->update(fTimeBetweenFrames);
+	m_pkTileMap->setLayerVisible(0,true);
+
 	return true;
 }
 //---------------------------------------------------------------------------
 void MyScene::onDraw(Graphics & rkGraphics) const
 {
+	m_pkTileMap->draw();
 	/*****/
 }
 //---------------------------------------------------------------------------
