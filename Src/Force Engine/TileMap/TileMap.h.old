@@ -1,0 +1,56 @@
+/****************************************************************************
+
+Force Engine v0.5
+
+Creado: 7/01/09
+Clase: TileMap.h
+Hecho by: Nahuel "CalaveraX" Lelouche
+
+****************************************************************************/
+
+//---------------------------------------------------------------------------
+#ifndef TILE_MAP_H
+#define TILE_MAP_H
+//---------------------------------------------------------------------------
+#include <fstream>
+#include <list>
+#include <string.h>
+#include <stdlib.h>
+#include <iostream>
+//#include "../Xml Parser/Importer.h"
+#include "../Defines/Defines.h"
+#include "../Src/Force Engine/Force Engine/ForceEngine.h"
+#include "../Graphics/Graphics.h"
+#include "Tile.h"
+#include "../Xml Parser/XMLParser.h"
+//#include "../INI Parser/ConfigFile.h"
+//---------------------------------------------------------------------------
+using namespace std;
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+class FORCEENGINE_API TileMap
+{
+
+public:
+
+	TileMap();
+	~TileMap();
+		
+
+	bool LoadMap(const char * pszFilename,const char * pszTileFilename);
+	void DrawMap(Graphics *pkRenderer);
+	void Update();
+
+
+
+private:
+
+		list<Tile*> m_TileList;
+		list<Tile*>::iterator m_kTileListIterator;
+};
+
+//---------------------------------------------------------------------------
+
+#endif /*--- TILE_MAP_H ---*/
+
+//---------------------------------------------------------------------------

@@ -61,6 +61,8 @@ private:
 	void deleteUnneeded(char * pszString);
 	void searchSection(const char * pszSection);
 	void searchValue(char * pszString, const char * pszOption);
+
+	friend class TileMap;
 };
 
 //---------------------------------------------------------------------------

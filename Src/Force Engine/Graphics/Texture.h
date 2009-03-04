@@ -14,6 +14,7 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "../Defines/Defines.h"
 #include "../Graphics/Graphics.h"
+#include "../Graphics/GraphicsStructs.h"
 //---------------------------------------------------------------------------
 class Graphics;
 //---------------------------------------------------------------------------
@@ -24,6 +25,7 @@ class FORCEENGINE_API Texture
 public:
 
 	Texture(std::string kFilename, unsigned long ulColor);
+	Texture(std::string kFilename, int iRed, int iGreen, int iBlue);
 	~Texture();
 
 	unsigned int getWidth() const;
@@ -44,6 +46,7 @@ private:
 	unsigned long m_ulColor;
 
 	std::string m_kFilename;
+	RGBColor m_kColorKey;
 };
 
 //---------------------------------------------------------------------------

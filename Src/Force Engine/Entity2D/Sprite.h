@@ -44,6 +44,7 @@ public:
 	void setAnimation(Animation * pkCurrentAnim);
 
 	virtual void onCollision(Entity2D * pkEntity) { /*****/ }
+	void clone (Sprite* pkSprite);
 
 private:
 
