@@ -57,8 +57,8 @@ private:
 	float	fGravity;
 
 	Graphics * m_kGraphics;
-	Map *m_pkTileMap;
 
+	Map *m_pkTileMap;
 };
 
 //---------------------------------------------------------------------------

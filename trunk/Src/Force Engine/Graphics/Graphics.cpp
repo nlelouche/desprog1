@@ -67,7 +67,7 @@ bool Graphics::InitDX(Window * m_pkWindow)
 
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
- 							  D3DDEVTYPE_HAL,							
+ 							  D3DDEVTYPE_REF, 							
 							  m_pkWindow->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,

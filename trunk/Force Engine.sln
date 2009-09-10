@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Force Engine", "Src\Force Engine\Force Engine.vcproj", "{1BE16FA9-0699-4DAD-AB1A-F3E4EA1CC101}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Force Game", "Src\Force Game\Force Game.vcproj", "{DF4BD7C5-5170-4BF2-9EA5-BBF93FA0EB11}"

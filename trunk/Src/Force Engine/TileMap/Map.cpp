@@ -1,4 +1,15 @@
-//----------------------------------------------------------------
+/****************************************************************************
+
+Force Engine v0.5
+
+Creado: 28/03/08
+Clase: MyScene.h
+Hecho by: Nahuel Lelouche
+Hecho by: German Battiston AKA Melkor
+
+****************************************************************************/
+
+//---------------------------------------------------------------------------
 #include "Map.h"
 //----------------------------------------------------------------
 Map::Map(Graphics* pkRenderer)
@@ -24,10 +35,13 @@ Map::~Map()
 
 }
 //----------------------------------------------------------------
-bool Map::loadMap(string kTileSetFile, string kTileMapFile)
+bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 {
 	if (kTileSetFile == "" || kTileMapFile == "")
+	{
 		return false;
+	}
+
 	//abro el archivo del mapa
 	XMLNode kMapFileMainNode = XMLNode::openFileHelper(kTileMapFile.c_str(),"TilemapFile");
 
@@ -81,7 +95,7 @@ bool Map::loadMap(string kTileSetFile, string kTileMapFile)
 
 }
 //----------------------------------------------------------------
-void Map::parseBackgroundColor(string kStringToParse)
+void Map::parseBackgroundColor(std::string kStringToParse)
 {
 	int iPos = (int)(kStringToParse.find(',',0));
 	m_kBackgroundColor.iRed = atoi((kStringToParse.substr(0,iPos)).c_str());
@@ -98,7 +112,7 @@ void Map::parseBackgroundColor(string kStringToParse)
 void Map::getMapAttributes(XMLNode kMapNode)
 {
 	m_kName = kMapNode.getAttribute("name");
-	string kBackgroundRGB = kMapNode.getAttribute("backgroundRGB");
+	std::string kBackgroundRGB = kMapNode.getAttribute("backgroundRGB");
 	parseBackgroundColor(kBackgroundRGB);
 	const char* pszLayers = kMapNode.getAttribute("layers");
 	const char* pszRows = kMapNode.getAttribute("rows");
@@ -113,11 +127,11 @@ void Map::getMapAttributes(XMLNode kMapNode)
 	m_iTileHeight = atoi(pszTileHeight);
 }
 //----------------------------------------------------------------
-void Map::loadTileSet(XMLNode kTileSet, string kParentPath)
+void Map::loadTileSet(XMLNode kTileSet, std::string kParentPath)
 {
 	assert(m_pkRenderer);
 
-	string kTextureFile = kTileSet.getAttribute("file");
+	std::string kTextureFile = kTileSet.getAttribute("file");
 
 	TileSetMapIterator itTexture;
 	itTexture = m_kpTileSetMap.find(kTextureFile);
@@ -187,13 +201,13 @@ void Map::loadTile(XMLNode kTile)
 	const char* pszHeight = kTile.getAttribute("height");
 
 	XMLNode kTextureNode = kTile.getChildNode("tilesetImage");
-	string kTextureFile = kTextureNode.getAttribute("file");
+	std::string kTextureFile = kTextureNode.getAttribute("file");
 	const char* pszTexPosX = kTextureNode.getAttribute("posX");
 	const char* pszTexPosY = kTextureNode.getAttribute("posY");
 
 	XMLNode kFlipNode = kTile.getChildNode("flip");
-	string kVFlip = kFlipNode.getAttribute("vertically");
-	string kHFlip = kFlipNode.getAttribute("horizontally");
+	std::string kVFlip = kFlipNode.getAttribute("vertically");
+	std::string kHFlip = kFlipNode.getAttribute("horizontally");
 
 	// convierto los atributos
 	unsigned int uiTexPosX = atoi(pszTexPosX);
@@ -202,7 +216,7 @@ void Map::loadTile(XMLNode kTile)
 	unsigned int uiHeight = atoi(pszHeight);
 
 	// seteo los stributos del sprite
-	string kTileSetPath = m_kkTileSetNamesMap[kTextureFile];
+	std::string kTileSetPath = m_kkTileSetNamesMap[kTextureFile];
 	pkTile->setTexture( m_kpTileSetMap[kTileSetPath] );
 	pkTile->setId(iId);
 	pkTile->setTextureArea(uiTexPosX, uiTexPosY, uiWidth, uiHeight);
@@ -245,7 +259,7 @@ void Map::loadLayer(XMLNode kLayer)
 	int iId = atoi(pszId);
 
 	// cargo el nombre
-	string kName = kLayer.getAttribute("name");
+	std::string kName = kLayer.getAttribute("name");
 
 	// busco el layer por nombre
 	LayerMapIterator itLayer;
@@ -278,7 +292,7 @@ void Map::loadLayer(XMLNode kLayer)
 	// creo el vector del layer
 	XMLNode kLayerDataNode = kLayer.getChildNode("data");
 
-	string kData = kLayerDataNode.getText();
+	std::string kData = kLayerDataNode.getText();
 
 	TileVector* pkNewLayer = new TileVector();
 
@@ -297,7 +311,7 @@ void Map::loadLayer(XMLNode kLayer)
 
 }
 //----------------------------------------------------------------
-void Map::procesarData(string kData, vector<int> &kDataVector)
+void Map::procesarData(std::string kData, vector<int> &kDataVector)
 {
 	//borro los saltos de linea de la data
 	//borro el ASCII 13

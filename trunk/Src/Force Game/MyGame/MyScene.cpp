@@ -63,9 +63,8 @@ bool MyScene::onInit()
 	// INIT SPRITE Y TEXTURE
 
 	m_pkChar = new Sprite();
-	m_pkBack = new Sprite();
 
-	m_pkCharText = Texture::Ptr(new Texture("../../res/characterFinal.bmp",D3DCOLOR_XRGB(255,0,255)));
+	m_pkCharText = Texture::Ptr(new Texture("../../res/characterFinal.bmp", D3DCOLOR_XRGB(255,0,255)));
 	if(!m_pkGraphics->loadTexture("../../res/characterFinal.bmp",* m_pkCharText))
 	{
 		return false;
@@ -76,7 +75,8 @@ bool MyScene::onInit()
 	m_pkChar->setDim(64,64);
 	m_pkChar->setPosXYZ(0,-220,1.0f);
 
-	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png",D3DCOLOR_XRGB(0,0,0)));
+	m_pkBack = new Sprite();
+	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png", D3DCOLOR_XRGB(0,0,0)));
 	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
 	{
 		return false;
@@ -115,7 +115,11 @@ bool MyScene::onInit()
 
 	m_pkChar->setAnimation(m_pkCharAnimIzq);
 
-	// FIN ANIMATION Y ANIMATION INFO
+	m_pkTileMap = new Map(m_kGraphics);
+
+	m_pkTileMap->loadMap("../../res/mapas/tileset.xml", "../../res/Mapas/Mapa1.xml");
+
+	// FIN ANIMATION Y ANIMATION INFO Y TILEMAP
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
@@ -126,9 +130,6 @@ bool MyScene::onInit()
 	fVelocityX = 0.0f;
 	fVelocityY = 0.0f;
 	fGravity = 0.006f;
-
-	m_pkTileMap = new Map(m_kGraphics);
-	m_pkTileMap->loadMap("../../res/mapas/tileset.xml","../../res/Mapas/Mapa1.xml");
 
 	return true;
 }
