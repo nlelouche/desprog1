@@ -11,10 +11,10 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #include "MyScene.h"
 //---------------------------------------------------------------------------
-MyScene::MyScene(Graphics & rkGraphics)
+MyScene::MyScene(Graphics &rkGraphics)
 :
 Scene(rkGraphics),
-m_kGraphics(NULL),
+m_kGraphics(&rkGraphics),
 m_pkChar(NULL),
 m_pkCharAnimIzq(NULL),
 m_pkCharAnimDer(NULL),
@@ -27,7 +27,7 @@ fVelocityX(0),
 fVelocityY(0),
 m_pkTileMap(NULL)
 {
-	m_kGraphics = &rkGraphics;
+	//m_kGraphics = &rkGraphics;
 }
 //---------------------------------------------------------------------------
 bool MyScene::onInit()
@@ -54,7 +54,7 @@ bool MyScene::onInit()
 
 	// INIT SHAPES
 
-	m_pkFloor = new ForceBOX();
+	/*m_pkFloor = new ForceBOX();
 	m_pkFloor->setDim(800,10);
 	m_pkFloor->setPosXYZ(0,-285,0.0f);
 
@@ -113,7 +113,7 @@ bool MyScene::onInit()
 	m_pkCharAnimInfoIzq->setLoopable(true);
 	m_pkCharAnimIzq = new Animation(m_pkCharAnimInfoIzq);
 
-	m_pkChar->setAnimation(m_pkCharAnimIzq);
+	m_pkChar->setAnimation(m_pkCharAnimIzq);*/
 
 	m_pkTileMap = new Map(m_kGraphics);
 
@@ -123,9 +123,9 @@ bool MyScene::onInit()
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
-	addEntity(m_pkBack);
+	/*addEntity(m_pkBack);
 	addEntity(m_pkChar);
-	addEntity(m_pkFloor);
+	addEntity(m_pkFloor);*/
 
 	fVelocityX = 0.0f;
 	fVelocityY = 0.0f;
@@ -136,13 +136,13 @@ bool MyScene::onInit()
 //---------------------------------------------------------------------------
 bool MyScene::onUpdate(float fTimeBetweenFrames)
 {
-	m_pkBack->Update(fTimeBetweenFrames);
+	/*m_pkBack->Update(fTimeBetweenFrames);
 	m_pkChar->Update(fTimeBetweenFrames);
 	m_pkCharAnimIzq->Update(fTimeBetweenFrames);
 	m_pkCharAnimDer->Update(fTimeBetweenFrames);
-	m_pkFloor->Update(fTimeBetweenFrames);
+	m_pkFloor->Update(fTimeBetweenFrames);*/
 
-	updateCollisionChar();
+	/*updateCollisionChar();
 
 	fPosX = m_pkChar->getPosX();
 	fPosY = m_pkChar->getPosY();
@@ -173,7 +173,7 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	fPosX += fVelocityX;
 	fPosY += fVelocityY;
 
-	m_pkChar->setPosXY(fPosX,fPosY);
+	m_pkChar->setPosXY(fPosX,fPosY);*/
 
 	m_pkTileMap->update(fTimeBetweenFrames);
 	m_pkTileMap->setLayerVisible(0,true);
@@ -189,7 +189,7 @@ void MyScene::onDraw(Graphics & rkGraphics) const
 //---------------------------------------------------------------------------
 bool MyScene::onDeInit()
 {
-	delete m_pkChar;
+	/*delete m_pkChar;
 	m_pkChar = NULL;
 
 	delete m_pkBack;
@@ -202,7 +202,10 @@ bool MyScene::onDeInit()
 	m_pkCharAnimDer = NULL;
 
 	delete m_pkFloor;
-	m_pkFloor = NULL;
+	m_pkFloor = NULL;*/
+
+	delete m_pkTileMap;
+	m_pkTileMap = NULL;
 
 	return true;
 }
