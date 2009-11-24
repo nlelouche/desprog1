@@ -28,7 +28,9 @@ Tile::~Tile()
 void Tile::clone(Tile* pkTile)
 {
 	if(pkTile == this)
+	{
 		return;
+	}
 
 	Sprite::clone(pkTile);
 

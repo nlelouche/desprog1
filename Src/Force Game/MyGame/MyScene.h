@@ -48,17 +48,17 @@ private:
 	AnimationInfo::Ptr m_pkCharAnimInfoIzq;
 	AnimationInfo::Ptr m_pkCharAnimInfoDer;
 
-	float	fVelocityX;
-	float	fVelocityY;
-	
 	float	fPosX;
 	float	fPosY;
 
 	float	fGravity;
 
+	float	fVelocityX;
+	float	fVelocityY;
+
 	Graphics * m_kGraphics;
 
-	Map *m_pkTileMap;
+	Map * m_pkTileMap;
 };
 
 //---------------------------------------------------------------------------

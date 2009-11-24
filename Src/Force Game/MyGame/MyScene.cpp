@@ -54,7 +54,7 @@ bool MyScene::onInit()
 
 	// INIT SHAPES
 
-	/*m_pkFloor = new ForceBOX();
+	m_pkFloor = new ForceBOX();
 	m_pkFloor->setDim(800,10);
 	m_pkFloor->setPosXYZ(0,-285,0.0f);
 
@@ -75,7 +75,7 @@ bool MyScene::onInit()
 	m_pkChar->setDim(64,64);
 	m_pkChar->setPosXYZ(0,-220,1.0f);
 
-	m_pkBack = new Sprite();
+	/*m_pkBack = new Sprite();
 	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png", D3DCOLOR_XRGB(0,0,0)));
 	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
 	{
@@ -85,7 +85,7 @@ bool MyScene::onInit()
 	m_pkBack->setTexture(m_pkBackText);
 	m_pkBack->setTextureArea(0,0,512,512);
 	m_pkBack->setDim(800,600);
-	m_pkBack->setPosXYZ(0,0,-1.0f);
+	m_pkBack->setPosXYZ(0,0,-1.0f);*/
 
 	// FIN TEXTURE Y SPRITES
 
@@ -113,11 +113,12 @@ bool MyScene::onInit()
 	m_pkCharAnimInfoIzq->setLoopable(true);
 	m_pkCharAnimIzq = new Animation(m_pkCharAnimInfoIzq);
 
-	m_pkChar->setAnimation(m_pkCharAnimIzq);*/
+	m_pkChar->setAnimation(m_pkCharAnimIzq);
 
 	m_pkTileMap = new Map(m_kGraphics);
 
 	m_pkTileMap->loadMap("../../res/mapas/tileset.xml", "../../res/Mapas/Mapa1.xml");
+	m_pkTileMap->setPos(0, 0, 0);
 
 	// FIN ANIMATION Y ANIMATION INFO Y TILEMAP
 
@@ -136,13 +137,13 @@ bool MyScene::onInit()
 //---------------------------------------------------------------------------
 bool MyScene::onUpdate(float fTimeBetweenFrames)
 {
-	/*m_pkBack->Update(fTimeBetweenFrames);
+	m_pkBack->Update(fTimeBetweenFrames);
 	m_pkChar->Update(fTimeBetweenFrames);
 	m_pkCharAnimIzq->Update(fTimeBetweenFrames);
 	m_pkCharAnimDer->Update(fTimeBetweenFrames);
-	m_pkFloor->Update(fTimeBetweenFrames);*/
+	m_pkFloor->Update(fTimeBetweenFrames);
 
-	/*updateCollisionChar();
+	updateCollisionChar();
 
 	fPosX = m_pkChar->getPosX();
 	fPosY = m_pkChar->getPosY();
@@ -173,10 +174,10 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	fPosX += fVelocityX;
 	fPosY += fVelocityY;
 
-	m_pkChar->setPosXY(fPosX,fPosY);*/
+	m_pkChar->setPosXY(fPosX,fPosY);
 
 	m_pkTileMap->update(fTimeBetweenFrames);
-	m_pkTileMap->setLayerVisible(0,true);
+	m_pkTileMap->setLayerVisible(0, true);
 
 	return true;
 }
@@ -184,12 +185,13 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 void MyScene::onDraw(Graphics & rkGraphics) const
 {
 	m_pkTileMap->draw();
+	
 	/*****/
 }
 //---------------------------------------------------------------------------
 bool MyScene::onDeInit()
 {
-	/*delete m_pkChar;
+	delete m_pkChar;
 	m_pkChar = NULL;
 
 	delete m_pkBack;
@@ -202,7 +204,7 @@ bool MyScene::onDeInit()
 	m_pkCharAnimDer = NULL;
 
 	delete m_pkFloor;
-	m_pkFloor = NULL;*/
+	m_pkFloor = NULL;
 
 	delete m_pkTileMap;
 	m_pkTileMap = NULL;
@@ -226,6 +228,20 @@ void MyScene::updateCollisionChar()
 			}
 		}
 	}
+
+	/*eResult = m_pkChar->checkCollision(m_pkTileMap);
+
+	if(eResult != Entity2D::None)
+	{
+		if(eResult == Entity2D::Vertical)
+		{
+			if(fVelocityY < 0.0f)
+			{
+				fVelocityY = 0.0f;
+				m_pkChar->setPosY(m_pkTileMap->getPosY() + m_pkTileMap->getDimHeight() / 2 + m_pkTileMap->getDimHeight() / 2);
+			}
+		}
+	}*/
 }
 //---------------------------------------------------------------------------
 MyScene::~MyScene()

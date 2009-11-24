@@ -34,12 +34,10 @@ public:
 	void setTexture(Texture::Ptr pkTexture);
 	const Texture::Ptr getTexture() const;
 
-	void setTextureArea(
-						unsigned int uiOffsetX,
+	void setTextureArea(unsigned int uiOffsetX,
 						unsigned int uiOffsetY,
 						unsigned int uiWidth,
-						unsigned int uiHeight
-						); 
+						unsigned int uiHeight); 
 
 	void setAnimation(Animation * pkCurrentAnim);
 

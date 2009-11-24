@@ -9,42 +9,42 @@
 	</tilesets>
 	<tiles>
 		<tilesetTile id="1" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="32" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="128" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
 		<tilesetTile id="2" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="64" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="160" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
 		<tilesetTile id="3" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="96" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="192" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
 		<tilesetTile id="4" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="224" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="32" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
 		<tilesetTile id="5" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="256" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="64" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
 		<tilesetTile id="6" width="32" height="32">
-			<tilesetImage file="Tiles.bmp" posX="288" posY="0"/>
+			<tilesetImage file="Tiles.bmp" posX="96" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
