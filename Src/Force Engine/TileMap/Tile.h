@@ -16,9 +16,11 @@ Hecho by: German Battiston AKA Melkor
 #include "../Entity2D/Sprite.h"
 //---------------------------------------------------------------------------
 using namespace std;
+//---------------------------------------------------------------------------
 class FORCEENGINE_API Tile : public Sprite
 {
 public:
+
 	Tile();
 	~Tile();
 
@@ -43,7 +45,6 @@ private:
 	COLLITION_TYPE m_kCollisionType;
 	string m_kCode1;
 	string m_kCode2;
-
 };
 //---------------------------------------------------------------------------
 #include "Tile.inl"

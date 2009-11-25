@@ -32,26 +32,6 @@ m_pkTileMap(NULL)
 //---------------------------------------------------------------------------
 bool MyScene::onInit()
 {
-	// FMOD INIT LOOPED THEME STAR WARS
-
-	/*FMOD_RESULT result;
-
-	FMOD::Sound * pkSonido;
-	FMOD::System * pkSystem;
-	FMOD::Channel * pkChannel;
-
-	result = FMOD::System_Create(&pkSystem);
-	result = pkSystem->setSoftwareChannels(20);
-	result = pkSystem->setHardwareChannels(32, 64, 32, 64);
-	result = pkSystem->init(20, FMOD_INIT_NORMAL, 0);
-	result = pkSystem->setSpeakerMode(FMOD_SPEAKERMODE_MONO);
-	result = pkSystem->createSound("../../res/StarWars.mp3",FMOD_DEFAULT,0,& pkSonido);
-	result = pkSystem->playSound(FMOD_CHANNEL_FREE, pkSonido, false, &pkChannel);
-	result = pkChannel->setFrequency(44000.0f);
-	result = pkChannel->setVolume(0.5f);
-	result = pkChannel->setPaused(false);
-	result = pkChannel->setLoopCount(2);*/
-
 	// INIT SHAPES
 
 	m_pkFloor = new ForceBOX();
@@ -137,7 +117,6 @@ bool MyScene::onInit()
 //---------------------------------------------------------------------------
 bool MyScene::onUpdate(float fTimeBetweenFrames)
 {
-	m_pkBack->Update(fTimeBetweenFrames);
 	m_pkChar->Update(fTimeBetweenFrames);
 	m_pkCharAnimIzq->Update(fTimeBetweenFrames);
 	m_pkCharAnimDer->Update(fTimeBetweenFrames);
@@ -229,11 +208,12 @@ void MyScene::updateCollisionChar()
 		}
 	}
 
-	/*eResult = m_pkChar->checkCollision(m_pkTileMap);
+	Tile::CollisionResult eColission;
+	eColission = m_pkChar->checkCollision(m_pkTileMap);
 
-	if(eResult != Entity2D::None)
+	if(eColission != Entity2D::None)
 	{
-		if(eResult == Entity2D::Vertical)
+		if(eColission == Entity2D::Vertical)
 		{
 			if(fVelocityY < 0.0f)
 			{
@@ -241,7 +221,7 @@ void MyScene::updateCollisionChar()
 				m_pkChar->setPosY(m_pkTileMap->getPosY() + m_pkTileMap->getDimHeight() / 2 + m_pkTileMap->getDimHeight() / 2);
 			}
 		}
-	}*/
+	}
 }
 //---------------------------------------------------------------------------
 MyScene::~MyScene()

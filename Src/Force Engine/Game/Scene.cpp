@@ -45,13 +45,11 @@ bool Scene::Update(float fTimeBetweenFrames)
 //---------------------------------------------------------------------------
 void Scene::Draw(Graphics & rkGraphics) const
 {
-	
 	for(unsigned int i = 0; i < m_apkEntities.size(); i++)
 	{
 		m_apkEntities[i]->Draw(rkGraphics);
 	}
 	
-
 	onDraw(rkGraphics);
 }
 //---------------------------------------------------------------------------
