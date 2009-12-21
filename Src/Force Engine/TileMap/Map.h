@@ -29,7 +29,7 @@ public:
 	bool loadMap(std::string kTileSetFile, std::string kTileMapFile);
 	void draw();
 	void update(float fTimeBetweenFrames);
-	void setPos(float fX, float fY, float fZ=25);
+	void setPos(float fX, float fY, float fZ=0);
 
 	float getPosX();
 	float getPosY();
