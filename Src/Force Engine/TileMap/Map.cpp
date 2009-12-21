@@ -11,7 +11,7 @@ Hecho by: German Battiston AKA Melkor
 
 //---------------------------------------------------------------------------
 #include "Map.h"
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 Map::Map(Graphics* pkGraphics)
 :
 m_pkGraphics(pkGraphics),
@@ -29,12 +29,12 @@ m_pkCurrentTile(NULL)
 {
 
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 Map::~Map()
 {
 
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 {
 	if (kTileSetFile == "" || kTileMapFile == "")
@@ -94,7 +94,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	return true;
 
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::parseBackgroundColor(std::string kStringToParse)
 {
 	int iPos = (int)(kStringToParse.find(',',0));
@@ -108,7 +108,7 @@ void Map::parseBackgroundColor(std::string kStringToParse)
 	m_kBackgroundColor.iBlue = atoi(kStringToParse.c_str());
 
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::getMapAttributes(XMLNode kMapNode)
 {
 	m_kName = kMapNode.getAttribute("name");
@@ -127,7 +127,7 @@ void Map::getMapAttributes(XMLNode kMapNode)
 	m_iTileWidth = atoi(pszTileWidth);
 	m_iTileHeight = atoi(pszTileHeight);
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::loadTileSet(XMLNode kTileSet, std::string kParentPath)
 {
 	assert(m_pkGraphics);
@@ -171,7 +171,7 @@ void Map::loadTileSet(XMLNode kTileSet, std::string kParentPath)
 
 	m_pkGraphics->loadTexture(kParentPath.c_str(), *pkTexture);
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::loadTile(XMLNode kTile)
 {
 	// cargo el Id
@@ -240,7 +240,7 @@ void Map::loadTile(XMLNode kTile)
 
 	return;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::createTile(int iId, Tile* pkTile)
 {
 	//busco el tile
@@ -256,7 +256,7 @@ void Map::createTile(int iId, Tile* pkTile)
 	Tile* pkTileAux = m_kpTileMap[iId];
 	pkTileAux->clone(pkTile);
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::loadLayer(XMLNode kLayer)
 {
 	// cargo el Id
@@ -313,7 +313,7 @@ void Map::loadLayer(XMLNode kLayer)
 
 	m_kkLayerMap[kName] = pkNewLayer;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::processData(std::string kData, vector<int> &kDataVector)
 {
 	//borro los saltos de linea de la data
@@ -350,7 +350,7 @@ void Map::processData(std::string kData, vector<int> &kDataVector)
 
 	kDataVector.push_back(atoi((kData.substr(0,kData.length())).c_str()));
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::moveMap()
 {
 	//accedo a cada layer
@@ -384,7 +384,7 @@ void Map::moveMap()
 		}
 	}
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::draw()
 {
 	//accedo a cada layer
@@ -407,7 +407,7 @@ void Map::draw()
 		}
 	}
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::update(float fTimeBetweenFrames)
 {
 	for(int i = 0; i < (int)(m_ikLayerIdMap.size()); i++)
@@ -429,7 +429,7 @@ void Map::update(float fTimeBetweenFrames)
 		}
 	}
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::setLayerVisible(int iLayerId, bool bVisible)
 {
 	// me fijo si existe el layer con ese id
@@ -446,7 +446,7 @@ void Map::setLayerVisible(int iLayerId, bool bVisible)
 	kLayerData.bVisible = bVisible;
 	m_ikLayerIdMap[iLayerId] = kLayerData;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 bool Map::getLayerVisible(int iLayerId)
 {
 	// me fijo si existe el layer con ese id
@@ -462,7 +462,7 @@ bool Map::getLayerVisible(int iLayerId)
 	LayerData kLayerData = m_ikLayerIdMap[iLayerId];
 	return kLayerData.bVisible;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 void Map::setLayerUpdateable(int iLayerId, bool bUpdatable)
 {
 	// me fijo si existe el layer con ese id
@@ -479,7 +479,7 @@ void Map::setLayerUpdateable(int iLayerId, bool bUpdatable)
 	kLayerData.bUpdatable = bUpdatable;
 	m_ikLayerIdMap[iLayerId] = kLayerData;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 bool Map::getLayerUpdateable(int iLayerId)
 {
 	// me fijo si existe el layer con ese id
@@ -496,7 +496,7 @@ bool Map::getLayerUpdateable(int iLayerId)
 
 	return kLayerData.bUpdatable;
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 {
 	LayerMapIterator itLPos = m_kkLayerMap.begin();
@@ -524,4 +524,4 @@ Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 		return eResult;
 	}
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
