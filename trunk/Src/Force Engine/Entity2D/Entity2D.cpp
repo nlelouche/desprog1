@@ -67,13 +67,12 @@ void Entity2D::Draw(Graphics & rkGraphics) const
 	
 	rkGraphics.loadIdentity();
 
-	/*		Dibuja los Bordes de Entities
+	/* Dibuja los Bordes de Entities
 
 	rkGraphics.Translate(m_fX, m_fY);
 	rkGraphics.Scale(m_fW, m_fH);
 	rkGraphics.unbindTexture();
-	rkGraphics.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5);
-	*/
+	rkGraphics.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5); */
 
 	rkGraphics.loadIdentity();
 	rkGraphics.Translate(m_fX, m_fY, m_fZ);

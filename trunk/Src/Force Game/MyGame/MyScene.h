@@ -30,7 +30,7 @@ public:
 	void onDraw(Graphics & rkGraphics) const;
 	bool onDeInit();
 
-	void updateCollisionChar();
+	void updateCollision();
 
 private:
 
@@ -50,9 +50,7 @@ private:
 
 	float	fPosX;
 	float	fPosY;
-
 	float	fGravity;
-
 	float	fVelocityX;
 	float	fVelocityY;
 

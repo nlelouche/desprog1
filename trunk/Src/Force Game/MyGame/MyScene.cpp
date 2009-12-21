@@ -55,7 +55,7 @@ bool MyScene::onInit()
 	m_pkChar->setDim(64,64);
 	m_pkChar->setPosXYZ(0,-220,1.0f);
 
-	/*m_pkBack = new Sprite();
+	m_pkBack = new Sprite();
 	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png", D3DCOLOR_XRGB(0,0,0)));
 	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
 	{
@@ -65,7 +65,7 @@ bool MyScene::onInit()
 	m_pkBack->setTexture(m_pkBackText);
 	m_pkBack->setTextureArea(0,0,512,512);
 	m_pkBack->setDim(800,600);
-	m_pkBack->setPosXYZ(0,0,-1.0f);*/
+	m_pkBack->setPosXYZ(0,0,-1.0f);
 
 	// FIN TEXTURE Y SPRITES
 
@@ -97,16 +97,17 @@ bool MyScene::onInit()
 
 	m_pkTileMap = new Map(m_kGraphics);
 
-	m_pkTileMap->loadMap("../../res/mapas/tileset.xml", "../../res/Mapas/Mapa1.xml");
+	m_pkTileMap->loadMap("../../res/mapas/TestCollision/tileset.xml", 
+		"../../res/Mapas/TestCollision/TestMap.xml");
 	m_pkTileMap->setPos(0, 0, 0);
 
 	// FIN ANIMATION Y ANIMATION INFO Y TILEMAP
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
-	/*addEntity(m_pkBack);
+	addEntity(m_pkBack);
 	addEntity(m_pkChar);
-	addEntity(m_pkFloor);*/
+	addEntity(m_pkFloor);
 
 	fVelocityX = 0.0f;
 	fVelocityY = 0.0f;
@@ -121,8 +122,6 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	m_pkCharAnimIzq->Update(fTimeBetweenFrames);
 	m_pkCharAnimDer->Update(fTimeBetweenFrames);
 	m_pkFloor->Update(fTimeBetweenFrames);
-
-	updateCollisionChar();
 
 	fPosX = m_pkChar->getPosX();
 	fPosY = m_pkChar->getPosY();
@@ -158,6 +157,8 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	m_pkTileMap->update(fTimeBetweenFrames);
 	m_pkTileMap->setLayerVisible(0, true);
 
+	updateCollision();
+
 	return true;
 }
 //---------------------------------------------------------------------------
@@ -191,7 +192,7 @@ bool MyScene::onDeInit()
 	return true;
 }
 //---------------------------------------------------------------------------
-void MyScene::updateCollisionChar()
+void MyScene::updateCollision()
 {
 	Entity2D::CollisionResult eResult;
 	eResult = m_pkChar->checkCollision(m_pkFloor);
@@ -208,17 +209,25 @@ void MyScene::updateCollisionChar()
 		}
 	}
 
-	Tile::CollisionResult eColission;
-	eColission = m_pkChar->checkCollision(m_pkTileMap);
+	eResult = m_pkTileMap->checkMapCollision(m_pkChar);
 
-	if(eColission != Entity2D::None)
+	if(eResult != Entity2D::None)
 	{
-		if(eColission == Entity2D::Vertical)
+		if(eResult == Entity2D::Vertical)
 		{
 			if(fVelocityY < 0.0f)
 			{
 				fVelocityY = 0.0f;
-				m_pkChar->setPosY(m_pkTileMap->getPosY() + m_pkTileMap->getDimHeight() / 2 + m_pkTileMap->getDimHeight() / 2);
+				m_pkChar->setPosY(m_pkTileMap->getPosY() + m_pkTileMap->getTileHeight() / 2 + m_pkChar->getDimHeight() / 2);
+			}
+		}
+
+		if(eResult == Entity2D::Horizontal)
+		{
+			if(fVelocityY < 0.0f)
+			{
+				fVelocityY = 0.0f;
+				m_pkChar->setPosX(m_pkTileMap->getPosX() + m_pkTileMap->getTileWidth() / 2 + m_pkChar->getDimHeight() / 2);
 			}
 		}
 	}

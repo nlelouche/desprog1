@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a map file for TaT Tile Map Editor. -->
+<!-- Tile IDs are described in a tileset file (tileset.xml). -->
+
+<TilemapFile version="1.0.0">
+	<tilemap name="TestMap" backgroundRGB="255,255,255" layers="1" rows="10" columns="10" tileWidth="16" tileHeight="16">
+		<layer name="Layer 0" index="0">
+			<data>
+				1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,
+				1,1,1,2,3,3,2,1,1,1,1,1,1,2,3,3,2,1,1,1,1,1,1,2,3,3,2,1,1,1,
+				1,1,1,2,3,3,2,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+				1,1,1,1,1,1,1,1,1,1
+			</data>
+		</layer>
+	</tilemap>
+</TilemapFile>

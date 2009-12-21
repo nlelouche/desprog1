@@ -27,12 +27,10 @@ public:
 	enum COLLITION_TYPE
 	{
 		NONE,
-		FULL,
-		UPPER_LEFT,
-		UPPER_RIGHT,
-		LOWER_LEFT,
-		LOWER_RIGHT
+		FULL
 	};
+
+	bool collides;
 
 	void setId(int iId);
 	int getId();
@@ -43,6 +41,7 @@ private:
 
 	int m_iId;
 	COLLITION_TYPE m_kCollisionType;
+
 	string m_kCode1;
 	string m_kCode2;
 };

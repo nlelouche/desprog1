@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a tileset file for TaT Tile Map Editor. -->
+<!-- This file is used to describe all the tiles and animations. -->
+<!-- This file is common for all the maps in the project. -->
+
+<tilesetFile version="1.0.0" animations="0" tiles="3">
+	<tilesets>
+		<tileset file="TileSet.png" tileWidth="16" tileHeight="16"/>
+	</tilesets>
+	<tiles>
+		<tilesetTile id="1" width="16" height="16">
+			<tilesetImage file="TileSet.png" posX="128" posY="144"/>
+			<collision area="none"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="2" width="16" height="16">
+			<tilesetImage file="TileSet.png" posX="0" posY="224"/>
+			<collision area="full"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="3" width="16" height="16">
+			<tilesetImage file="TileSet.png" posX="0" posY="224"/>
+			<collision area="none"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+	</tiles>
+</tilesetFile>
