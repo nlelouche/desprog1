@@ -40,7 +40,5 @@ void Tile::clone(Tile* pkTile)
 	pkTile->setDim(getDimWidth(), getDimHeight());
 	//pkTile->set2DHFlip(get2DHFlip());
 	//pkTile->set2DVFlip(get2DVFlip());
-	
-	//TO DO: clonar codes y colisiones
 }
 //---------------------------------------------------------------------------

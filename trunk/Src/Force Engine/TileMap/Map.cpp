@@ -23,7 +23,7 @@ m_iTileWidth(0),
 m_iTileHeight(0),
 m_fPosX(0),
 m_fPosY(0),
-m_fPosZ(15),
+m_fPosZ(0),
 m_kBackgroundColor(0,0,0),
 m_pkCurrentTile(NULL)
 {
@@ -204,9 +204,24 @@ void Map::loadTile(XMLNode kTile)
 	const char* pszTexPosX = kTextureNode.getAttribute("posX");
 	const char* pszTexPosY = kTextureNode.getAttribute("posY");
 
+	//Colisiones
+
+	XMLNode kCollisionNode = kTile.getChildNode("collision");
+	std::string kCollisionArea = kCollisionNode.getAttribute("area");
+
 	XMLNode kFlipNode = kTile.getChildNode("flip");
 	std::string kVFlip = kFlipNode.getAttribute("vertically");
 	std::string kHFlip = kFlipNode.getAttribute("horizontally");
+
+	if(kCollisionArea == "full")
+	{
+		// Tiene Full collision desde el XML
+		pkTile->collides = true;
+	}
+	else if(kCollisionArea == "none")
+	{
+		pkTile->collides = false;
+	}
 
 	// convierto los atributos
 	unsigned int uiTexPosX = atoi(pszTexPosX);
@@ -220,23 +235,13 @@ void Map::loadTile(XMLNode kTile)
 	pkTile->setId(iId);
 	pkTile->setTextureArea(uiTexPosX, uiTexPosY, uiWidth, uiHeight);
 	pkTile->setDim((float)(m_iTileWidth), (float)(m_iTileHeight));
+	pkTile->setPosZ(0.0f);
 
 	//if (kVFlip == "true")
 	//	pkTile->set2DVFlip(true);
 
 	//if (kHFlip == "true")
 	//	pkTile->set2DHFlip(true);
-
-	//Colisiones
-
-	XMLNode kCollisionNode = kTile.getChildNode("collision");
-	std::string kCollisionArea = kCollisionNode.getAttribute("area");
-
-	if(kCollisionArea == "full")
-	{
-		// Tiene Full collision desde el XML
-		pkTile->collides = true;
-	}
 
 	return;
 }
@@ -499,15 +504,13 @@ bool Map::getLayerUpdateable(int iLayerId)
 //---------------------------------------------------------------------------
 Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 {
-	LayerMapIterator itLPos = m_kkLayerMap.begin();
-	LayerMapIterator itLEnd = m_kkLayerMap.end();
-
-	LayerMapIterator itAuxPos;
-	LayerMapIterator itAuxEnd;
-
 	Entity2D::CollisionResult eResult = Entity2D::CollisionResult::None;
 
-	for(itAuxPos = itLPos, itAuxEnd = (--itLEnd); itLPos != itLEnd; itLPos++)
+	LayerMapIterator itLPos;
+	LayerMapIterator itLEnd;
+
+	for(itLPos = m_kkLayerMap.begin(), itLEnd = m_kkLayerMap.end();
+		itLPos != itLEnd; itLPos++)
 	{
 		TileVector* kLayer = itLPos->second;
 

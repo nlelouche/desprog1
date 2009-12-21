@@ -36,7 +36,7 @@ bool MyScene::onInit()
 
 	m_pkFloor = new ForceBOX();
 	m_pkFloor->setDim(800,10);
-	m_pkFloor->setPosXYZ(0,-285,0.0f);
+	m_pkFloor->setPosXYZ(0.0f, -285.0f, 0.0f);
 
 	// FIN SHAPES
 
@@ -49,13 +49,13 @@ bool MyScene::onInit()
 	{
 		return false;
 	}
-	
+
 	m_pkChar->setTexture(m_pkCharText);
 	m_pkChar->setTextureArea(0,0,128,128);
-	m_pkChar->setDim(64,64);
-	m_pkChar->setPosXYZ(0,-220,1.0f);
+	m_pkChar->setDim(64, 64);
+	m_pkChar->setPosXYZ(0.0f, -220.0f, -1.0f);
 
-	m_pkBack = new Sprite();
+	/*m_pkBack = new Sprite();
 	m_pkBackText = Texture::Ptr(new Texture("../../res/background.png", D3DCOLOR_XRGB(0,0,0)));
 	if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
 	{
@@ -65,7 +65,7 @@ bool MyScene::onInit()
 	m_pkBack->setTexture(m_pkBackText);
 	m_pkBack->setTextureArea(0,0,512,512);
 	m_pkBack->setDim(800,600);
-	m_pkBack->setPosXYZ(0,0,-1.0f);
+	m_pkBack->setPosXYZ(0,0,-1.0f);*/
 
 	// FIN TEXTURE Y SPRITES
 
@@ -105,7 +105,7 @@ bool MyScene::onInit()
 
 	// ADDING ENTITIES Y SET VELOCIDAD Y GRAVEDAD
 
-	addEntity(m_pkBack);
+	//addEntity(m_pkBack);
 	addEntity(m_pkChar);
 	addEntity(m_pkFloor);
 
@@ -144,7 +144,7 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 
 	if (m_pkInput->getKeyDown(DIK_UPARROW) && fVelocityY == 0.0f) 
 	{
-		fVelocityY = 2.0f;
+		fVelocityY = 20.0f;
 	}
 
 	fVelocityY -= fGravity * fTimeBetweenFrames;
@@ -152,7 +152,7 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	fPosX += fVelocityX;
 	fPosY += fVelocityY;
 
-	m_pkChar->setPosXY(fPosX,fPosY);
+	m_pkChar->setPosXY(fPosX, fPosY);
 
 	m_pkTileMap->update(fTimeBetweenFrames);
 	m_pkTileMap->setLayerVisible(0, true);
@@ -174,8 +174,8 @@ bool MyScene::onDeInit()
 	delete m_pkChar;
 	m_pkChar = NULL;
 
-	delete m_pkBack;
-	m_pkBack = NULL;
+	//delete m_pkBack;
+	//m_pkBack = NULL;
 
 	delete m_pkCharAnimIzq;
 	m_pkCharAnimIzq = NULL;
