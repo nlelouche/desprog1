@@ -12,18 +12,18 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 #ifndef MAP_H
 #define MAP_H
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 #include "../Defines/Defines.h"
 #include "../Graphics/GraphicsStructs.h"
 #include "Tile.h"
 #include "../Xml Parser/XMLParser.h"
 #include "../Graphics/Graphics.h"
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 class FORCEENGINE_API Map
 {
 public:
 
-	Map(Graphics* pkRenderer);
+	Map(Graphics* pkGraphics);
 	~Map();
 
 	bool loadMap(std::string kTileSetFile, std::string kTileMapFile);
@@ -35,10 +35,15 @@ public:
 	float getPosY();
 	float getPosZ();
 
+	int getTileWidth();
+	int getTileHeight();
+
 	void setLayerVisible(int iLayerId, bool bVisible=true);
 	bool getLayerVisible(int iLayerId);
-	void setLayerUpdatable(int iLayerId, bool bUpdatable);
-	bool getLayerUpdateble(int iLayerId);
+	void setLayerUpdateable(int iLayerId, bool bUpdatable);
+	bool getLayerUpdateable(int iLayerId);
+
+	Entity2D::CollisionResult checkMapCollision(Entity2D* pkEntity);
 
 private:
 
@@ -67,7 +72,7 @@ private:
 	std::map<std::string, TileVector*> m_kkLayerMap;
 	typedef std::map<std::string, TileVector*>::iterator LayerMapIterator;
 	
-	struct LayerData 
+	struct LayerData
 	{
 		std::string kName;
 		bool bVisible;
@@ -77,7 +82,7 @@ private:
 	std::map<int, LayerData> m_ikLayerIdMap;
 	typedef std::map<int, LayerData>::iterator LayerIdMapIterator;
 
-	Graphics* m_pkRenderer;
+	Graphics* m_pkGraphics;
 
 	void parseBackgroundColor(std::string kStringToParse);
 	void getMapAttributes(XMLNode kMapNode);
@@ -85,13 +90,15 @@ private:
 	void loadTile(XMLNode kTile);
 	void createTile(int iId, Tile* pkTile);
 	void loadLayer(XMLNode kLayer);
-	void procesarData(std::string kData, vector<int> &kDataVector);
+	void processData(std::string kData, vector<int> &kDataVector);
 	void moveMap();
 
 	Tile* m_pkCurrentTile;
 };
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
 #include "Map.inl"
-//----------------------------------------------------------------
-#endif //MAP_H
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------
+
+#endif /*-- MAP_H --*/
+
+//---------------------------------------------------------------------------
