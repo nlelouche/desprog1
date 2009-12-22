@@ -3,28 +3,56 @@
 <!-- This file is used to describe all the tiles and animations. -->
 <!-- This file is common for all the maps in the project. -->
 
-<tilesetFile version="1.0.0" animations="0" tiles="3">
+<tilesetFile version="1.0.0" animations="0" tiles="7">
 	<tilesets>
-		<tileset file="TileSet.png" tileWidth="16" tileHeight="16"/>
+		<tileset file="mariocopyma0.png" tileWidth="64" tileHeight="64"/>
 	</tilesets>
 	<tiles>
-		<tilesetTile id="1" width="16" height="16">
-			<tilesetImage file="TileSet.png" posX="128" posY="144"/>
+		<tilesetTile id="1" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="64" posY="512"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="2" width="16" height="16">
-			<tilesetImage file="TileSet.png" posX="0" posY="224"/>
+		<tilesetTile id="2" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="64" posY="0"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="3" width="16" height="16">
-			<tilesetImage file="TileSet.png" posX="0" posY="224"/>
+		<tilesetTile id="3" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="128" posY="0"/>
+			<collision area="full"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="4" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="128" posY="128"/>
 			<collision area="none"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="5" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="192" posY="128"/>
+			<collision area="none"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="6" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="320" posY="128"/>
+			<collision area="none"/>
+			<rotate angle="0"/>
+			<flip vertically="false" horizontally="false"/>
+			<code first="none" second="none"/>
+		</tilesetTile>
+		<tilesetTile id="7" width="64" height="64">
+			<tilesetImage file="mariocopyma0.png" posX="192" posY="0"/>
+			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>

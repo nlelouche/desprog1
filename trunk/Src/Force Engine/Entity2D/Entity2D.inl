@@ -11,11 +11,13 @@ Hecho by: German Battiston AKA Melkor
 //---------------------------------------------------------------------------
 inline void Entity2D::setPosX(float fX)
 {
+	m_fPrevX = m_fX;
 	m_fX = fX;
 }
 //---------------------------------------------------------------------------
 inline void Entity2D::setPosY(float fY)
 {
+	m_fPrevY = m_fY;
 	m_fY = fY;
 }
 //---------------------------------------------------------------------------
@@ -31,6 +33,8 @@ inline void Entity2D::setRotationZ(float rotationZ)
 //---------------------------------------------------------------------------
 inline void Entity2D::setPosXY(float fX, float fY)
 {
+	m_fPrevX = m_fX;
+	m_fPrevY = m_fY;
 	m_fX = fX;
 	m_fY = fY;
 }
