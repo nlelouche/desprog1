@@ -47,6 +47,9 @@ public:
 	void Scale(float fW, float fH, float fD = 1.0f);
 	void rotateZ(float fAngle);
 
+	float getViewPositionX() const;
+	float getViewPositionY() const;
+
 	void setViewPosition(float fPosX, float fPosY);
 
 	void unbindTexture();
@@ -55,6 +58,9 @@ public:
 	bool loadTexture(const char * pszFilename, Texture & rkTexture);
 
 protected:
+
+	float m_fViewPosX;
+	float m_fViewPosY;
 
 	std::map <std::string, IDirect3DTexture9 *> m_kTextureMap;
 	typedef std::map<std::string, IDirect3DTexture9 *>::iterator TextureIterator;

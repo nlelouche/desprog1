@@ -73,7 +73,6 @@ bool Game::Loop()
 	onLoop();
 
 	// Nombre del Engine y Frames Per Second
-
 	stringstream s;
 
 	s << "Force Engine v0.5 Beta | FPS: " << m_pkTimer->getFPS();

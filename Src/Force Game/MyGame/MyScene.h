@@ -31,6 +31,7 @@ public:
 	bool onDeInit();
 
 	void updateCollision();
+	void updateMapCollision();
 
 private:
 
@@ -54,7 +55,7 @@ private:
 	float	fVelocityX;
 	float	fVelocityY;
 
-	Graphics * m_kGraphics;
+	Graphics * m_pkGraphics;
 
 	Map * m_pkTileMap;
 };

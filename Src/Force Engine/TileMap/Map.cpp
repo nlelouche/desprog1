@@ -92,7 +92,6 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	moveMap();
 
 	return true;
-
 }
 //---------------------------------------------------------------------------
 void Map::parseBackgroundColor(std::string kStringToParse)
@@ -204,24 +203,13 @@ void Map::loadTile(XMLNode kTile)
 	const char* pszTexPosX = kTextureNode.getAttribute("posX");
 	const char* pszTexPosY = kTextureNode.getAttribute("posY");
 
-	//Colisiones
-
-	XMLNode kCollisionNode = kTile.getChildNode("collision");
-	std::string kCollisionArea = kCollisionNode.getAttribute("area");
-
 	XMLNode kFlipNode = kTile.getChildNode("flip");
 	std::string kVFlip = kFlipNode.getAttribute("vertically");
 	std::string kHFlip = kFlipNode.getAttribute("horizontally");
 
-	if(kCollisionArea == "full")
-	{
-		// Tiene Full collision desde el XML
-		pkTile->collides = true;
-	}
-	else if(kCollisionArea == "none")
-	{
-		pkTile->collides = false;
-	}
+	//Colisiones
+	XMLNode kCollisionNode = kTile.getChildNode("collision");
+	std::string kCollisionArea = kCollisionNode.getAttribute("area");
 
 	// convierto los atributos
 	unsigned int uiTexPosX = atoi(pszTexPosX);
@@ -237,11 +225,16 @@ void Map::loadTile(XMLNode kTile)
 	pkTile->setDim((float)(m_iTileWidth), (float)(m_iTileHeight));
 	pkTile->setPosZ(0.0f);
 
-	//if (kVFlip == "true")
-	//	pkTile->set2DVFlip(true);
-
-	//if (kHFlip == "true")
-	//	pkTile->set2DHFlip(true);
+	if(kCollisionArea == "full")
+	{
+		// Tiene Full collision desde el XML
+		pkTile->collides = true;
+	}
+	else if(kCollisionArea == "none")
+	{
+		// Tiene None collision desde el XML
+		pkTile->collides = false;
+	}
 
 	return;
 }
@@ -372,7 +365,6 @@ void Map::moveMap()
 			Tile* kTile = kLayer->at(i);
 			//posiciones respecto al mapa
 			float fPosX = (float)((i % m_iRows));
-			//float fPosX = (float)(m_iRows - 1 - (i % m_iRows));
 			float fPosY = (float)(m_iRows - 1 - (i / m_iRows));
 			fPosX = fPosX * m_iTileWidth - m_iTileHeight / 2;
 			fPosY = fPosY * m_iTileHeight - m_iTileHeight / 2;
@@ -392,7 +384,7 @@ void Map::moveMap()
 //---------------------------------------------------------------------------
 void Map::draw()
 {
-	//accedo a cada layer
+	//accedo a cada layer id
 	for(int i = 0; i < (int)(m_ikLayerIdMap.size()); i++)
 	{
 		// e fijo si la tengo que dibujar
@@ -407,7 +399,7 @@ void Map::draw()
 				if(kTile->getId() != 0)
 				{
 					kTile->Draw(*m_pkGraphics);
-				}				
+				}
 			}
 		}
 	}
@@ -504,10 +496,10 @@ bool Map::getLayerUpdateable(int iLayerId)
 //---------------------------------------------------------------------------
 Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 {
-	Entity2D::CollisionResult eResult = Entity2D::CollisionResult::None;
-
 	LayerMapIterator itLPos;
 	LayerMapIterator itLEnd;
+
+	Entity2D::CollisionResult eResult = Entity2D::CollisionResult::None;
 
 	for(itLPos = m_kkLayerMap.begin(), itLEnd = m_kkLayerMap.end();
 		itLPos != itLEnd; itLPos++)
@@ -521,10 +513,15 @@ Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 			if(kTile->collides)
 			{
 				eResult = kTile->checkCollision(pkEntity);
+
+				if(eResult != Entity2D::None)
+				{
+					return eResult;
+				}
 			}
 		}
-
-		return eResult;
 	}
+
+	return eResult;
 }
 //---------------------------------------------------------------------------

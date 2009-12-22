@@ -67,13 +67,13 @@ void Entity2D::Draw(Graphics & rkGraphics) const
 	
 	rkGraphics.loadIdentity();
 
-	/* Dibuja los Bordes de Entities
-
-	rkGraphics.Translate(m_fX, m_fY);
+	//Dibuja los Bordes de Entities
+/*
+	rkGraphics.Translate(m_fX, m_fY, m_fZ);
 	rkGraphics.Scale(m_fW, m_fH);
 	rkGraphics.unbindTexture();
-	rkGraphics.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5); */
-
+	rkGraphics.Draw(m_akAABBVertices, D3DPT_LINESTRIP, 5);
+*/
 	rkGraphics.loadIdentity();
 	rkGraphics.Translate(m_fX, m_fY, m_fZ);
 	rkGraphics.rotateZ(m_fRotationZ * PI / 180.0f);
@@ -97,12 +97,12 @@ Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 	float fAuxPosX = fabs(pkEntity->getPosX() - m_fX);
 	float fAuxPosY = fabs(pkEntity->getPosY() - m_fY);
 
-	float fAuxW = m_fW / 2.0f + pkEntity->getDimWidth() / 2.0f;
-	float fAuxH = m_fH / 2.0f + pkEntity->getDimHeight() / 2.0f;
+	float fAuxW = (m_fW / 2.0f + pkEntity->getDimWidth() / 2.0f);
+	float fAuxH = (m_fH / 2.0f + pkEntity->getDimHeight() / 2.0f);
 
-	if(fAuxPosX <= fAuxW && fAuxPosY <= fAuxH)
+	if(fAuxPosX < fAuxW && fAuxPosY < fAuxH)
 	{
-		if(fAuxPosX + fAuxW && fAuxPosY + fAuxH)
+		if(fAuxPosX + fAuxW > fAuxPosY + fAuxH)
 		{
 			return Vertical;
 		}

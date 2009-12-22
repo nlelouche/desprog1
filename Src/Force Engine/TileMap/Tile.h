@@ -37,10 +37,11 @@ public:
 
 	void clone(Tile* pkTile);
 
+	COLLITION_TYPE m_kCollisionType;
+
 private:
 
 	int m_iId;
-	COLLITION_TYPE m_kCollisionType;
 
 	string m_kCode1;
 	string m_kCode2;

@@ -36,6 +36,7 @@ void Tile::clone(Tile* pkTile)
 
 	Sprite::clone(pkTile);
 
+	pkTile->collides = collides;
 	pkTile->setId(getId());
 	pkTile->setDim(getDimWidth(), getDimHeight());
 	//pkTile->set2DHFlip(get2DHFlip());

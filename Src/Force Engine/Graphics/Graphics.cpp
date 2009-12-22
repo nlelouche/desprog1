@@ -19,7 +19,9 @@ m_hWnd(NULL),
 m_eCurrentMatMode(VIEW),
 fX(0),
 fY(0),
-fAngle(0)
+fAngle(0),
+m_fViewPosX(0),
+m_fViewPosY(0)
 {
 	
 }
@@ -67,7 +69,7 @@ bool Graphics::InitDX(Window * m_pkWindow)
 
 	hr = m_pD3D->CreateDevice(
 							  D3DADAPTER_DEFAULT,
- 							  D3DDEVTYPE_REF, 							
+ 							  D3DDEVTYPE_HAL, 							
 							  m_pkWindow->m_hWnd,
 							  D3DCREATE_HARDWARE_VERTEXPROCESSING,
 							  &d3DPresentParameters,
@@ -234,8 +236,21 @@ void Graphics::rotateZ(float fAngle)
 	m_pkDevice->MultiplyTransform(eMatMode, &kTempMatrix);
 }
 //---------------------------------------------------------------------------
+float Graphics::getViewPositionX() const
+{
+	return m_fViewPosX;
+}
+//---------------------------------------------------------------------------
+float Graphics::getViewPositionY() const
+{
+	return m_fViewPosY;
+}
+//---------------------------------------------------------------------------
 void Graphics::setViewPosition(float fPosX, float fPosY)
 {
+	m_fViewPosX = fPosX;
+	m_fViewPosY = fPosY;
+
 	D3DXMATRIX kMatrix;
 
 	D3DXVECTOR3 kEyePos;
