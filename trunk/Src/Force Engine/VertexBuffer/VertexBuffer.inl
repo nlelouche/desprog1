@@ -12,7 +12,8 @@ Hecho by: German Battiston AKA Melkor
 template <class PixelFormatClass, unsigned int FVF>
 VertexBuffer<PixelFormatClass,FVF>::VertexBuffer()
 :
-m_pkDevice(NULL)
+m_pkDevice(NULL),
+m_VertexBuffer(NULL)
 {
 
 }
