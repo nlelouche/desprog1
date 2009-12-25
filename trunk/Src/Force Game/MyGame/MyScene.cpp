@@ -128,38 +128,29 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 
 	if(m_pkInput->getKeyDown(DIK_L))
 	{
-		m_pkGraphics->setViewPosition( 
-										m_pkGraphics->getViewPositionX() + 0.3f * fTimeBetweenFrames,
-										m_pkGraphics->getViewPositionY()
-		);
+		m_pkGraphics->setViewPosition(m_pkGraphics->getViewPositionX() + 0.3f * fTimeBetweenFrames,
+									  m_pkGraphics->getViewPositionY());
 	}
 
 	if(m_pkInput->getKeyDown(DIK_J))
 	{
-		m_pkGraphics->setViewPosition( 
-										m_pkGraphics->getViewPositionX() - 0.3f * fTimeBetweenFrames,
-										m_pkGraphics->getViewPositionY()
-		);
+		m_pkGraphics->setViewPosition( m_pkGraphics->getViewPositionX() - 0.3f * fTimeBetweenFrames,
+									   m_pkGraphics->getViewPositionY());
 	}
 
 	if(m_pkInput->getKeyDown(DIK_I))
 	{
-		m_pkGraphics->setViewPosition( 
-										m_pkGraphics->getViewPositionX(),
-										m_pkGraphics->getViewPositionY() + 0.3f * fTimeBetweenFrames
-		);
+		m_pkGraphics->setViewPosition( m_pkGraphics->getViewPositionX(),
+									   m_pkGraphics->getViewPositionY() + 0.3f * fTimeBetweenFrames);
 	}
 
 	if(m_pkInput->getKeyDown(DIK_K))
 	{
-		m_pkGraphics->setViewPosition( 
-										m_pkGraphics->getViewPositionX(),
-										m_pkGraphics->getViewPositionY() - 0.3f * fTimeBetweenFrames
-		);
+		m_pkGraphics->setViewPosition( m_pkGraphics->getViewPositionX(),
+									   m_pkGraphics->getViewPositionY() - 0.3f * fTimeBetweenFrames);
 	}
 
 	//------------------------------------------------------------------
-
 
 	if((m_pkInput->getKeyDown(DIK_SPACE) || m_pkInput->getKeyDown(DIK_UPARROW)) 
 		&& fVelocityY == 0.0f) 
@@ -265,42 +256,3 @@ MyScene::~MyScene()
 	/*****/
 }
 //---------------------------------------------------------------------------
-
-// CODIGO DE MAS, ESTABA MOLESTANDO
-
-/*m_pkBack = new Sprite();
-m_pkBackText = Texture::Ptr(new Texture("../../res/background.png", D3DCOLOR_XRGB(0,0,0)));
-if(!m_pkGraphics->loadTexture("../../res/background.png",* m_pkBackText))
-{
-return false;
-}
-
-m_pkBack->setTexture(m_pkBackText);
-m_pkBack->setTextureArea(0,0,512,512);
-m_pkBack->setDim(800,600);
-m_pkBack->setPosXYZ(0,0,-1.0f);*/
-
-// INIT ANIMATION Y ANIMATION INFO
-/*m_pkCharAnimInfoDer = AnimationInfo::Ptr(new AnimationInfo());
-
-m_pkCharAnimInfoDer->addFrame(32,0,32,32);
-m_pkCharAnimInfoDer->addFrame(0,0,32,32);
-m_pkCharAnimInfoDer->addFrame(64,0,32,32);
-m_pkCharAnimInfoDer->addFrame(32,0,32,32);
-m_pkCharAnimInfoDer->addFrame(0,0,32,32);
-m_pkCharAnimInfoDer->setLength(900.0f);
-m_pkCharAnimInfoDer->setLoopable(true);
-m_pkCharAnimDer = new Animation(m_pkCharAnimInfoDer);
-
-m_pkCharAnimInfoIzq = AnimationInfo::Ptr(new AnimationInfo());
-
-m_pkCharAnimInfoIzq->addFrame(32,32,32,32);
-m_pkCharAnimInfoIzq->addFrame(0,32,32,32);
-m_pkCharAnimInfoIzq->addFrame(64,32,32,32);
-m_pkCharAnimInfoIzq->addFrame(32,32,32,32);
-m_pkCharAnimInfoIzq->addFrame(0,32,32,32);
-m_pkCharAnimInfoIzq->setLength(900.0f);
-m_pkCharAnimInfoIzq->setLoopable(true);
-m_pkCharAnimIzq = new Animation(m_pkCharAnimInfoIzq);
-
-//m_pkChar->setAnimation(m_pkCharAnimIzq);*/
