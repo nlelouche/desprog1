@@ -43,7 +43,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	}
 
 	//abro el archivo del mapa
-	XMLNode kMapFileMainNode = XMLNode::openFileHelper(kTileMapFile.c_str(),"TilemapFile");
+	XMLNode kMapFileMainNode = XMLNode::openFileHelper(kTileMapFile.c_str(), "TilemapFile");
 
 	XMLNode kMapNode = kMapFileMainNode.getChildNode("tilemap");
 	
@@ -51,7 +51,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	getMapAttributes(kMapNode);
 
 	//abro el archivo de tiles
-	XMLNode kTileSetFileMainNode = XMLNode::openFileHelper(kTileSetFile.c_str(),"tilesetFile");
+	XMLNode kTileSetFileMainNode = XMLNode::openFileHelper(kTileSetFile.c_str(), "tilesetFile");
 
 	//cargo las texturas
 	XMLNode kTileSets = kTileSetFileMainNode.getChildNode("tilesets");
@@ -61,7 +61,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	int iIteratorTileSets = 0;
 	for(int i = 0; i < iTileSetsCount; i++)
 	{
-		XMLNode kTileSet = kTileSets.getChildNode("tileset",&iIteratorTileSets);
+		XMLNode kTileSet = kTileSets.getChildNode("tileset", &iIteratorTileSets);
 		loadTileSet(kTileSet, kTileSetFile);
 	}
 
@@ -73,7 +73,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	int iIteratorTiles = 0;
 	for(int i = 0; i < iTilesCount; i++)
 	{
-		XMLNode kTile = kTiles.getChildNode("tilesetTile",&iIteratorTiles);
+		XMLNode kTile = kTiles.getChildNode("tilesetTile", &iIteratorTiles);
 		loadTile(kTile);
 	}
 
@@ -85,7 +85,7 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 	int iIteratorLayers = 0;
 	for(int i = 0; i < iLayersCount; i++)
 	{
-		XMLNode kLayer = kMapNode.getChildNode("layer",&iIteratorLayers);
+		XMLNode kLayer = kMapNode.getChildNode("layer", &iIteratorLayers);
 		loadLayer(kLayer);
 	}
 
@@ -360,7 +360,7 @@ void Map::moveMap()
 	{
 		//para cada layer seteo la pos de mundo de sus tiles
 		TileVector* kLayer = itLPos->second;
-		for(int i=0; i < (int)(kLayer->size()); i++)
+		for(int i = 0; i < (int)(kLayer->size()); i++)
 		{
 			Tile* kTile = kLayer->at(i);
 			//posiciones respecto al mapa
@@ -415,7 +415,7 @@ void Map::update(float fTimeBetweenFrames)
 		{
 			//updateo los tiles
 			TileVector* kLayer = m_kkLayerMap[kLayerData.kName];
-			for(int i=0; i < (int)(kLayer->size()); i++)
+			for(int i = 0; i < (int)(kLayer->size()); i++)
 			{
 				Tile* kTile = kLayer->at(i);
 				if (kTile->getId() != 0)
