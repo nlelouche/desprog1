@@ -33,14 +33,12 @@ bool VertexBuffer<PixelFormatClass,FVF>::Create(IDirect3DDevice9 * pkDevice, boo
 	m_uiFlush = 150;
 	m_uiVbSize = 450;
 
-	HRESULT hr = pkDevice->CreateVertexBuffer(
-											 m_uiVbSize * sizeof(PixelFormatClass),
+	HRESULT hr = pkDevice->CreateVertexBuffer( m_uiVbSize * sizeof(PixelFormatClass),
 											 (bDynamic ? D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC : 0),
 											 FVF,
 											 D3DPOOL_DEFAULT,
 											 &m_VertexBuffer,
-											 NULL
-											 );
+											 NULL );
 
 
 	if(hr == D3D_OK)
