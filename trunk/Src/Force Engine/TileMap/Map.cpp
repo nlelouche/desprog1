@@ -96,16 +96,15 @@ bool Map::loadMap(std::string kTileSetFile, std::string kTileMapFile)
 //---------------------------------------------------------------------------
 void Map::parseBackgroundColor(std::string kStringToParse)
 {
-	int iPos = (int)(kStringToParse.find(',',0));
+	int iPos = (int)(kStringToParse.find(',', 0));
 	m_kBackgroundColor.iRed = atoi((kStringToParse.substr(0,iPos)).c_str());
-	kStringToParse = kStringToParse.substr(iPos + 1,kStringToParse.length() - iPos);
+	kStringToParse = kStringToParse.substr(iPos + 1, kStringToParse.length() - iPos);
 
 	iPos = (int)(kStringToParse.find(',',0));
 	m_kBackgroundColor.iGreen = atoi((kStringToParse.substr(0,iPos)).c_str());
-	kStringToParse = kStringToParse.substr(iPos + 1,kStringToParse.length() - iPos);
+	kStringToParse = kStringToParse.substr(iPos + 1, kStringToParse.length() - iPos);
 
 	m_kBackgroundColor.iBlue = atoi(kStringToParse.c_str());
-
 }
 //---------------------------------------------------------------------------
 void Map::getMapAttributes(XMLNode kMapNode)
@@ -228,12 +227,12 @@ void Map::loadTile(XMLNode kTile)
 	if(kCollisionArea == "full")
 	{
 		// Tiene Full collision desde el XML
-		pkTile->collides = true;
+		pkTile->m_bCollides = true;
 	}
 	else if(kCollisionArea == "none")
 	{
 		// Tiene None collision desde el XML
-		pkTile->collides = false;
+		pkTile->m_bCollides = false;
 	}
 
 	return;
@@ -314,22 +313,24 @@ void Map::loadLayer(XMLNode kLayer)
 //---------------------------------------------------------------------------
 void Map::processData(std::string kData, vector<int> &kDataVector)
 {
-	//borro los saltos de linea de la data
-	//borro el ASCII 13
+	//Borro los saltos de linea de la data
+	//Borro el ASCII 13
 	int iPos = (int)(kData.find(13));
 	while(iPos != (int)(kData.npos))
 	{
 		kData.replace(iPos, 1, "");
 		iPos = (int)(kData.find(13,iPos + 1));
 	}
-	//borro el ASCII 10
+
+	//Borro el ASCII 10
 	iPos = (int)(kData.find(10));
 	while(iPos != (int)(kData.npos))
 	{
 		kData.replace(iPos, 1, "");
 		iPos = (int)(kData.find(10,iPos + 1));
 	}
-	//borro el ASCII 9
+
+	//Borro el ASCII 9
 	iPos = (int)(kData.find(9));
 	while(iPos != (int)(kData.npos))
 	{
@@ -337,7 +338,7 @@ void Map::processData(std::string kData, vector<int> &kDataVector)
 		iPos = (int)(kData.find(9,iPos + 1));
 	}
 
-	//extraigo los indices
+	//Extraigo los indices
 	iPos = (int)(kData.find(','));
 	while(iPos != (int)(kData.npos))
 	{
@@ -351,26 +352,26 @@ void Map::processData(std::string kData, vector<int> &kDataVector)
 //---------------------------------------------------------------------------
 void Map::moveMap()
 {
-	//accedo a cada layer
 	LayerMapIterator itLPos;
 	LayerMapIterator itLEnd;
 
 	for(itLPos = m_kkLayerMap.begin(), itLEnd = m_kkLayerMap.end();
 		itLPos != itLEnd; itLPos++)
 	{
-		//para cada layer seteo la pos de mundo de sus tiles
+		//Para cada layer seteo la pos de mundo de sus tiles
 		TileVector* kLayer = itLPos->second;
 		for(int i = 0; i < (int)(kLayer->size()); i++)
 		{
 			Tile* kTile = kLayer->at(i);
-			//posiciones respecto al mapa
-			float fPosX = (float)((i % m_iRows));
-			float fPosY = (float)(m_iRows - 1 - (i / m_iRows));
-			fPosX = fPosX * m_iTileWidth - m_iTileHeight / 2;
-			fPosY = fPosY * m_iTileHeight - m_iTileHeight / 2;
-			float fPosZ = 0.0f;
 
-			//posiciones en el mundo
+			//Posiciones Respecto al Mapa
+			float fPosX = (float)((i % m_iRows));
+			float fPosY = (float)(m_iRows - (i / m_iRows));
+			float fPosZ = 0.0f;
+			fPosX = (fPosX * m_iTileWidth - m_iTileWidth / 2);
+			fPosY = (fPosY * m_iTileHeight - m_iTileHeight / 2);
+
+			//Posiciones en el Mundo
 			fPosX += m_fPosX;
 			fPosY += m_fPosY;
 			fPosX -= (float)((m_iRows * m_iTileWidth) / 2);
@@ -510,7 +511,7 @@ Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 		{
 			Tile* kTile = kLayer->at(i);
 
-			if(kTile->collides)
+			if(kTile->m_bCollides)
 			{
 				eResult = kTile->checkCollision(pkEntity);
 

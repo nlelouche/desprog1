@@ -17,7 +17,7 @@ Tile::Tile()
 m_iId(0),
 m_kCode1(""),
 m_kCode2(""),
-collides(false)
+m_bCollides(false)
 {
 
 }
@@ -36,7 +36,7 @@ void Tile::clone(Tile* pkTile)
 
 	Sprite::clone(pkTile);
 
-	pkTile->collides = collides;
+	pkTile->m_bCollides = m_bCollides;
 	pkTile->setId(getId());
 	pkTile->setDim(getDimWidth(), getDimHeight());
 	//pkTile->set2DHFlip(get2DHFlip());

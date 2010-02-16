@@ -49,7 +49,7 @@ private:
 
 	std::string m_kName;
 
-	int m_iLayers; //¿es necesario?
+	int m_iLayers;
 	int m_iRows;
 	int m_iCols;
 	int m_iTileWidth;

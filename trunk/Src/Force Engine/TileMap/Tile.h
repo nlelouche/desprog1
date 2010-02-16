@@ -30,7 +30,7 @@ public:
 		FULL
 	};
 
-	bool collides;
+	bool m_bCollides;
 
 	void setId(int iId);
 	int getId();
