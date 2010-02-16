@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a project file for TaT Tile Map Editor. -->
+<!-- This file is only used to load a project into the tile map editor. -->
+<!-- This file is not needed when loading maps into games. -->
+
+<TaT_TileMapEditor version="1.0.0">
+	<project name="PruebaFinalGraficos1" author="German Battiston">
+		<tiles defaultTileWidth="32" defaultTileHeight="32" tilesetFile="tileset.xml"/>
+		<description>
+Prueba de Tilemaps distintos y su lectura por medio de XML.
+		</description>
+	</project>
+	<tilepalette name="MarioTiles2" tileWidth="16" tileHeight="16">
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="16" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="64" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="96" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="48"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="32"/>
+		<tilesetImage file="SMB-Tiles.png" posX="32" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="160"/>
+		<tilesetImage file="SMB-Tiles.png" posX="192" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="0"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="128"/>
+		<tilesetImage file="SMB-Tiles.png" posX="48" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="80" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="128" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="160" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="64"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="96"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="144"/>
+		<tilesetImage file="SMB-Tiles.png" posX="0" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="112"/>
+		<tilesetImage file="SMB-Tiles.png" posX="144" posY="80"/>
+		<tilesetImage file="SMB-Tiles.png" posX="176" posY="16"/>
+		<tilesetImage file="SMB-Tiles.png" posX="112" posY="32"/>
+	</tilepalette>
+	<editorwindow mapName="MarioMap" dotsBelowTiles="true" dotColor="128,128,128" collisionColor="255,0,0,64" showCollision="true" codeColor="255,0,0" codeFont="SansSerif,0,9" showCode="true" fps="30" measureFps="false" visible="true">
+		<mapFile file="MarioMap.xml"/>
+	</editorwindow>
+</TaT_TileMapEditor>
