@@ -8,252 +8,252 @@
 		<tileset file="SMB-Tiles.png" tileWidth="16" tileHeight="16"/>
 	</tilesets>
 	<tiles>
-		<tilesetTile id="1" width="16" height="16"/>
+		<tilesetTile id="1" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="192" posY="96"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="2" width="16" height="16"/>
+		<tilesetTile id="2" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="192" posY="48"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="3" width="16" height="16"/>
+		<tilesetTile id="3" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="112"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="4" width="16" height="16"/>
-			<tilesetImage file="SMB-Tiles.png" posX="16" posY="112"/>
-			<collision area="none"/>
-			<rotate angle="0"/>
-			<flip vertically="false" horizontally="false"/>
-			<code first="none" second="none"/>
-		</tilesetTile>
-		<tilesetTile id="5" width="16" height="16"/>
+    <tilesetTile id="4" width="16" height="16">
+      <tilesetImage file="SMB-Tiles.png" posX="16" posY="112"/>
+      <collision area="none"/>
+      <rotate angle="0"/>
+      <flip vertically="false" horizontally="false"/>
+      <code first="none" second="none"/>
+    </tilesetTile>
+		<tilesetTile id="5" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="32" posY="112"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="6" width="16" height="16"/>
+		<tilesetTile id="6" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="128"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="7" width="16" height="16"/>
+		<tilesetTile id="7" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="16" posY="128"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="8" width="16" height="16"/>
+		<tilesetTile id="8" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="32" posY="128"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="9" width="16" height="16"/>
+		<tilesetTile id="9" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="32"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="10" width="16" height="16"/>
+		<tilesetTile id="10" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="16" posY="32"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="11" width="16" height="16"/>
+		<tilesetTile id="11" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="48"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="12" width="16" height="16"/>
+		<tilesetTile id="12" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="16" posY="48"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="13" width="16" height="16"/>
+		<tilesetTile id="13" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="96" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="14" width="16" height="16"/>
+		<tilesetTile id="14" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="112" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="15" width="16" height="16"/>
+		<tilesetTile id="15" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="128" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="16" width="16" height="16"/>
+		<tilesetTile id="16" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="64" posY="128"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="17" width="16" height="16"/>
+		<tilesetTile id="17" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="128"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="18" width="16" height="16"/>
+		<tilesetTile id="18" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="96" posY="128"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="19" width="16" height="16"/>
+		<tilesetTile id="19" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="48"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="20" width="16" height="16"/>
+		<tilesetTile id="20" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="0"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="21" width="16" height="16"/>
+		<tilesetTile id="21" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="16" posY="0"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="22" width="16" height="16"/>
+		<tilesetTile id="22" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="32" posY="48"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="23" width="16" height="16"/>
+		<tilesetTile id="23" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="48" posY="144"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="24" width="16" height="16"/>
+		<tilesetTile id="24" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="48" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="25" width="16" height="16"/>
+		<tilesetTile id="25" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="64" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="26" width="16" height="16"/>
+		<tilesetTile id="26" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="96"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="27" width="16" height="16"/>
+		<tilesetTile id="27" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="0" posY="16"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="28" width="16" height="16"/>
+		<tilesetTile id="28" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="48" posY="16"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="29" width="16" height="16"/>
+		<tilesetTile id="29" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="32" posY="16"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="30" width="16" height="16"/>
+		<tilesetTile id="30" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="48" posY="160"/>
 			<collision area="none"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="31" width="16" height="16"/>
+		<tilesetTile id="31" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="64" posY="64"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="32" width="16" height="16"/>
+		<tilesetTile id="32" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="64"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="33" width="16" height="16"/>
+		<tilesetTile id="33" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="64" posY="80"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="34" width="16" height="16"/>
+		<tilesetTile id="34" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="80"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="35" width="16" height="16"/>
+		<tilesetTile id="35" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="80" posY="0"/>
 			<collision area="full"/>
 			<rotate angle="0"/>
 			<flip vertically="false" horizontally="false"/>
 			<code first="none" second="none"/>
 		</tilesetTile>
-		<tilesetTile id="36" width="16" height="16"/>
+		<tilesetTile id="36" width="16" height="16">
 			<tilesetImage file="SMB-Tiles.png" posX="32" posY="64"/>
 			<collision area="full"/>
 			<rotate angle="0"/>

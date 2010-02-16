@@ -80,9 +80,9 @@ bool MyScene::onInit()
 
 	m_pkTileMap = new Map(m_pkGraphics);
 
-	m_pkTileMap->loadMap("../../res/mapas/TestCollision/tileset.xml", 
-		"../../res/Mapas/TestCollision/TestMap.xml");
-	m_pkTileMap->setPos(0.0f, -170.0f, 0.0f);
+	m_pkTileMap->loadMap("../../res/mapas/PruebaMario/tileset.xml", 
+		"../../res/Mapas/PruebaMario/MarioMap.xml");
+	m_pkTileMap->setPos(0.0f, 0.0f, 0.0f);
 
 	// FIN ANIMATION Y ANIMATION INFO Y TILEMAP
 
