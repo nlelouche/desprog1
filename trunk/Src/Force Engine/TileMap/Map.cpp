@@ -352,26 +352,28 @@ void Map::processData(std::string kData, vector<int> &kDataVector)
 //---------------------------------------------------------------------------
 void Map::moveMap()
 {
+	//accedo a cada layer
 	LayerMapIterator itLPos;
 	LayerMapIterator itLEnd;
 
 	for(itLPos = m_kkLayerMap.begin(), itLEnd = m_kkLayerMap.end();
 		itLPos != itLEnd; itLPos++)
 	{
-		//Para cada layer seteo la pos de mundo de sus tiles
+		//para cada layer seteo la pos de mundo de sus tiles
 		TileVector* kLayer = itLPos->second;
-		for(int i = 0; i < (int)(kLayer->size()); i++)
+
+		for(int i=0; i < (int)(kLayer->size()); i++)
 		{
 			Tile* kTile = kLayer->at(i);
-
-			//Posiciones Respecto al Mapa
+			//posiciones respecto al mapa
 			float fPosX = (float)((i % m_iRows));
-			float fPosY = (float)(m_iRows - (i / m_iRows));
+			//float fPosX = (float)(m_iRows - 1 - (i % m_iRows));
+			float fPosY = (float)(m_iRows - 1 - (i / m_iRows));
+			fPosX = fPosX * m_iTileWidth - m_iTileHeight / 2;
+			fPosY = fPosY * m_iTileHeight - m_iTileHeight / 2;
 			float fPosZ = 0.0f;
-			fPosX = (fPosX * m_iTileWidth - m_iTileWidth / 2);
-			fPosY = (fPosY * m_iTileHeight - m_iTileHeight / 2);
 
-			//Posiciones en el Mundo
+			//posiciones en el mundo
 			fPosX += m_fPosX;
 			fPosY += m_fPosY;
 			fPosX -= (float)((m_iRows * m_iTileWidth) / 2);
