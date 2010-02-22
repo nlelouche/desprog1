@@ -82,7 +82,7 @@ bool MyScene::onInit()
 
 	m_pkTileMap->loadMap("../../res/mapas/PruebaMario/tileset.xml", 
 		"../../res/Mapas/PruebaMario/MarioMap.xml");
-	m_pkTileMap->setPos(-300.0f, 300.0f, 0.0f);
+	m_pkTileMap->setPos(-88.0f, -118.0f, 0.0f);
 
 	// FIN ANIMATION Y ANIMATION INFO Y TILEMAP
 
