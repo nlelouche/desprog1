@@ -111,8 +111,10 @@ Entity2D::CollisionResult Entity2D::checkCollision(Entity2D * pkEntity) const
 			return Horizontal;
 		}
 	}
-	
-	return None;
+	else
+	{
+		return None;
+	}
 }
 //---------------------------------------------------------------------------
 Entity2D::~Entity2D()

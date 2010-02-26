@@ -54,6 +54,8 @@ private:
 	float	fGravity;
 	float	fVelocityX;
 	float	fVelocityY;
+	float	fRightSpeed;
+	float	fLeftSpeed;
 
 	Graphics * m_pkGraphics;
 
