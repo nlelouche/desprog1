@@ -514,7 +514,7 @@ Entity2D::CollisionResult Map::checkMapCollision(Entity2D* pkEntity)
 			{
 				eResult = kTile->checkCollision(pkEntity);
 
-				if(eResult != Entity2D::None)
+				if(eResult != Entity2D::CollisionResult::None)
 				{
 					return eResult;
 				}

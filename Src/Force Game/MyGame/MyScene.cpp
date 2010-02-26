@@ -25,6 +25,8 @@ fPosX(0),
 fPosY(0),
 fVelocityX(0),
 fVelocityY(0),
+fRightSpeed(0),
+fLeftSpeed(0),
 m_pkTileMap(NULL)
 {
 
@@ -49,7 +51,7 @@ bool MyScene::onInit()
 
 	m_pkChar->setTexture(m_pkCharText);
 	m_pkChar->setTextureArea(0,0,32,32);
-	m_pkChar->setDim(64, 64);
+	m_pkChar->setDim(40, 40);
 	m_pkChar->setPosXYZ(-200.0f, 400.0f, 0.0f);
 	// FIN TEXTURE Y SPRITES
 
@@ -76,8 +78,6 @@ bool MyScene::onInit()
 	m_pkCharAnimInfoIzq->setLoopable(true);
 	m_pkCharAnimIzq = new Animation(m_pkCharAnimInfoIzq);
 
-	m_pkChar->setAnimation(m_pkCharAnimIzq);
-
 	m_pkTileMap = new Map(m_pkGraphics);
 
 	m_pkTileMap->loadMap("../../res/mapas/PruebaMario/tileset.xml", 
@@ -91,9 +91,12 @@ bool MyScene::onInit()
 	addEntity(m_pkChar);
 	addEntity(m_pkFloor);
 
+	fRightSpeed = 0;
+	fLeftSpeed = 0;
+
 	fVelocityX = 0.0f;
 	fVelocityY = 0.0f;
-	fGravity = 0.006f;
+	fGravity = 0.004f;
 
 	return true;
 }
@@ -112,17 +115,31 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 	{
 		m_pkChar->setAnimation(m_pkCharAnimDer);
 		m_pkChar->setMovingAngle(0.0f);
-		fVelocityX += 0.005f;
+		fRightSpeed = 5;
+		//fVelocityX += 0.09f;
 		m_pkCharAnimDer->Play();
 	}
-	
+	else
+	{
+		fRightSpeed = 0;
+	}
+
 	if(m_pkInput->getKeyDown(DIK_LEFTARROW))
 	{
 		m_pkChar->setAnimation(m_pkCharAnimIzq);
 		m_pkChar->setMovingAngle(180.0f);
-		fVelocityX -= 0.005f;
+		fLeftSpeed = 5;
+		//fVelocityX -= 0.09f;
 		m_pkCharAnimIzq->Play();
 	}
+	else
+	{
+		fLeftSpeed = 0;
+	}
+
+	fPosX += (fRightSpeed - fLeftSpeed);
+
+	m_pkChar->setPosX(fPosX);
 
 	//------------------------------------------------------------------
 
@@ -152,14 +169,6 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 
 	//------------------------------------------------------------------
 
-	if((m_pkInput->getKeyDown(DIK_SPACE) || m_pkInput->getKeyDown(DIK_UPARROW)) 
-		&& fVelocityY == 0.0f) 
-	{
-		fVelocityY = 5.0f;
-	}
-
-	fVelocityY -= fGravity * fTimeBetweenFrames;
-
 	Entity2D::CollisionResult eResult;
 	eResult = m_pkTileMap->checkMapCollision(m_pkChar);
 
@@ -169,6 +178,8 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 
 		if(eResult == Entity2D::Horizontal)
 		{
+			fVelocityY = 0.0f;
+
 			fPosX += fVelocityX;
 
 			m_pkChar->setPosX(fPosX);
@@ -182,6 +193,12 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 			m_pkChar->setPosY(fPosY);
 			m_pkChar->setPosX(m_pkChar->getPrevPosX());
 		}
+
+		if((m_pkInput->getKeyDown(DIK_SPACE) || m_pkInput->getKeyDown(DIK_UPARROW)) 
+			&& fVelocityY == 0.0f) 
+		{
+			fVelocityY = 7.0f;
+		}
 	}
 	else
 	{
@@ -191,11 +208,10 @@ bool MyScene::onUpdate(float fTimeBetweenFrames)
 		m_pkChar->setPosXY(fPosX, fPosY);
 	}
 
+	fVelocityY -= fGravity * fTimeBetweenFrames;
+
 	m_pkTileMap->update(fTimeBetweenFrames);
 	m_pkTileMap->setLayerVisible(0, true);
-
-	updateCollision();
-	updateMapCollision();
 
 	return true;
 }
